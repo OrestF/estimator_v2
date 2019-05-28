@@ -4,5 +4,7 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  belongs_to :organization
+
   enum role: %i[worker manager admin]
 end

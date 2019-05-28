@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem "bootstrap", ">= 4.3.1"
+gem 'bootstrap', '>= 4.3.1'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise_invitable', '~> 2.0.0'
@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
+gem 'pundit'
 gem 'rails', '~> 6.0.0.rc1'
 gem 'sass-rails', '~> 5'
 gem 'turbolinks', '~> 5'

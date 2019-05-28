@@ -1,0 +1,10 @@
+= form_for organization, local: true do  |form|
+  .form-group
+    = form.label :name, class: 'form-control'
+    = form.text_field :name, class: 'form-control'
+    = image_tag(organization.logo, class: 'img-fluid')
+    .input-group
+      .custom-file
+        = form.file_field :logo, class: 'custom-file-input'
+        lable.custom-file-label Logo
+    = form.submit class: 'form-control'
