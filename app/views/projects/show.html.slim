@@ -1,0 +1,7 @@
+h1 = @record.title
+.row
+  .col-xs-12
+    = link_to('Edit', edit_project_path(@record))
+.row
+  .col-xs-12
+    == @record.description

@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   get 'organization' => 'organizations#show'
   get 'organization/edit' => 'organizations#edit'
-  resources :organizations, only: %i[update] do
-  end
+  put 'organization' => 'organizations#update'
+  patch 'organization' => 'organizations#update'
+  resources :projects
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

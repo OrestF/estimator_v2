@@ -1,10 +1,11 @@
 class ApplicationPolicy
-  attr_reader :user, :record, :configs
+  attr_reader :user, :record, :configs, :current_organization
 
   def initialize(user, record, configs = {})
     @user = user
     @record = record
     @configs = configs
+    @current_organization = @configs[:current_organization]
   end
 
   def index?
@@ -33,6 +34,12 @@ class ApplicationPolicy
 
   def destroy?
     false
+  end
+
+  protected
+
+  def own_org?
+    current_organization == user.organization
   end
 
   class Scope

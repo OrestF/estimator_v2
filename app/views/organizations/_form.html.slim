@@ -1,8 +1,8 @@
-= form_for organization, local: true do  |form|
+= form_with(model: current_organization, url: organization_path) do  |form|
   .form-group
     = form.label :name, class: 'form-control'
     = form.text_field :name, class: 'form-control'
-    = image_tag(organization.logo, class: 'img-fluid')
+    = org_logo
     .input-group
       .custom-file
         = form.file_field :logo, class: 'custom-file-input'

@@ -1,18 +1,12 @@
 class OrganizationsController < ApplicationController
   def show; end
 
-  def edit
-    authorize current_organization
-  end
+  def edit; end
 
   def update
-    authorize current_organization
-
-    current_organization.update(record_params)
-    current_organization.logo.purge
-    current_organization.logo.attach(params[:organization][:logo])
+    update_organization
     flash[:success] = 'Updated'
-    redirect_to root_path
+    redirect_to organization_path
   end
 
   private
@@ -23,5 +17,17 @@ class OrganizationsController < ApplicationController
 
   def record_class
     Organization
+  end
+
+  def record
+    current_organization
+  end
+
+  def update_organization
+    current_organization.update(record_params)
+    return if params.dig(:organization, :logo).blank?
+
+    current_organization.logo.purge
+    current_organization.logo.attach(params[:organization][:logo])
   end
 end
