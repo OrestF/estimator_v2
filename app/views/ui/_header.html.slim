@@ -1,16 +1,13 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   a.navbar-brand
     = link_to(root_path) do
-      = image_tag('estimator', size: '32x32')
-    span Estimator
+      = nav_logo
   button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item.active
-        a.nav-link href="#" 
-          | Home
-          span.sr-only (current)
+      li.nav-item
+        = link_to('Projects', projects_path, class: 'nav-link')
       li.nav-item
         = link_to('My organization', organization_path, class: 'nav-link')
       li.nav-item.dropdown
@@ -24,4 +21,4 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       li.nav-item
         a.nav-link.disabled href="#"  Disabled
   .navbar-text
-    = current_user&.email
+    | #{current_user&.email} [#{current_user.role}]

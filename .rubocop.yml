@@ -18,6 +18,7 @@ AllCops:
     - 'spec/rails_helper.rb'
     - 'spec/support/i18.rb'
     - 'spec/spec_helper.rb'
+    - 'spec/support/*.rb'
 
 Documentation:
   Enabled: false

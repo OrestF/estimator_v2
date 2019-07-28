@@ -1,0 +1,8 @@
+h1 Projects
+.row
+  .col-sm-12
+    = link_to('New project', new_project_path)
+.row
+  ul
+    - @projects.each do |project|
+      li = link_to(project.title, project_path(project))

@@ -7,6 +7,7 @@ gem 'bootstrap', '>= 4.3.1'
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise_invitable', '~> 2.0.0'
+gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -19,6 +20,7 @@ gem 'webpacker', '~> 4.0'
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'passpartu'
 gem 'r_creds'
 gem 'redis'
 gem 'sidekiq'

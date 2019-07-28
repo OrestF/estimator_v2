@@ -1,0 +1,9 @@
+= form_with(model: project, scope: :project, url: projects_path, local: true) do  |form|
+  .form-group
+    = form.label :title, class: 'form-control'
+    = form.text_field :title, class: 'form-control'
+  .form-group
+    = form.label :description, class: 'form-control'
+    = form.rich_text_area :description, class: 'form-control'
+
+    = form.submit class: 'form-control'
