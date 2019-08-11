@@ -8,9 +8,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    Project.create(record_params)
-
-    redirect_to projects_path
+    res = Projects::Operations::Create.call(record_params: record_params)
+    if res.success?
+      redirect_to projects_path
+    else
+      # TODO: ADD FUCKING JS NOTIFICATIONS WWITH FUCKED WEBPACKER
+      render 'new'
+    end
   end
 
   def show; end
@@ -26,7 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def record_params
-    params.require(:project).permit(:title, :description).merge!(user_id: current_user.id,
-                                                                 organization_id: current_organization.id)
+    params.require(:project).permit(:title, :description).to_h.merge!(user_id: current_user.id,
+                                                                      organization_id: current_organization.id)
   end
 end
