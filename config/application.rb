@@ -23,6 +23,7 @@ module EstimatorV2
   class Application < Rails::Application
     config.paths.add "data", eager_load: true
     config.paths.add "business", eager_load: true
+    config.paths.add "app/infrastructure", eager_load: true
     config.generators.test_framework = :rspec
     config.active_job.queue_adapter = :sidekiq
     # Initialize configuration defaults for originally generated Rails version.

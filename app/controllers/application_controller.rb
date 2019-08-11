@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_action :authenticate_user!
-  before_action :verify_class, only: %i[index new]
-  before_action :verify_record, except: %i[index new]
+  before_action :verify_class, only: %i[index new create]
+  before_action :verify_record, except: %i[index new create]
 
   protected
 
