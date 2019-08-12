@@ -1,0 +1,6 @@
+manager:
+  organizations:
+    read: true
+    update: true
+  projects:
+    crud: true
