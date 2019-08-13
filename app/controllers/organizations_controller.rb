@@ -1,4 +1,4 @@
-class OrganizationsController < ApplicationController
+class OrganizationsController < ResourcesController
   def show; end
 
   def edit; end
