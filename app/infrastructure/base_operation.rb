@@ -36,7 +36,7 @@ class BaseOperation < BaseAction
   end
 
   def validation_fail(args = {})
-    response(:validation_fail, args.merge!(record: record, record_params: record_params, form: form))
+    response(:validation_fail, args.merge!(record: record, record_params: record_params, form: form, errors: form.collect_errors))
   end
 
   def form_class

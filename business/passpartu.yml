@@ -4,3 +4,9 @@ manager:
     update: true
   projects:
     crud: true
+
+admin:
+  organizations:
+    crud: true
+  projects:
+    crud: true

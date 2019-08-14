@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < ResourcesController
   def index
     @projects = current_organization.projects
   end
@@ -9,11 +9,11 @@ class ProjectsController < ApplicationController
 
   def create
     res = Projects::Operations::Create.call(record_params: record_params)
+
     if res.success?
       redirect_to projects_path
     else
-      # TODO: ADD FUCKING JS NOTIFICATIONS WWITH FUCKED WEBPACKER
-      render 'new'
+      error_nf(humanize_errors(res.args[:errors]))
     end
   end
 

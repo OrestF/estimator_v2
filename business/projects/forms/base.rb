@@ -6,6 +6,4 @@ class Projects::Forms::Base < BaseForm
   attr_accessor(*PERMITTED_ATTRIBUTES)
 
   validates *REQUIRED_ATTRIBUTES, presence: true
-
-
 end

@@ -14,6 +14,7 @@ class BaseResponse
     @status = status.to_s
 
     raise NonKeywordArgumentsError if args.present? && !args[0].is_a?(Hash)
+
     @args = args[0]
 
     define_singleton_method("#{status}?") do

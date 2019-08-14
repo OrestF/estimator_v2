@@ -11,6 +11,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           = link_to('Projects', projects_path, class: 'nav-link')
         li.nav-item
           = link_to('My organization', organization_path, class: 'nav-link')
+
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             | Dropdown
@@ -19,7 +20,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             a.dropdown-item href="#"  Another action
             .dropdown-divider
             = link_to('My organization', organization_path, class: 'dropdown-item')
-        li.nav-item
-          a.nav-link.disabled href="#"  Disabled
+            .dropdown-divider
+            = link_to('Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete)
     .navbar-text
       | #{current_user&.email} [#{current_user.role}]
