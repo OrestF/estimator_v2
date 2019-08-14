@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   belongs_to :organization
+  has_many :projects
 
   enum role: %i[worker manager admin]
 end
