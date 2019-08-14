@@ -36,14 +36,18 @@ class BaseOperation < BaseAction
   end
 
   def validation_fail(args = {})
-    response(:validation_fail, args.merge!(record: record, record_params: record_params, form: form, errors: form.collect_errors))
+    sync_errors_to_form
+    response(:validation_fail, args.merge!(record: record,
+                                           record_params: record_params,
+                                           form: form,
+                                           errors: form.collect_errors))
   end
 
   def form_class
     raise 'Define your own form object class in your operation'
   end
 
-  def sync_form_errors
+  def sync_errors_to_form
     form.sync_errors_to_form
   end
 

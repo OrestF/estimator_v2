@@ -64,3 +64,6 @@ Lint/AmbiguousBlockAssociation:
 Naming/UncommunicativeMethodParamName:
   Exclude:
     - 'lib/**/*'
+
+Lint/AmbiguousOperator:
+  Enabled: false

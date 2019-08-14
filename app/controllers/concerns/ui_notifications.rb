@@ -11,4 +11,10 @@ module UiNotifications
 
     errors_hash.map { |name, messages| "#{name.to_s.humanize}: #{messages.join('; ')}" }.join('. ')
   end
+
+  def html_humanize_errors(errors_hash)
+    return '' if errors_hash.blank?
+
+    render_to_string(partial: 'ui/errors', locals: { error_messages: errors_hash })
+  end
 end

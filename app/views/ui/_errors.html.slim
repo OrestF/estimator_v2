@@ -1,0 +1,7 @@
+h6 Errors
+hr
+- error_messages.each do |name, messages|
+  div
+    strong = name.to_s.humanize
+    | :
+    span  #{messages.join(', ')}

@@ -25,6 +25,7 @@ module EstimatorV2
     config.paths.add "business", eager_load: true
     config.paths.add "app/infrastructure", eager_load: true
     config.generators.test_framework = :rspec
+    config.generators.fixture_replacement = :factory_bot
     config.active_job.queue_adapter = :sidekiq
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0

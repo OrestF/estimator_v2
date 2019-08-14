@@ -21,4 +21,8 @@ class BaseResponse
       true
     end
   end
+
+  def errors
+    args[:errors].presence || {}
+  end
 end

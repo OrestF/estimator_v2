@@ -13,7 +13,7 @@ class ProjectsController < ResourcesController
     if res.success?
       redirect_to projects_path
     else
-      error_nf(humanize_errors(res.args[:errors]))
+      error_nf(html_humanize_errors(res.errors))
     end
   end
 
