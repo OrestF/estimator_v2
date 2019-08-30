@@ -1,10 +1,10 @@
 class ProjectsController < ResourcesController
   def index
-    @projects = current_organization.projects
+    @records = current_organization.projects
   end
 
   def new
-    @project = record_class.new
+    @record = record_class.new
   end
 
   def create
@@ -21,7 +21,9 @@ class ProjectsController < ResourcesController
 
   def edit; end
 
-  def update;end
+  def update
+    success_nf('Zaebok')
+  end
 
   private
 

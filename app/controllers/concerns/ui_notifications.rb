@@ -5,6 +5,10 @@ module UiNotifications
     render 'ui/alertify', format: :js, status: :bad_request, locals: { status: 'error', message: message }
   end
 
+  def success_nf(message)
+    render 'ui/alertify', format: :js, status: :ok, locals: { status: 'success', message: message }
+  end
+
   # TODO: move to proper place & render as html
   def humanize_errors(errors_hash)
     return '' if errors_hash.blank?

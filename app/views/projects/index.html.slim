@@ -4,5 +4,5 @@ h1 Projects
     = link_to('New project', new_project_path)
 .row
   ul
-    - @projects.each do |project|
+    - @records.each do |project|
       li = link_to(project.title, project_path(project))
