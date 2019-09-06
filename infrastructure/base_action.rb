@@ -9,7 +9,7 @@ class BaseAction
   def initialize(*args, &block)
     raise NonKeywordArgumentsError if args.present? && !args[0].is_a?(Hash)
 
-    @args = args[0]
+    @args = @data = args[0]
     @args.each do |name, value|
       instance_variable_set("@#{name}", value)
     end

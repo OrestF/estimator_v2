@@ -1,12 +1,12 @@
 module UiNotifications
   extend ActiveSupport::Concern
 
-  def error_nf(message)
-    render 'ui/alertify', format: :js, status: :bad_request, locals: { status: 'error', message: message }
+  def error_nf(message, url: nil)
+    render 'ui/alertify', format: :js, status: :bad_request, locals: { status: 'error', message: message, url: url }
   end
 
-  def success_nf(message)
-    render 'ui/alertify', format: :js, status: :ok, locals: { status: 'success', message: message }
+  def success_nf(message, url: nil)
+    render 'ui/alertify', format: :js, status: :ok, locals: { status: 'success', message: message, url: url }
   end
 
   # TODO: move to proper place & render as html

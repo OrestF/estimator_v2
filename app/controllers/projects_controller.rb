@@ -8,10 +8,8 @@ class ProjectsController < ResourcesController
   end
 
   def create
-    res = Projects::Operations::Create.call(record_params: record_params)
-
-    if res.success?
-      redirect_to projects_path
+    if (res = Projects::Operations::Create.call(record_params: record_params)).success?
+      success_nf(MessageHelper.saved(record_class.name), url: project_path(res.data[:record]))
     else
       error_nf(html_humanize_errors(res.errors))
     end
@@ -22,7 +20,11 @@ class ProjectsController < ResourcesController
   def edit; end
 
   def update
-    success_nf('Zaebok')
+    if (res = Projects::Operations::Update.call(record: record, record_params: record_params)).success?
+      success_nf(MessageHelper.updated(record_class.name), url: project_path(record))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
   end
 
   private

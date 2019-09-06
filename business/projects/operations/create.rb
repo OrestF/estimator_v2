@@ -4,10 +4,9 @@ class Projects::Operations::Create < BaseOperation
     build_form
     return validation_fail unless form_valid?
 
-    save_record
-    return validation_fail unless record.persisted?
+    return validation_fail unless save_record
 
-    success(args)
+    success(args.merge!(record: record))
   end
 
   private

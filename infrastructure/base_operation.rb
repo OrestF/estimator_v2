@@ -24,7 +24,7 @@ class BaseOperation < BaseAction
   end
 
   def save_record
-    yield if record.save && block_given?
+    record.save
   end
 
   def response(status, *args)

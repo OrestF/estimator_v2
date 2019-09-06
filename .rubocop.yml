@@ -67,3 +67,6 @@ Naming/UncommunicativeMethodParamName:
 
 Lint/AmbiguousOperator:
   Enabled: false
+
+Style/AccessModifierDeclarations:
+  Enabled: false
