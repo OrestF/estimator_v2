@@ -1,9 +1,6 @@
 alertify.set('notifier','position', 'top-right');
-alertify.notify("<%= message %>", '<%= status %>', 7);
-
-<% if url.present? %>
-    function redirect() {
-      window.location = '<%= url %>'
+alertify.notify("<%= message %>", '<%= status %>', 5, function() {
+    if ('<%= url %>') {
+        window.location = '<%= url %>'
     }
-    setTimeout(redirect, 2000);
-<% end %>
+});

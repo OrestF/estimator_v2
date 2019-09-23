@@ -5,7 +5,7 @@ class BaseAction
     new(*args, &block).call
   end
 
-  attr_reader :args
+  attr_reader :args, :data
   def initialize(*args, &block)
     raise NonKeywordArgumentsError if args.present? && !args[0].is_a?(Hash)
 

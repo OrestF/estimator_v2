@@ -18,5 +18,9 @@ class ProjectPolicy < ApplicationPolicy
   def update?
     show?
   end
+
+  def destroy?
+    user.can?(:projects, :delete) { own_org? }
+  end
   alias edit? update?
 end

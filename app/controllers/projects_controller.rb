@@ -27,6 +27,14 @@ class ProjectsController < ResourcesController
     end
   end
 
+  def destroy
+    if (res = Projects::Operations::Delete.call(record: record)).success?
+      success_nf(MessageHelper.deleted(record_class.name), url: projects_path)
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_class

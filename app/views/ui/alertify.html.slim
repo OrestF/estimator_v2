@@ -1,0 +1,8 @@
+javascript:
+    alertify.set('notifier', 'position', 'top-right');
+    alertify.notify("#{message}", "#{status}", 5, function () {
+        if ("#{url}") {
+            console.log('here');
+            window.location = "#{url}"
+        }
+    });

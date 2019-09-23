@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   # TODO: add messages
   def user_not_authorized
-    error_nf('Not authorized')
+    flash[:error] = 'Not authorized'
     redirect_to(root_path)
   end
 end

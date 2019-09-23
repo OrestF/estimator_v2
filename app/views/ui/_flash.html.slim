@@ -1,0 +1,4 @@
+- flash.each do |status, message|
+  javascript:
+    alertify.set('notifier','position', 'top-right');
+    alertify.notify("#{message}", "#{status}", 7);
