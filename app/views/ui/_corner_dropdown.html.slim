@@ -1,0 +1,7 @@
+.btn-float-dropdown.dropup.corner-dropdown
+  button.btn.btn-float.btn-primary aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+    i.material-icons = @icon || 'add'
+  .dropdown-menu
+    - @buttons_links.each do |bl|
+      button.btn.btn-float.btn-light.btn-sm.no-underline type="button"
+        = bl

@@ -1,7 +1,39 @@
 body {
   font-family: 'Ubuntu', sans-serif;
+
+  & > .container, .container-fluid {
+    padding-top: 1.5rem;
+  }
 }
 
 .text-center {
   text-align: center;
+}
+
+.no-underline {
+  text-underline: none;
+
+  a:active, a:focus, a:hover {
+    text-decoration: none;
+  }
+}
+
+.corner-dropdown {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+
+.corner-button {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+
+  a {
+    color: inherit;
+  }
+}
+
+h1 {
+  margin-bottom: 1.5rem;
 }

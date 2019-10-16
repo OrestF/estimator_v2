@@ -1,8 +1,7 @@
+= corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_project_path(@record), icon: 'edit'),
+                                                icon_link(project_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
+
 h1 = @record.title
 .row
-  .col-xs-12
-    = link_to('Edit', edit_project_path(@record), class: 'btn btn-default')
-    = link_to('Delete', project_path(@record), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger')
-.row
-  .col-xs-12
+  .col-sm-12
     == @record.description

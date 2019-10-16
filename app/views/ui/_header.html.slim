@@ -14,11 +14,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
 
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            | Dropdown
+            | More
           .dropdown-menu aria-labelledby="navbarDropdown"
-            a.dropdown-item href="#"  Action
-            a.dropdown-item href="#"  Another action
-            .dropdown-divider
             = link_to('My organization', organization_path, class: 'dropdown-item')
             .dropdown-divider
             = link_to('Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete)

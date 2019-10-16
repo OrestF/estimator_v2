@@ -1,8 +1,11 @@
+= corner_button(new_project_path, icon: 'add')
+
 h1 Projects
-.row
-  .col-sm-12
-    = link_to('New project', new_project_path)
-.row
-  ul
-    - @records.each do |project|
-      li = link_to(project.title, project_path(project))
+.card-columns
+  - @records.each do |project|
+    .card
+      .card-body
+        h5.card-title = project.title
+        p.card-text = project.description.to_plain_text.truncate(50)
+        = link_to('Open', project_path(project), class: 'card-link')
+        = link_to('Edit', edit_project_path(project), class: 'card-link')
