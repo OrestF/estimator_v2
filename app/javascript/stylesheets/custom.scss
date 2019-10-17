@@ -37,3 +37,16 @@ body {
 h1 {
   margin-bottom: 1.5rem;
 }
+
+label.form-control {
+  font-weight: bold;
+  border: none;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.m-t-5 {
+  margin-top: 5px
+}

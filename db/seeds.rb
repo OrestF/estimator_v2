@@ -5,15 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-administration = Organization.create(name: 'Administration')
-user = User.find_or_initialize_by(email: 'falchuko@gmail.com', role: 'admin')
-user.organization = administration
-user.password = 'password'
-user.save
+administration = Organization.find_or_create_by(name: 'Administration')
+admin = User.find_or_initialize_by(email: 'falchuko@gmail.com', role: 'admin')
+admin.organization = administration
+admin.password = 'password'
+admin.save
 
 
-coax = Organization.create(name: 'coax')
+coax = Organization.find_or_create_by(name: 'coax')
 user = User.find_or_initialize_by(email: 'orest.f@coaxsoft.com', role: 'manager')
 user.organization = coax
 user.password = 'password'
 user.save
+
+project = FactoryBot.create(:project, user: user, organization: coax)
+project.estimators << FactoryBot.create_list(:user, 3, role: :worker, organization_id: coax.id)

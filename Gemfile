@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -46,8 +48,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'fakeredis'
   gem 'rspec-rails'
   gem 'rspec-sidekiq'

@@ -9,11 +9,14 @@ require("@rails/activestorage").start();
 require("channels");
 import "@rails/actiontext";
 import "trix";
-import '../stylesheets/application';
 import 'bootstrap/dist/js/bootstrap';
 
-import '../../../node_modules/alertifyjs/build/css/alertify.css'
+// import '../../../node_modules/alertifyjs/build/css/alertify.css'
 import 'daemonite-material/js/material';
+import 'select2'
+import './initializers';
+
+import '../stylesheets/application';
 
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.

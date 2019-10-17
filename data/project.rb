@@ -2,6 +2,9 @@ class Project < ApplicationRecord
   belongs_to :organization
   belongs_to :user
 
+  has_many :project_users
+  has_many :estimators, through: :project_users, source: :user
+
   has_rich_text :description
 
   validates :organization, :user, :title, :description, presence: true

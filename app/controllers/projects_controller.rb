@@ -35,6 +35,14 @@ class ProjectsController < ResourcesController
     end
   end
 
+  def assign_estimators
+    if (res = Projects::Operations::AssignEstimators.call(record: record, record_params: record_params)).success?
+      success_nf(MessageHelper.action('Estimators assigned', ''))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_class
@@ -42,7 +50,7 @@ class ProjectsController < ResourcesController
   end
 
   def record_params
-    params.require(:project).permit(:title, :description).to_h.merge!(user_id: current_user.id,
-                                                                      organization_id: current_organization.id)
+    params.require(:project).permit!.to_h.merge!(user_id: current_user.id,
+                                                 organization_id: current_organization.id)
   end
 end

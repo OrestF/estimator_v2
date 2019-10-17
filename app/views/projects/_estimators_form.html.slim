@@ -1,0 +1,6 @@
+= form_with(url: assign_estimators_project_path(project), local: false, method: :patch, scope: :project) do |form|
+  .form-group
+    = form.label :estimators_ids, 'Estimators', class: 'form-control'
+    = form.collection_select :estimator_ids, project.organization.users, :id, :email, { selected: project.estimator_ids }, multiple: true, class: 'select2-js'
+
+    = form.submit 'Assign estimators', class: 'btn btn-success m-t-5'

@@ -18,9 +18,13 @@ class ProjectPolicy < ApplicationPolicy
   def update?
     show?
   end
+  alias edit? update?
 
   def destroy?
     user.can?(:projects, :delete) { own_org? }
   end
-  alias edit? update?
+
+  def assign_estimators?
+    update?
+  end
 end
