@@ -4,9 +4,13 @@ manager:
     update: true
   projects:
     crud: true
+  estimations:
+    crud: true
 
 admin:
   organizations:
     crud: true
   projects:
+    crud: true
+  estimations:
     crud: true

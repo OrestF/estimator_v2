@@ -50,3 +50,42 @@ label.form-control {
 .m-t-5 {
   margin-top: 5px
 }
+
+
+.dataTables_wrapper {
+  display: block;
+
+  .pagination {
+    text-align: right;
+    background: transparent;
+
+    .paginate_button {
+      display: inline-block;
+      border-radius: 2px;
+      transition-duration: 0.3s;
+      transition-property: box-shadow;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: transparent;
+      background-image: none;
+      border: 0;
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14), 0 3px 4px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1;
+      margin: 0;
+      max-width: 100%;
+      min-width: 5.5rem;
+      padding: 0.6875rem 1rem;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+  }
+}

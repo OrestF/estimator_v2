@@ -15,6 +15,15 @@ import 'bootstrap/dist/js/bootstrap';
 import 'daemonite-material/js/material';
 import 'select2'
 import './initializers';
+import '../datatables/estimations';
+
+require('datatables.net-bs')(window, $);
+require('datatables.net-buttons-bs')(window, $);
+require('datatables.net-buttons/js/buttons.colVis.js')(window, $);
+require('datatables.net-buttons/js/buttons.html5.js')(window, $);
+require('datatables.net-buttons/js/buttons.print.js')(window, $);
+require('datatables.net-responsive-bs')(window, $);
+require('datatables.net-select')(window, $);
 
 import '../stylesheets/application';
 

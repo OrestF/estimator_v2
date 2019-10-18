@@ -4,3 +4,8 @@ h1 = current_organization.name
 .row
   .col-sm-4.offset-sm-4
     = org_logo
+
+h2 Users
+.row
+  .col-md-12
+    = render 'organizations/users', users: current_organization.users

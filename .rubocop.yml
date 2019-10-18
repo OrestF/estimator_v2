@@ -70,3 +70,7 @@ Lint/AmbiguousOperator:
 
 Style/AccessModifierDeclarations:
   Enabled: false
+
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/datatables/*'

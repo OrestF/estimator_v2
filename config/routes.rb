@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   get 'organization/edit' => 'organizations#edit'
   put 'organization' => 'organizations#update'
   patch 'organization' => 'organizations#update'
+
   resources :projects do
     member do
       patch 'assign_estimators'
     end
   end
+
+  resources :estimations, only: %i[index]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
