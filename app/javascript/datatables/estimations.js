@@ -8,8 +8,9 @@ $( document ).on('turbolinks:load ready', function() {
         "pagingType": "full_numbers",
         "columns": [
             {"data": "id"},
+            {"data": "project"},
             {"data": "title"},
-            {"data": "state"}
+            {"data": "state"},
         ]
     });
 });

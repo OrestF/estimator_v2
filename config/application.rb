@@ -22,6 +22,7 @@ Bundler.require(*Rails.groups)
 module EstimatorV2
   class Application < Rails::Application
     config.paths.add "data", eager_load: true
+    config.paths.add "data/concerns", eager_load: true
     config.paths.add "business", eager_load: true
     config.paths.add "infrastructure", eager_load: true
     config.generators.test_framework = :rspec

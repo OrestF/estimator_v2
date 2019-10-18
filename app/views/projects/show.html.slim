@@ -3,7 +3,14 @@
 
 h1 = @record.title
 .row
-  .col-sm-8
-    == @record.description
-  .col-sm-4
+  .col-sm-9
+    div
+      h3 Description
+      == @record.description
+    hr
+    div
+      h3 Estimations
+      = render 'estimations/datatable', datatable_source: estimations_path(by_project: @record.id, format: :json)
+
+  .col-sm-3
     = render 'projects/estimators_form', project: @record
