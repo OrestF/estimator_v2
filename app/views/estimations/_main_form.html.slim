@@ -1,0 +1,7 @@
+= form_with(model: estimation, local: false) do  |form|
+  .form-group
+    = form.label :title, class: 'form-control'
+    = form.text_field :title, class: 'form-control'
+
+    = form.submit class: 'btn btn-success m-t-5'
+    / TODO: async estimation form with tasks

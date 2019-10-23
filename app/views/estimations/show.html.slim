@@ -1,0 +1,5 @@
+= corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_estimation_path(@record), icon: 'edit'),
+        icon_link(estimation_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
+
+h1 = @record.title
+.row

@@ -27,4 +27,8 @@ class ResourcesController < ApplicationController
   def policy_class
     "#{record_class}Policy".constantize
   end
+
+  def dt_params
+    { current_user: current_user, current_organization: current_organization, policy_class: policy_class }
+  end
 end

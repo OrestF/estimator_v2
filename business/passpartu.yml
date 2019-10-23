@@ -1,4 +1,12 @@
-manager:
+admin: &admin
+  organizations:
+    crud: true
+  projects:
+    crud: true
+  estimations:
+    crud: true
+
+manager: &manager
   organizations:
     read: true
     update: true
@@ -7,10 +15,11 @@ manager:
   estimations:
     crud: true
 
-admin:
+worker: &worker
   organizations:
-    crud: true
+    read: true
   projects:
-    crud: true
+    read: true
   estimations:
-    crud: true
+    read: true
+    update: true

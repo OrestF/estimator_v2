@@ -11,6 +11,7 @@ $( document ).on('turbolinks:load ready', function() {
             {"data": "project"},
             {"data": "title"},
             {"data": "state"},
+            {"data": "actions", "orderable": false},
         ]
     });
 });

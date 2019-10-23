@@ -2,9 +2,13 @@ class EstimationsController < ResourcesController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: EstimationDatatable.new(params, current_user: current_user) }
+      format.json { render json: EstimationDatatable.new(params, **dt_params) }
     end
   end
+
+  def show; end
+
+  def edit; end
 
   private
 

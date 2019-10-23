@@ -16,7 +16,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
-    show?
+    user.can?(:projects, :update) { own_org? }
   end
   alias edit? update?
 
