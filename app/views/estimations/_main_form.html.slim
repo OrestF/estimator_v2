@@ -1,7 +1,15 @@
-= form_with(model: estimation, local: false) do  |form|
-  .form-group
-    = form.label :title, class: 'form-control'
-    = form.text_field :title, class: 'form-control'
+table.table.table-striped.estimation_tasks
+  thead
+    tr
+      th Title
+      th Description
+      th Optimistic
+      th Pessimistic
+      th Actions
+  tbody
+    - estimation.estimation_tasks.each do |et|
+      = render 'estimations/estimation_task_form', estimation_task: et, url: update_task_estimation_path(estimation)
 
-    = form.submit class: 'btn btn-success m-t-5'
-    / TODO: async estimation form with tasks
+    = render 'estimations/estimation_task_form', estimation_task: estimation.estimation_tasks.new,
+                                                 css_class: 'create_form',
+                                                 url: create_task_estimation_path(estimation)

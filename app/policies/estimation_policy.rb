@@ -32,6 +32,14 @@ class EstimationPolicy < ApplicationPolicy
   end
   alias edit? update?
 
+  def create_task?
+    update?
+  end
+
+  def update_task?
+    create_task?
+  end
+
   def destroy?
     user.can?(:estimations, :delete) { own_org? }
   end

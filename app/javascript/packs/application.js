@@ -3,6 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require("jquery");
+window.jQuery = $;
+window.$ = $;
+
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
@@ -15,6 +19,7 @@ import 'bootstrap/dist/js/bootstrap';
 import 'daemonite-material/js/material';
 import 'select2'
 import './initializers';
+import '../controllers/estimations';
 import '../datatables/estimations';
 
 require('datatables.net-bs')(window, $);

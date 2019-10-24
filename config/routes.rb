@@ -16,7 +16,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :estimations
+  resources :estimations do
+    member do
+      put 'update_task'
+      post 'create_task'
+    end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

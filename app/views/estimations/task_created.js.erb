@@ -1,0 +1,13 @@
+alertify.set('notifier','position', 'top-right');
+alertify.notify("success", 'success', 5);
+
+resetForm()
+appendEstimationTask()
+
+function resetForm() {
+  $("table.estimation_tasks .create_form")[0].reset()
+}
+
+function appendEstimationTask() {
+  $( "<%=j render(partial: 'estimations/estimation_task_form', locals: { estimation_task: estimation_task, url: update_task_estimation_path(estimation) })  %>" ).insertBefore( "table.estimation_tasks tbody tr:last-of-type" );
+}
