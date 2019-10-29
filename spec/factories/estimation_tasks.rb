@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :estimation_task do
-    task { nil }
     estimation { nil }
-    description { 'MyText' }
-    optimistic { 1 }
-    pessimistic { 1 }
+    title { Faker::Book.title }
+    description { Faker::Lorem.sentence }
+    optimistic { rand(1..10) }
+    pessimistic { rand(1..10) }
   end
 end

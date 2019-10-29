@@ -1,15 +1,16 @@
-table.table.table-striped.estimation_tasks
-  thead
-    tr
-      th Title
-      th Description
-      th Optimistic
-      th Pessimistic
-      th Actions
-  tbody
-    - estimation.estimation_tasks.each do |et|
-      = render 'estimations/estimation_task_form', estimation_task: et, url: update_task_estimation_path(estimation)
+.estimation-tasks-pseudo-table
+  .row
+    .col.col-sm-3.text-center
+      strong Title
+    .col.text-center
+      strong Description
+    .col.col-sm-1.text-center
+      strong Min
+    .col.col-sm-1.text-center
+      strong Max
+  - estimation.estimation_tasks.order(:id).each do |et|
+    = render 'estimations/estimation_task_form', estimation_task: et, url: update_task_estimation_path(estimation)
 
-    = render 'estimations/estimation_task_form', estimation_task: estimation.estimation_tasks.new,
-                                                 css_class: 'create_form',
-                                                 url: create_task_estimation_path(estimation)
+  = render 'estimations/estimation_task_form', estimation_task: estimation.estimation_tasks.new,
+          css_class: 'create_form',
+          url: create_task_estimation_path(estimation)

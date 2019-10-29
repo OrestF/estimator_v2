@@ -13,8 +13,8 @@ class EstimationsController < ResourcesController
   def create_task
     respond_to do |format|
       if (res = EstimationTasks::Operations::Create.call(record_params: estimation_task_params)).success?
-        format.json { render_response(res.data[:record], message: 'success') }
-        format.js   { render_response(res.data[:record], message: 'success') }
+        format.json { render_response(res.data[:record], message: MessageHelper.created('Task')) }
+        format.js   { render_response(res.data[:record], message: MessageHelper.created('Task')) }
       else
         format.json { error_nf(html_humanize_errors(res.errors)) }
         format.js   { error_nf(html_humanize_errors(res.errors)) }

@@ -5,9 +5,9 @@ resetForm()
 appendEstimationTask()
 
 function resetForm() {
-  $("table.estimation_tasks .create_form")[0].reset()
+  $(".estimation-tasks-pseudo-table .create_form")[0].reset()
 }
 
 function appendEstimationTask() {
-  $( "<%=j render(partial: 'estimations/estimation_task_form', locals: { estimation_task: estimation_task, url: update_task_estimation_path(estimation) })  %>" ).insertBefore( "table.estimation_tasks tbody tr:last-of-type" );
+  $( "<%=j render(partial: 'estimations/estimation_task_form', locals: { estimation_task: estimation_task, url: update_task_estimation_path(estimation) })  %>" ).insertBefore( ".estimation-tasks-pseudo-table form:last-of-type" );
 }
