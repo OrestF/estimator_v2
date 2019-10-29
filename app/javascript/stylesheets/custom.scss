@@ -89,3 +89,33 @@ label.form-control {
     }
   }
 }
+
+.estimation_task_form.create_form {
+  input[type='submit'] {
+    position: absolute;
+    left: 101%;
+    bottom: 0;
+  }
+}
+
+.estimation_task_form {
+  .form-control {
+    border-width: 1px;
+    padding: 0.1rem 0.5rem;
+
+    &:hover {
+      box-shadow: none;
+      border-color: inherit;
+    }
+  }
+
+  .optimistic-col, .pessimistic-col {
+    input {
+      text-align: center;
+    }
+  }
+
+  .col {
+    padding: 0;
+  }
+}

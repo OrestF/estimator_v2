@@ -1,0 +1,15 @@
+- edit_form = estimation_task.id.present?
+= form_with(model: estimation_task, url: url, remote: true, method: edit_form ? :put : :post, html: { class: estimation_task_form_class(estimation_task, local_assigns[:css_class]) }) do |f|
+  .row
+    = f.hidden_field :id
+    = f.hidden_field :estimation_id
+    .col-sm-3.col.title-col
+      = f.text_field :title, class: 'form-control'
+    .col.description-col
+      = f.text_field :description, class: 'form-control'
+    .col-sm-1.col.optimistic-col
+      = f.number_field :optimistic, class: 'form-control'
+    .col-sm-1.col.pessimistic-col
+      = f.number_field :pessimistic, class: 'form-control'
+    - unless edit_form
+      = f.submit 'Add', class: 'btn btn-success'
