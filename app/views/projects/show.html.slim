@@ -13,4 +13,5 @@ h1 = @record.title
       = render 'estimations/datatable', datatable_source: estimations_path(by_project: @record.id, format: :json)
 
   .col-sm-3
-    = render 'projects/estimators_form', project: @record
+    h3 Initiate new estimation
+    = render 'estimation_reports/form', estimation_report: @new_estimation_report

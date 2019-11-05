@@ -3,7 +3,8 @@ class Organization < ApplicationRecord
 
   has_many :users
   has_many :projects
-  has_many :estimations, through: :users
+  has_many :estimation_reports, through: :users
+  has_many :estimations, through: :estimation_reports
 
   validates :name, presence: true, uniqueness: true
 end
