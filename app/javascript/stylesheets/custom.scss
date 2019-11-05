@@ -98,6 +98,17 @@ label.form-control {
   }
 }
 
+#total_optimistic, #total_pessimistic {
+  border-width: 1px;
+  padding: 0.1rem 0.5rem;
+  font-weight: bold;
+
+  &:hover {
+    box-shadow: none;
+    border-color: inherit;
+  }
+}
+
 .estimation_task_form {
   .form-control {
     border-width: 1px;

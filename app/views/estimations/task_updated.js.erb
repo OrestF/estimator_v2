@@ -1,0 +1,9 @@
+alertify.set('notifier','position', 'top-right');
+alertify.notify("success", 'success', 5);
+
+setTotals()
+
+function setTotals() {
+    $('#total_optimistic').html('<%= totals[:optimistic] %>')
+    $('#total_pessimistic').html('<%= totals[:pessimistic] %>')
+}

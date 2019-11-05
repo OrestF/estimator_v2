@@ -1,6 +1,6 @@
 $( document ).on('turbolinks:load ready', function() {
     $(document).on('change', ".estimation_task_form:not(.create_form) input[name^=\'estimation_task\']", function () {
-        submitRemoteForm($(this).parents('form'))
+        submitRemoteForm($(this).parents('form').first())
     })
 });
 

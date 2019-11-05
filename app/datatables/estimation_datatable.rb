@@ -2,9 +2,9 @@ class EstimationDatatable < ApplicationDatatable
   def view_columns
     @view_columns ||= {
       id: { source: 'Estimation.id' },
-      title: { source: 'Estimation.title', cond: :like },
+      title: { source: 'Estimation.title' },
       state: { source: 'Estimation.state' },
-      project: { source: 'Project.title', cond: :like }
+      project: { source: 'Project.title' }
     }
   end
 
@@ -22,7 +22,7 @@ class EstimationDatatable < ApplicationDatatable
 
   def get_raw_records
     policy_scope(
-      Estimation.all.filter_collection(params.permit(:by_project))
+      Estimation.all.joins(:project).filter_collection(params.permit(:by_project))
     )
   end
 

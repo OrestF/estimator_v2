@@ -14,3 +14,10 @@
   = render 'estimations/estimation_task_form', estimation_task: estimation.estimation_tasks.new,
           css_class: 'create_form',
           url: create_task_estimation_path(estimation)
+  .row
+    .col.col-sm-3
+    .col
+    .col.col-sm-1.text-center#total_optimistic
+      = estimation.total_optimistic
+    .col.col-sm-1.text-center#total_pessimistic
+      = estimation.total_pessimistic

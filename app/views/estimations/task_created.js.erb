@@ -3,6 +3,7 @@ alertify.notify("success", 'success', 5);
 
 resetForm()
 appendEstimationTask()
+setTotals()
 
 function resetForm() {
   $(".estimation-tasks-pseudo-table .create_form")[0].reset()
@@ -10,4 +11,9 @@ function resetForm() {
 
 function appendEstimationTask() {
   $( "<%=j render(partial: 'estimations/estimation_task_form', locals: { estimation_task: estimation_task, url: update_task_estimation_path(estimation) })  %>" ).insertBefore( ".estimation-tasks-pseudo-table form:last-of-type" );
+}
+
+function setTotals() {
+  $('#total_optimistic').html('<%= totals[:optimistic] %>')
+  $('#total_pessimistic').html('<%= totals[:pessimistic] %>')
 }
