@@ -6,6 +6,8 @@ class EstimationTasks::Operations::Create < BaseOperation
 
     return validation_fail unless save_record
 
+    mark_as_in_progress
+
     success(args.merge!(record: record))
   end
 
@@ -13,6 +15,10 @@ class EstimationTasks::Operations::Create < BaseOperation
 
   def build_record
     @record = EstimationTask.new(record_params)
+  end
+
+  def mark_as_in_progress
+    record.estimation.in_progress! unless record.estimation.in_progress?
   end
 
   def form_class

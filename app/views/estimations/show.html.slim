@@ -2,4 +2,9 @@
         icon_link(estimation_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 
 h1 = @record.title
+= link_to('Estimation report', estimation_report_path(@record.estimation_report), class: 'btn btn-primary')
+br
+br
 .row
+  .col-sm-12
+    = render 'estimations/show_card', estimation: @record

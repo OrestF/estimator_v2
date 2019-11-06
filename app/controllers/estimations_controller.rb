@@ -34,6 +34,14 @@ class EstimationsController < ResourcesController
     end
   end
 
+  def done
+    if (res = Estimations::Operations::Done.call(record: record)).success?
+      success_nf(MessageHelper.action('Estimation', 'marked as done'), url: estimation_path(res.data[:record]))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_class
@@ -48,13 +56,13 @@ class EstimationsController < ResourcesController
     EstimationTask.find(estimation_task_params[:id])
   end
 
-  def render_created(e_task, message: nil)
+  def render_created(e_task, _message: nil)
     render 'estimations/task_created', format: :js, status: :ok, locals: { estimation_task: e_task,
                                                                            estimation: record,
                                                                            totals: e_task.estimation.totals }
   end
 
-  def render_updated(e_task, message: nil)
+  def render_updated(e_task, _message: nil)
     render 'estimations/task_updated', format: :js, status: :ok, locals: { estimation_task: e_task,
                                                                            estimation: record,
                                                                            totals: e_task.estimation.totals }

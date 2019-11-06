@@ -8,6 +8,7 @@
       strong Min
     .col.col-sm-1.text-center
       strong Max
+    .col.col-sm-2
   - estimation.estimation_tasks.order(:id).each do |et|
     = render 'estimations/estimation_task_form', estimation_task: et, url: update_task_estimation_path(estimation)
 
@@ -21,3 +22,4 @@
       = estimation.total_optimistic
     .col.col-sm-1.text-center#total_pessimistic
       = estimation.total_pessimistic
+    .col.col-sm-2

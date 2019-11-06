@@ -20,8 +20,11 @@ Rails.application.routes.draw do
     member do
       put 'update_task'
       post 'create_task'
+      patch 'done'
     end
   end
+
+  resources :estimation_reports
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

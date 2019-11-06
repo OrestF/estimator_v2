@@ -15,7 +15,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           = link_to(estimations_path, class: 'nav-link') do
             spa.mr-1 Estimations
             span.badge.badge-danger = due_estimations_count
-
+        li.nav-item
+          = link_to(estimation_reports_path, class: 'nav-link') do
+            spa.mr-1 Estimation reports
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             | More

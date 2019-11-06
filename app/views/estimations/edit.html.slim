@@ -1,4 +1,20 @@
 h1 = @record.title
+- unless @record.done?
+  = link_to('Mark as done', done_estimation_path(@record), method: :patch, data: { confirm: 'Are your sure?' }, class: 'btn btn-warning' )
+  br
+  br
 .row
-  .col-sm-8.offset-sm-2
-    = render 'estimations/main_form', estimation: @record
+  - if @record.done?
+    .col-sm-12
+      = render 'estimations/show_card', estimation: @record
+  - else
+    .col-sm-4
+      br
+      .card
+        .card-body
+          h5.card-title = @record.project.title
+          p.card-text == @record.project.description
+
+    .col-sm-8
+      = render 'estimations/main_form', estimation: @record
+
