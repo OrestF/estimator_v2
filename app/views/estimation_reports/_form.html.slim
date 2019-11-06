@@ -10,4 +10,4 @@
     = form.label :estimator_ids, 'Estimators', class: 'form-control'
     = form.collection_select :estimator_ids, estimation_report.project.organization.users, :id, :email, {selected: estimation_report.estimator_ids}, multiple: true, class: 'select2-js'
 
-    = form.submit 'Request estimation', class: 'btn btn-success m-t-5'
+    = form.submit local_assigns[:submit_text] || 'Request estimation', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }

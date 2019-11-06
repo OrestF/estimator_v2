@@ -8,7 +8,11 @@ class Estimation < ApplicationRecord
   has_many :estimation_tasks
   has_one :project, through: :estimation_report
 
-  enum state: %i[pending in_progress done]
+  enum state: {
+    pending: 0,
+    in_progress: 1,
+    done: 100
+  }
 
   scope :by_project, ->(project) { all.merge(EstimationReport.by_project(project)) }
 

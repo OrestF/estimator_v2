@@ -1,0 +1,12 @@
+- source = local_assigns[:datatable_source] || estimation_reports_path(format: :json)
+.table-responsive
+  table#estimations-reports-datatable.table.table-striped data-source=source
+    thead
+      tr
+        th ID
+        th Title
+        th Project
+        th User
+        th Deadline
+        th Actions
+    tbody

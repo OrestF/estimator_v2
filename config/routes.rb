@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     member do
       put 'update_task'
       post 'create_task'
+      patch 'done'
     end
   end
 

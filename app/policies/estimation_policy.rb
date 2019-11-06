@@ -43,4 +43,8 @@ class EstimationPolicy < ApplicationPolicy
   def destroy?
     user.can?(:estimations, :delete) { own_org? }
   end
+
+  def done?
+    update?
+  end
 end

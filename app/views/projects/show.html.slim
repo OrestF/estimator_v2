@@ -9,9 +9,9 @@ h1 = @record.title
       == @record.description
     hr
     div
-      h3 Estimations
-      = render 'estimations/datatable', datatable_source: estimations_path(by_project: @record.id, format: :json)
+      h3 Estimation reports
+      = render 'estimation_reports/datatable', datatable_source: estimation_reports_path(by_project: @record.id, format: :json)
 
   .col-sm-3
-    h3 Initiate new estimation
+    h3 Init estimation report
     = render 'estimation_reports/form', estimation_report: @new_estimation_report

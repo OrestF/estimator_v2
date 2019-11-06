@@ -62,8 +62,7 @@ Lint/AmbiguousBlockAssociation:
     - "spec/**/*"
 
 Naming/UncommunicativeMethodParamName:
-  Exclude:
-    - 'lib/**/*'
+  Enabled: false
 
 Lint/AmbiguousOperator:
   Enabled: false

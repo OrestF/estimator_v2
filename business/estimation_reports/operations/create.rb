@@ -18,8 +18,8 @@ class EstimationReports::Operations::Create < BaseOperation
   def create_estimations
     record.organization.users.where(id: estimator_ids).each do |estimator|
       Estimations::Operations::Create.call(record_params: { title: "#{record.title} - #{estimator.email}",
-                                                                        user_id: estimator.id,
-                                                                        estimation_report: record  })
+                                                            user_id: estimator.id,
+                                                            estimation_report: record })
     end
   end
 

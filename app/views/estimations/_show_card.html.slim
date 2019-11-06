@@ -1,0 +1,28 @@
+.card
+  .card-body
+    .card-title
+      span = estimation.user.email
+      .float-right = estimation.state
+    .table-responsive
+      table.table.table-condensed.estimation-table
+        thead
+          tr
+            th width="25%" Title
+            th width="65%" Description
+            th width="5%" Min
+            th width="5%" Max
+        tbody
+          - estimation.estimation_tasks.each do |e_task|
+            tr
+              td = e_task.title
+              td = e_task.description
+              td = e_task.optimistic
+              td = e_task.pessimistic
+          tr
+            td
+              strong Total
+            td
+            td
+              strong = estimation.total_optimistic
+            td
+              strong = estimation.total_pessimistic

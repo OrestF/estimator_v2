@@ -2,7 +2,7 @@ class EstimationReportsController < ResourcesController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: EstimationReportsDatatable.new(params, **dt_params) }
+      format.json { render json: EstimationReportDatatable.new(params, **dt_params) }
     end
   end
 
@@ -22,21 +22,21 @@ class EstimationReportsController < ResourcesController
 
   def edit; end
 
-  # def update
-  #   if (res = EstimationReports::Operations::Update.call(record: record, record_params: record_params)).success?
-  #     success_nf(MessageHelper.updated(record_class.name), url: project_path(record))
-  #   else
-  #     error_nf(html_humanize_errors(res.errors))
-  #   end
-  # end
-  #
-  # def destroy
-  #   if (res = EstimationReports::Operations::Delete.call(record: record)).success?
-  #     success_nf(MessageHelper.deleted(record_class.name), url: projects_path)
-  #   else
-  #     error_nf(html_humanize_errors(res.errors))
-  #   end
-  # end
+  def update
+    if (res = EstimationReports::Operations::Update.call(record: record, record_params: record_params)).success?
+      success_nf(MessageHelper.updated(record_class.name), url: estimation_report_path(record))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
+  def destroy
+    if (res = EstimationReports::Operations::Delete.call(record: record)).success?
+      success_nf(MessageHelper.deleted(record_class.name), url: estimation_report_path)
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
 
   private
 

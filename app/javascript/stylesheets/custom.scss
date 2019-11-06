@@ -19,6 +19,7 @@ body {
 }
 
 .corner-dropdown {
+  z-index: 1000;
   position: fixed;
   bottom: 5%;
   right: 5%;
@@ -92,9 +93,9 @@ label.form-control {
 
 .estimation_task_form.create_form {
   input[type='submit'] {
-    position: absolute;
-    left: 101%;
-    bottom: 0;
+    //position: absolute;
+    //left: 101%;
+    //bottom: 1.5rem;
   }
 }
 
@@ -128,5 +129,19 @@ label.form-control {
 
   .col {
     padding: 0;
+  }
+}
+
+.estimation-report-tables {
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+.task-row {
+  height: 2rem;
+
+  .col {
+    display: inline-flex;
   }
 }
