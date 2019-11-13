@@ -21,7 +21,7 @@ import 'select2'
 import './initializers';
 import '../controllers/estimations';
 import '../datatables/estimations';
-import '../datatables/estimation_reports';
+import '../datatables/specifications';
 
 require('datatables.net-bs')(window, $);
 require('datatables.net-buttons-bs')(window, $);

@@ -2,7 +2,7 @@
         icon_link(estimation_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 
 h1 = @record.title
-= link_to('Estimation report', estimation_report_path(@record.estimation_report), class: 'btn btn-primary')
+= link_to('Specification', specification_path(@record.specification), class: 'btn btn-primary')
 br
 br
 .row

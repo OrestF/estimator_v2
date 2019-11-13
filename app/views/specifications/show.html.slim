@@ -1,0 +1,9 @@
+= corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_specification_path(@record), icon: 'edit'),
+        icon_link(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
+
+h1 = @record.title
+.row
+  .col-sm-12
+    .estimation-report-tables
+      - @record.estimations.each do |estimation|
+        = render 'estimations/show_card', estimation: estimation

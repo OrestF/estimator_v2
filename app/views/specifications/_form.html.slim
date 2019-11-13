@@ -1,0 +1,13 @@
+= form_with(model: specification, local: false) do  |form|
+  = form.hidden_field :project_id
+  .form-group
+    = form.label :title, class: 'form-control'
+    = form.text_field :title, class: 'form-control'
+  .form-group
+    = form.label :deadline, class: 'form-control'
+    = form.datetime_field :deadline, class: 'form-control'
+  .form-group
+    = form.label :estimator_ids, 'Estimators', class: 'form-control'
+    = form.collection_select :estimator_ids, specification.project.organization.users, :id, :email, {selected: specification.estimator_ids}, multiple: true, class: 'select2-js'
+
+    = form.submit local_assigns[:submit_text] || 'Request', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }

@@ -5,7 +5,7 @@ admin: &admin
     crud: true
   estimations:
     crud: true
-  estimation_reports:
+  specifications:
     crud: true
 
 manager: &manager
@@ -16,7 +16,7 @@ manager: &manager
     crud: true
   estimations:
     crud: true
-  estimation_reports:
+  specifications:
     crud: true
 
 worker: &worker
@@ -27,5 +27,5 @@ worker: &worker
   estimations:
     read: true
     update: true
-  estimation_reports:
+  specifications:
     crud: false

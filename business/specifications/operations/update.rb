@@ -1,4 +1,4 @@
-class EstimationReports::Operations::Update < BaseOperation
+class Specifications::Operations::Update < BaseOperation
   def call
     build_form
     return validation_fail unless form_valid?
@@ -12,6 +12,6 @@ class EstimationReports::Operations::Update < BaseOperation
   private
 
   def form_class
-    EstimationReports::Forms::Base
+    Specifications::Forms::Base
   end
 end

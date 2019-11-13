@@ -22,7 +22,7 @@ class EstimationDatatable < ApplicationDatatable
 
   def get_raw_records
     policy_scope(
-      Estimation.all.joins(estimation_report: :project).filter_collection(params.permit(:by_project))
+      Estimation.all.joins(specification: :project).filter_collection(params.permit(:by_project))
     )
   end
 

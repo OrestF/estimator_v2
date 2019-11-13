@@ -2,11 +2,11 @@ class Estimation < ApplicationRecord
   include Filterable
 
   belongs_to :user
-  belongs_to :estimation_report
+  belongs_to :specification
   alias estimator user
 
   has_many :estimation_tasks
-  has_one :project, through: :estimation_report
+  has_one :project, through: :specification
 
   enum state: {
     pending: 0,
@@ -14,7 +14,7 @@ class Estimation < ApplicationRecord
     done: 100
   }
 
-  scope :by_project, ->(project) { all.merge(EstimationReport.by_project(project)) }
+  scope :by_project, ->(project) { all.merge(Specification.by_project(project)) }
 
   def total_optimistic
     estimation_tasks.sum(:optimistic).round(2)

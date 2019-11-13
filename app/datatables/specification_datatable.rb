@@ -1,9 +1,9 @@
-class EstimationReportDatatable < ApplicationDatatable
+class SpecificationDatatable < ApplicationDatatable
   def view_columns
     @view_columns ||= {
-      id: { source: 'EstimationReport.id' },
-      title: { source: 'EstimationReport.title' },
-      deadline: { source: 'EstimationReport.deadline' },
+      id: { source: 'Specification.id' },
+      title: { source: 'Specification.title' },
+      deadline: { source: 'Specification.deadline' },
       user: { source: 'User.email' },
       project: { source: 'Project.title' }
     }
@@ -24,12 +24,12 @@ class EstimationReportDatatable < ApplicationDatatable
 
   def get_raw_records
     policy_scope(
-      EstimationReport.all.joins(:user, :project).filter_collection(params.permit(:by_project))
+      Specification.all.joins(:user, :project).filter_collection(params.permit(:by_project))
     )
   end
 
   def actions(record)
-    actions = safe_join([view_link(record, :estimation_report_path), edit_link(record, :edit_estimation_report_path)])
+    actions = safe_join([view_link(record, :specification_path), edit_link(record, :edit_specification_path)])
 
     actions.presence || 'Not allowed'
   end

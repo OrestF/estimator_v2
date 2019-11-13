@@ -13,8 +13,8 @@ class EstimationsController < ResourcesController
   def create_task
     respond_to do |format|
       if (res = EstimationTasks::Operations::Create.call(record_params: estimation_task_params)).success?
-        format.json { render_created(res.data[:record], message: MessageHelper.created('Task')) }
-        format.js   { render_created(res.data[:record], message: MessageHelper.created('Task')) }
+        format.json { render_created(res.data[:record]) }
+        format.js   { render_created(res.data[:record]) }
       else
         format.json { error_nf(html_humanize_errors(res.errors)) }
         format.js   { error_nf(html_humanize_errors(res.errors)) }
@@ -25,8 +25,8 @@ class EstimationsController < ResourcesController
   def update_task
     respond_to do |format|
       if (res = EstimationTasks::Operations::Update.call(record: estimation_task, record_params: estimation_task_params)).success?
-        format.json { render_updated(res.data[:record], message: MessageHelper.created('Task')) }
-        format.js   { render_updated(res.data[:record], message: MessageHelper.created('Task')) }
+        format.json { render_updated(res.data[:record]) }
+        format.js   { render_updated(res.data[:record]) }
       else
         format.json { error_nf(html_humanize_errors(res.errors)) }
         format.js   { error_nf(html_humanize_errors(res.errors)) }
