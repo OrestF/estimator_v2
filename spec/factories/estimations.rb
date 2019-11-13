@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :estimation do
     title { Faker::Book.title }
     user { nil }
-    estimation_report { nil }
+    specification { nil }
   end
 end

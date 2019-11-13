@@ -1,4 +1,4 @@
-class EstimationReports::Operations::Create < BaseOperation
+class Specifications::Operations::Create < BaseOperation
   def call
     estimator_ids
 
@@ -19,12 +19,12 @@ class EstimationReports::Operations::Create < BaseOperation
     record.organization.users.where(id: estimator_ids).each do |estimator|
       Estimations::Operations::Create.call(record_params: { title: "#{record.title} - #{estimator.email}",
                                                             user_id: estimator.id,
-                                                            estimation_report: record })
+                                                            specification: record })
     end
   end
 
   def build_record
-    @record = EstimationReport.new(record_params.except(:estimator_ids))
+    @record = Specification.new(record_params.except(:estimator_ids))
   end
 
   def estimator_ids
@@ -32,6 +32,6 @@ class EstimationReports::Operations::Create < BaseOperation
   end
 
   def form_class
-    EstimationReports::Forms::Base
+    Specifications::Forms::Base
   end
 end

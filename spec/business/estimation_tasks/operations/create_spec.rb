@@ -5,8 +5,8 @@ require 'rails_helper'
 describe EstimationTasks::Operations::Create do
   let!(:user) { create(:user, role: 'manager') }
   let!(:project) { create(:project, user: user, organization: user.organization) }
-  let!(:estimation_report) { create(:estimation_report, user: user, project: project) }
-  let!(:estimation) { create(:estimation, user: user, project: project, estimation_report: estimation_report) }
+  let!(:specification) { create(:specification, user: user, project: project) }
+  let!(:estimation) { create(:estimation, user: user, project: project, specification: specification) }
 
   subject { described_class.call(record_params: record_params) }
 

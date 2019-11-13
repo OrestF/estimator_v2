@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   belongs_to :organization
   belongs_to :user
 
-  has_many :estimation_reports
+  has_many :specifications
 
   # has_many :project_users
   # has_many :estimators, through: :project_users, source: :user

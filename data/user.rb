@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   belongs_to :organization
   has_many :projects
-  has_many :estimation_reports
+  has_many :specifications
   has_many :estimations
 
   enum role: %i[worker manager admin]

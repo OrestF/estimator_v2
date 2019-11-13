@@ -16,7 +16,7 @@ class ProjectsController < ResourcesController
   end
 
   def show
-    @new_estimation_report = record.estimation_reports.new
+    @new_specification = record.specifications.new
   end
 
   def edit; end

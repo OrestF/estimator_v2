@@ -1,4 +1,4 @@
-class EstimationReport < ApplicationRecord
+class Specification < ApplicationRecord
   include Filterable
 
   belongs_to :user
