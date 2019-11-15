@@ -8,7 +8,7 @@ admin: &admin
   specifications:
     crud: true
 
-manager: &manager
+organization_manager: &organization_manager
   organizations:
     read: true
     update: true
@@ -18,6 +18,19 @@ manager: &manager
     crud: true
   specifications:
     crud: true
+
+sales_manager: &sales_manager
+  <<: *organization_manager
+
+solution_architect: &solution_architect
+  <<: *organization_manager
+
+business_analyst: &business_analyst
+  <<: *organization_manager
+
+client: &client
+  specifications:
+    read: true
 
 worker: &worker
   organizations:

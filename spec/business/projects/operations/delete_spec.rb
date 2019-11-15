@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe Projects::Operations::Delete do
-  let!(:user) { create(:user, role: 'manager') }
+  let!(:user) { create(:user, role: 'organization_manager') }
   let!(:project) { create(:project, user: user, organization: user.organization) }
 
   subject { described_class.call(record: project) }

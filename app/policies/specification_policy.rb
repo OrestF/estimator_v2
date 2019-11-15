@@ -3,7 +3,7 @@ class SpecificationPolicy < ApplicationPolicy
     def resolve
       if user.worker?
         scope.where(id: user.specifications)
-      elsif user.manager?
+      elsif user.organization_manager?
         scope.where(id: user.organization.specifications)
       else
         super

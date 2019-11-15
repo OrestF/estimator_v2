@@ -13,7 +13,7 @@ admin.save
 
 
 coax = Organization.find_or_create_by(name: 'coax')
-user = User.find_or_initialize_by(email: 'orest.f@coaxsoft.com', role: 'manager')
+user = User.find_or_initialize_by(email: 'orest.f@coaxsoft.com', role: 'organization_manager')
 user.organization = coax
 user.password = 'password'
 user.save
