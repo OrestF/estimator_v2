@@ -1,11 +1,18 @@
 = corner_button(new_project_path, icon: 'add')
 
 h1 Projects
-.card-columns
-  - @records.each do |project|
-    .card
-      .card-body
-        h5.card-title = project.title
-        p.card-text = project.description.to_plain_text.truncate(50)
-        = link_to('Open', project_path(project), class: 'card-link')
-        = link_to('Edit', edit_project_path(project), class: 'card-link')
+.row
+  - @records.group_by(&:state).each do |state, projects|
+    .col
+      span.h3.mr-2   #{state.humanize}
+      span.badge class="badge-#{state_label(state)}" #{projects.count}
+      br
+      br
+      .card-columns
+        - projects.each do |project|
+          .card class="border-#{state_label(project.state)}"
+            .card-body
+              h5.card-title = project.title
+              p.card-text = project.description.to_plain_text.truncate(50)
+              = link_to('Open', project_path(project), class: 'card-link')
+              = link_to('Edit', edit_project_path(project), class: 'card-link')

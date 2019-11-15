@@ -10,5 +10,13 @@ class User < ApplicationRecord
   has_many :specifications
   has_many :estimations
 
-  enum role: %i[worker manager admin]
+  enum role: {
+    worker: 0,
+    sales_manager: 1,
+    client: 2,
+    solution_architect: 3,
+    business_analyst: 4,
+    organization_manager: 5,
+    admin: 1024
+  }
 end

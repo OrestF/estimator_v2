@@ -22,4 +22,8 @@ module ApplicationHelper
   def corner_dropdown(**args)
     ApplicationController.new.render_to_string(partial: 'ui/corner_dropdown', assigns: args)
   end
+
+  def state_label(state)
+    { 'in_progress' => 'light', 'won' => 'success', 'failed' => 'danger' }[state]
+  end
 end

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe Projects::Operations::Update do
-  let!(:user) { create(:user, role: 'manager') }
+  let!(:user) { create(:user, role: 'organization_manager') }
   let!(:project) { create(:project, user: user, organization: user.organization) }
 
   subject { described_class.call(record_params: record_params, record: project) }
@@ -41,7 +41,7 @@ describe Projects::Operations::Update do
     end
 
     context 'with another user' do
-      let!(:user2) { create(:user, role: 'manager') }
+      let!(:user2) { create(:user, role: 'organization_manager') }
 
       let(:record_params) do
         {

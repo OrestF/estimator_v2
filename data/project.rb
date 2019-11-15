@@ -13,4 +13,10 @@ class Project < ApplicationRecord
 
   validates :organization, :user, :title, :description, presence: true
   validates :title, uniqueness: { scope: :organization_id, case_sensitive: false }
+
+  enum state: {
+    in_progress: 0,
+    won: 1,
+    failed: 2
+  }
 end

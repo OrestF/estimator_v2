@@ -1,6 +1,6 @@
 - source = local_assigns[:datatable_source] || specifications_path(format: :json)
 .table-responsive
-  table#estimations-reports-datatable.table.table-striped data-source=source
+  table#specifications-datatable.table.table-striped data-source=source
     thead
       tr
         th ID
@@ -8,5 +8,6 @@
         th Project
         th User
         th Deadline
+        th State
         th Actions
     tbody

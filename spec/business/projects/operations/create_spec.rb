@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe Projects::Operations::Create do
-  let!(:user) { create(:user, role: 'manager') }
+  let!(:user) { create(:user, role: 'organization_manager') }
   subject { described_class.call(record_params: record_params) }
 
   describe '.call' do
