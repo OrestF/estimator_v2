@@ -5,6 +5,7 @@ class SpecificationDatatable < ApplicationDatatable
       title: { source: 'Specification.title' },
       deadline: { source: 'Specification.deadline' },
       user: { source: 'User.email' },
+      state: { source: 'Specification.state' },
       project: { source: 'Project.title' }
     }
   end
@@ -16,6 +17,7 @@ class SpecificationDatatable < ApplicationDatatable
         title: record.title,
         deadline: record.deadline,
         user: record.user.email,
+        state: record.state,
         project: record.project.title,
         actions: actions(record)
       }
