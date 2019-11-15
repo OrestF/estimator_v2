@@ -7,4 +7,9 @@
     = form.label :description, class: 'form-control'
     = form.rich_text_area :description, class: 'form-control'
 
+  - if project.persisted?
+    .form-group
+      = form.label :state, 'State', class: 'form-control'
+      = form.select :state, project.class.states.keys, { }, { class: 'form-control' }
+
     = form.submit class: 'btn btn-success m-t-5'
