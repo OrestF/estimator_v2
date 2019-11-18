@@ -10,9 +10,9 @@
       strong Max
     .col.col-sm-2
   - estimation.estimation_tasks.order(:id).each do |et|
-    = render 'estimations/estimation_task_form', estimation_task: et, url: update_task_estimation_path(estimation)
+    = render 'estimations/estimation_tasks/item_form', estimation_task: et, url: update_task_estimation_path(estimation)
 
-  = render 'estimations/estimation_task_form', estimation_task: estimation.estimation_tasks.new,
+  = render 'estimations/estimation_tasks/item_form', estimation_task: estimation.estimation_tasks.new,
           css_class: 'create_form',
           url: create_task_estimation_path(estimation)
   .row

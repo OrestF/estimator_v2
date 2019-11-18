@@ -8,8 +8,8 @@
       strong Acceptance criteria
     .col-sm-1
   - specification.features.order(:id).each do |feature|
-    = render 'features/item_form', feature: feature, url: update_feature_specification_path(specification)
+    = render 'specifications/features/item_form', feature: feature, url: update_feature_specification_path(specification)
 
-  = render 'features/item_form', feature: specification.features.new,
+  = render 'specifications/features/item_form', feature: specification.features.new,
           css_class: 'create_form',
           url: create_feature_specification_path(specification)
