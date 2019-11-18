@@ -43,4 +43,12 @@ class SpecificationPolicy < ApplicationPolicy
   def destroy?
     user.can?(:specifications, :delete) { own_org? }
   end
+
+  def create_feature?
+    user.can?(:features, :create) { own_org? }
+  end
+
+  def update_feature?
+    user.can?(:features, :update) { own_org? }
+  end
 end

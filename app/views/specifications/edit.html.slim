@@ -1,4 +1,10 @@
-h1 = @record.title
 .row
   .col-sm-8.offset-sm-2
+    h1 = @record.title
     = render 'specifications/form', specification: @record, submit_text: 'Save'
+    hr
+.row
+  .col-sm-8.offset-sm-2
+    h2 Features
+    .col-sm-12
+      = render 'specifications/features/main_form', specification: @record

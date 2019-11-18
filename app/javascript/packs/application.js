@@ -20,6 +20,7 @@ import 'daemonite-material/js/material';
 import 'select2'
 import './initializers';
 import '../controllers/estimations';
+import '../controllers/specifications';
 import '../datatables/estimations';
 import '../datatables/specifications';
 

@@ -1,4 +1,6 @@
 class SpecificationsController < ResourcesController
+  include Specifications::Features
+
   def index
     respond_to do |format|
       format.html
