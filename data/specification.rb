@@ -9,6 +9,8 @@ class Specification < ApplicationRecord
   has_many :estimations
   has_many :estimators, through: :estimations, source: :user
 
+  has_many :features
+
   scope :by_project, ->(project) { where(project: project) }
 
   validates :title, uniqueness: { scope: :project_id }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_130624) do
+ActiveRecord::Schema.define(version: 2019_11_18_091941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,9 @@ ActiveRecord::Schema.define(version: 2019_11_15_130624) do
     t.integer "pessimistic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "feature_id"
     t.index ["estimation_id"], name: "index_estimation_tasks_on_estimation_id"
+    t.index ["feature_id"], name: "index_estimation_tasks_on_feature_id"
   end
 
   create_table "estimations", force: :cascade do |t|
@@ -66,6 +68,18 @@ ActiveRecord::Schema.define(version: 2019_11_15_130624) do
     t.bigint "specification_id"
     t.index ["specification_id"], name: "index_estimations_on_specification_id"
     t.index ["user_id"], name: "index_estimations_on_user_id"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "acceptance_criteria"
+    t.bigint "specification_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["specification_id"], name: "index_features_on_specification_id"
+    t.index ["user_id"], name: "index_features_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -131,6 +145,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_130624) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "estimation_tasks", "estimations"
   add_foreign_key "estimations", "users"
+  add_foreign_key "features", "specifications"
+  add_foreign_key "features", "users"
   add_foreign_key "projects", "organizations"
   add_foreign_key "projects", "users"
   add_foreign_key "specifications", "projects"
