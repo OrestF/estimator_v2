@@ -8,7 +8,9 @@
     .col.description-col
       = f.text_field :description, class: 'form-control'
     .col.description-col
-      = f.text_field :acceptance_criteria, class: 'form-control'
+      = f.text_area :acceptance_criteria, class: 'form-control'
     .col.col-sm-1
-      - unless edit_form
+      - if edit_form
+        = link_to('Delete', destroy_feature_specification_path(feature.specification, feature: { id: feature.id }), class: 'btn btn-danger', remote: true, method: :delete, data: {confirm: 'Are you sure?'})
+      - else
         = f.submit 'Add', class: 'btn btn-success'

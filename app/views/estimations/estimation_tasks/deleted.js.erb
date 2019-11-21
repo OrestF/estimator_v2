@@ -1,0 +1,9 @@
+function setTotals() {
+    $('#total_optimistic').html('<%= totals[:optimistic] %>')
+    $('#total_pessimistic').html('<%= totals[:pessimistic] %>')
+}
+
+$(".estimation_task_<%= estimation_task.id%>").slideUp(300, function() { $(this).remove(); })
+
+setTotals()
+
