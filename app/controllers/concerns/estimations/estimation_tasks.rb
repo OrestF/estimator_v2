@@ -25,6 +25,18 @@ module Estimations::EstimationTasks
     end
   end
 
+  def destroy_task
+    respond_to do |format|
+      if (res = EstimationTasks::Operations::Delete.call(record: estimation_task)).success?
+        format.json { render_task_deleted(res.data[:record]) }
+        format.js   { render_task_deleted(res.data[:record]) }
+      else
+        format.json { error_nf(html_humanize_errors(res.errors)) }
+        format.js   { error_nf(html_humanize_errors(res.errors)) }
+      end
+    end
+  end
+
   private
 
   def estimation_task_params
@@ -44,6 +56,11 @@ module Estimations::EstimationTasks
   def render_task_updated(e_task, _message: nil)
     render 'estimations/estimation_tasks/updated', format: :js, status: :ok, locals: { estimation_task: e_task,
                                                                                        estimation: record,
+                                                                                       totals: e_task.estimation.totals }
+  end
+
+  def render_task_deleted(e_task, _message: nil)
+    render 'estimations/estimation_tasks/deleted', format: :js, status: :ok, locals: { estimation_task: e_task,
                                                                                        totals: e_task.estimation.totals }
   end
 end

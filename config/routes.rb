@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     member do
       put 'update_task'
       post 'create_task'
+      delete 'destroy_task'
       patch 'done'
     end
   end
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     member do
       put 'update_feature'
       post 'create_feature'
+      delete 'destroy_feature'
     end
   end
 

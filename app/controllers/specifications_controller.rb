@@ -32,6 +32,7 @@ class SpecificationsController < ResourcesController
     end
   end
 
+  # TODO: create this operation
   def destroy
     if (res = Specifications::Operations::Delete.call(record: record)).success?
       success_nf(MessageHelper.deleted(record_class.name), url: specification_path)

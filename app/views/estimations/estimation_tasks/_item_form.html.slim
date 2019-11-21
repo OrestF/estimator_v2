@@ -12,5 +12,7 @@
     .col-sm-1.col.pessimistic-col
       = f.number_field :pessimistic, class: 'form-control'
     .col.col-sm-2
-      - unless edit_form
+      - if edit_form
+        = link_to('Delete', destroy_task_estimation_path(estimation_task.estimation, estimation_task: {id: estimation_task.id}), class: 'btn btn-danger', remote: true, method: :delete, data: {confirm: 'Are you sure?'})
+      - else
         = f.submit 'Add', class: 'btn btn-success'

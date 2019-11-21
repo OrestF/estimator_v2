@@ -25,6 +25,18 @@ module Specifications::Features
     end
   end
 
+  def destroy_feature
+    respond_to do |format|
+      if (res = Features::Operations::Delete.call(record: feature)).success?
+        format.json { render_feature_deleted(res.data[:record]) }
+        format.js   { render_feature_deleted(res.data[:record]) }
+      else
+        format.json { error_nf(html_humanize_errors(res.errors)) }
+        format.js   { error_nf(html_humanize_errors(res.errors)) }
+      end
+    end
+  end
+
   private
 
   def feature
@@ -42,6 +54,11 @@ module Specifications::Features
 
   def render_feature_updated(feature, _message: nil)
     render 'specifications/features/updated', format: :js, status: :ok, locals: { feature: feature,
+                                                                                  specification: record }
+  end
+
+  def render_feature_deleted(feature, _message: nil)
+    render 'specifications/features/deleted', format: :js, status: :ok, locals: { feature: feature,
                                                                                   specification: record }
   end
 end
