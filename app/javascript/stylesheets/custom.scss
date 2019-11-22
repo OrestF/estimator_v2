@@ -53,6 +53,11 @@ label.form-control {
   margin-top: 5px
 }
 
+table {
+  td {
+    white-space:pre
+  }
+}
 
 .dataTables_wrapper {
   display: block;
@@ -135,7 +140,8 @@ label.form-control {
   }
 }
 
-.estimation-report-tables {
+.specification-tables {
+
   .card {
     margin-bottom: 1rem;
   }

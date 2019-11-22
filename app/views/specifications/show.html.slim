@@ -4,6 +4,10 @@
 h1 = @record.title
 .row
   .col-sm-12
-    .estimation-report-tables
+    .specification-tables
+      = render 'specifications/features/table_card', features: @record.features
+.row
+  .col-sm-12
+    .specification-tables
       - @record.estimations.each do |estimation|
         = render 'estimations/show_card', estimation: estimation

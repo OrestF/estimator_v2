@@ -3,16 +3,17 @@
   .row.task-row
     = f.hidden_field :id
     = f.hidden_field :estimation_id
-    .col-sm-3.col.title-col
+    = f.hidden_field :feature_id, value: (f.object.feature_id || feature.id)
+    .col-sm-6.col.title-col
       = f.text_field :title, class: 'form-control'
-    .col.description-col
+    / .col.description-col
       = f.text_field :description, class: 'form-control'
-    .col-sm-1.col.optimistic-col
+    .col-sm-2.col.optimistic-col
       = f.number_field :optimistic, class: 'form-control'
-    .col-sm-1.col.pessimistic-col
+    .col-sm-2.col.pessimistic-col
       = f.number_field :pessimistic, class: 'form-control'
     .col.col-sm-2
       - if edit_form
-        = link_to('Delete', destroy_task_estimation_path(estimation_task.estimation, estimation_task: {id: estimation_task.id}), class: 'btn btn-danger', remote: true, method: :delete, data: {confirm: 'Are you sure?'})
+        = link_to('Delete', destroy_task_estimation_path(estimation_task.estimation, estimation_task: {id: estimation_task.id }), class: 'btn btn-danger', remote: true, method: :delete, data: {confirm: 'Are you sure?'})
       - else
         = f.submit 'Add', class: 'btn btn-success'

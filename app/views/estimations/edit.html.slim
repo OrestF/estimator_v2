@@ -8,13 +8,29 @@ h1 = @record.title
     .col-sm-12
       = render 'estimations/show_card', estimation: @record
   - else
-    .col-sm-4
-      br
-      .card
-        .card-body
-          h5.card-title = @record.project.title
-          p.card-text == @record.project.description
-
-    .col-sm-8
-      = render 'estimations/estimation_tasks/main_form', estimation: @record
-
+    .col-sm-12
+      .table-responsive
+        table.table.table-condensed
+          thead
+            tr
+              th width="15%" Title
+              th width="25%" Description
+              th width="30%" Acceptance criteria
+              th width="30%" Estimation tasks
+          tbody
+            - @record.specification.features.each do |feature|
+              tr class="feature_#{feature.id}"
+                td = feature.title
+                td = feature.description
+                td == feature.acceptance_criteria
+                td = render 'estimations/estimation_tasks/main_form', feature: feature, estimation: @record
+hr
+.float-left
+  h3
+    strong Total
+.float-right
+  .h3
+    .badge.h3.badge-success#total_optimistic
+      = @record.total_optimistic
+    .badge.badge-danger#total_pessimistic
+      = @record.total_pessimistic

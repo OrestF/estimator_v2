@@ -1,25 +1,17 @@
 .estimation-tasks-pseudo-table
   .row
-    .col.col-sm-3.text-center
+    .col.col-sm-6.text-center
       strong Title
-    .col.text-center
+    / .col.text-center
       strong Description
-    .col.col-sm-1.text-center
+    .col.col-sm-2.text-center
       strong Min
-    .col.col-sm-1.text-center
+    .col.col-sm-2.text-center
       strong Max
     .col.col-sm-2
-  - estimation.estimation_tasks.order(:id).each do |et|
-    = render 'estimations/estimation_tasks/item_form', estimation_task: et, url: update_task_estimation_path(estimation)
+  - feature.estimation_tasks.order(:id).each do |et|
+    = render 'estimations/estimation_tasks/item_form', estimation_task: et, feature: feature, url: update_task_estimation_path(estimation)
 
-  = render 'estimations/estimation_tasks/item_form', estimation_task: estimation.estimation_tasks.new,
+  = render 'estimations/estimation_tasks/item_form', estimation_task: estimation.estimation_tasks.new, feature: feature,
           css_class: 'create_form',
           url: create_task_estimation_path(estimation)
-  .row
-    .col.col-sm-3
-    .col
-    .col.col-sm-1.text-center#total_optimistic
-      = estimation.total_optimistic
-    .col.col-sm-1.text-center#total_pessimistic
-      = estimation.total_pessimistic
-    .col.col-sm-2
