@@ -12,6 +12,6 @@ class EstimationTasks::Operations::Update < BaseOperation
   private
 
   def form_class
-    EstimationTasks::Forms::Base
+    EstimationTasks::Forms::Update
   end
 end

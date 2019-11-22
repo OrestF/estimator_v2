@@ -3,11 +3,11 @@ appendEstimationTask()
 setTotals()
 
 function resetForm() {
-  $(".estimation-tasks-pseudo-table .create_form")[0].reset()
+  $(".feature_<%= estimation_task.feature_id %> .estimation-tasks-pseudo-table .create_form")[0].reset()
 }
 
 function appendEstimationTask() {
-  $( "<%=j render(partial: 'estimations/estimation_tasks/item_form', locals: { estimation_task: estimation_task, url: update_task_estimation_path(estimation) })  %>" ).insertBefore( ".estimation-tasks-pseudo-table form:last-of-type" );
+  $( "<%=j render(partial: 'estimations/estimation_tasks/item_form', locals: { estimation_task: estimation_task, url: update_task_estimation_path(estimation) })  %>" ).insertBefore( ".feature_<%= estimation_task.feature_id %> .estimation-tasks-pseudo-table form:last-of-type" );
 }
 
 function setTotals() {

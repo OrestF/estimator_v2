@@ -1,5 +1,5 @@
 $( document ).on('turbolinks:load ready', function() {
-    $(document).on('change', ".feature_form:not(.create_form) input[name^=\'feature\']", function () {
+    $(document).on('change', ".feature_form:not(.create_form) input[name^=\'feature\'], .feature_form:not(.create_form) textarea[name^=\'feature\']", function () {
         submitRemoteForm($(this).parents('form').first())
     })
 });

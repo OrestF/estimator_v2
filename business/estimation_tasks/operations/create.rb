@@ -22,6 +22,6 @@ class EstimationTasks::Operations::Create < BaseOperation
   end
 
   def form_class
-    EstimationTasks::Forms::Base
+    EstimationTasks::Forms::Create
   end
 end
