@@ -44,6 +44,15 @@ class SpecificationPolicy < ApplicationPolicy
     user.can?(:specifications, :delete) { own_org? }
   end
 
+  def send_for_sign_off?
+    user.can?(:specifications, :send_for_sign_off) { own_org? }
+  end
+
+  def sign_off?
+    user.can?(:specifications, :sign_off) { own_org? }
+  end
+  alias sign_off_request? sign_off?
+
   def create_feature?
     user.can?(:features, :create) { own_org? }
   end

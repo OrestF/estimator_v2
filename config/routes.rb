@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       put 'update_feature'
       post 'create_feature'
       delete 'destroy_feature'
+      patch 'send_for_sign_off'
+      get 'sign_off_request/:client_auth' => 'specifications#sign_off_request', as: 'sign_off_request'
+      patch 'sign_off'
     end
   end
 
