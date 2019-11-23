@@ -1,4 +1,6 @@
 class SpecificationsController < ResourcesController
+  skip_before_action :verify_record, :authenticate_user!, only: :sign_off_request
+
   include Specifications::Features
 
   def index
@@ -14,7 +16,7 @@ class SpecificationsController < ResourcesController
 
   def create
     if (res = Specifications::Operations::Create.call(record_params: record_params)).success?
-      success_nf(MessageHelper.saved(record_class.name), url: project_path(res.data[:record].project))
+      success_nf(MessageHelper.saved(record_class.name), url: edit_specification_path(res.data[:record]))
     else
       error_nf(html_humanize_errors(res.errors))
     end
@@ -41,6 +43,28 @@ class SpecificationsController < ResourcesController
     end
   end
 
+  def send_for_sign_off
+    if (res = Specifications::Operations::SendForSignOff.call(record: record, record_params: record_params)).success?
+      success_nf(MessageHelper.action('Specification', 'sent'), url: specification_path(record))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
+  def sign_off_request
+    @hide_header = true
+    authorize_client
+    verify_record
+  end
+
+  def sign_off
+    if (res = Specifications::Operations::SignOff.call(record: record)).success?
+      success_nf(MessageHelper.action('Specification', 'signed off'))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_class
@@ -49,5 +73,11 @@ class SpecificationsController < ResourcesController
 
   def record_params
     params.require(:specification).permit!.to_h.merge!(user_id: current_user.id)
+  end
+
+  def authorize_client
+    raise Pundit::NotAuthorizedError unless (u = Auth.authenticate_basic(params[:client_auth]))
+
+    sign_in u
   end
 end

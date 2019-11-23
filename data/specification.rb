@@ -17,8 +17,8 @@ class Specification < ApplicationRecord
 
   enum state: {
     business_analysis: 0,
-    client_signg_off: 1,
-    q_a: 2,
+    client_sign_off: 1,
+    qa: 2,
     estimation: 3,
     finished: 100
   }

@@ -20,6 +20,7 @@ organization_manager: &organization_manager
     crud: true
   specifications:
     crud: true
+    send_for_sign_off: true
   features:
     crud: true
 
@@ -35,6 +36,7 @@ business_analyst: &business_analyst
 client: &client
   specifications:
     read: true
+    sign_off: true
 
 worker: &worker
   organizations:

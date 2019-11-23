@@ -2,6 +2,9 @@
                                                 icon_link(project_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 
 h1 = @record.title
+- if @record.client
+  .blockquote
+    h4 Client: #{@record.client.email}
 .row
   .col-sm-9
     div

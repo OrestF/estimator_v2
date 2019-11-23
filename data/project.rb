@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :organization
   belongs_to :user
+  belongs_to :client, foreign_key: :client_id, class_name: 'User', optional: true
 
   has_many :specifications
 

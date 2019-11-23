@@ -1,7 +1,11 @@
 = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_specification_path(@record), icon: 'edit'),
         icon_link(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 
-h1 = @record.title
+h1
+  span = @record.title
+  .badge.badge-light = @record.state
+- if @record.signed_off_at
+  .blockquote Signed of at #{@record.signed_off_at}
 .row
   .col-sm-12
     .specification-tables

@@ -9,7 +9,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag '//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js'
   body
-    = render 'ui/header'
+    = render 'ui/header' unless @hide_header
     .container-fluid
       = yield
     = render 'ui/flash'
