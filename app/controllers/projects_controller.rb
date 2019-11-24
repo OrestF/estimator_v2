@@ -37,14 +37,6 @@ class ProjectsController < ResourcesController
     end
   end
 
-  def assign_estimators
-    if (res = Projects::Operations::AssignEstimators.call(record: record, record_params: record_params)).success?
-      success_nf(MessageHelper.action('Estimators assigned', ''))
-    else
-      error_nf(html_humanize_errors(res.errors))
-    end
-  end
-
   private
 
   def record_class

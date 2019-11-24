@@ -15,3 +15,15 @@ h1
     .specification-tables
       - @record.estimations.each do |estimation|
         = render 'estimations/show_card', estimation: estimation
+
+.row
+  .col-sm-12
+    .float-left
+      h3
+        strong Total
+    .float-right
+      .h3
+        .badge.h3.badge-success#total_optimistic
+          = @record.total_optimistic
+        .badge.badge-danger#total_pessimistic
+          = @record.total_pessimistic

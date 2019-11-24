@@ -53,6 +53,10 @@ class SpecificationPolicy < ApplicationPolicy
   end
   alias sign_off_request? sign_off?
 
+  def assign_estimators?
+    update?
+  end
+
   def create_feature?
     user.can?(:features, :create) { own_org? }
   end

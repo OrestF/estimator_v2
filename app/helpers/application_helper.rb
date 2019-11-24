@@ -24,6 +24,13 @@ module ApplicationHelper
   end
 
   def state_label(state)
-    { 'in_progress' => 'light', 'won' => 'success', 'failed' => 'danger' }[state]
+    case state
+    when 'in_progress'
+      'light'
+    when 'won', 'done'
+      'success'
+    when 'failed'
+      'danger'
+    end
   end
 end

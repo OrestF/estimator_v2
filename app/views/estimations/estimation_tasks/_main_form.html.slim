@@ -9,7 +9,7 @@
     .col.col-sm-2.text-center
       strong Max
     .col.col-sm-2
-  - feature.estimation_tasks.order(:id).each do |et|
+  - estimation.estimation_tasks.by_feature(feature).order(:id).each do |et|
     = render 'estimations/estimation_tasks/item_form', estimation_task: et, feature: feature, url: update_task_estimation_path(estimation)
 
   = render 'estimations/estimation_tasks/item_form', estimation_task: estimation.estimation_tasks.new, feature: feature,

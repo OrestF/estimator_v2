@@ -23,8 +23,4 @@ class ProjectPolicy < ApplicationPolicy
   def destroy?
     user.can?(:projects, :delete) { own_org? }
   end
-
-  def assign_estimators?
-    update?
-  end
 end

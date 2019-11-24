@@ -3,7 +3,7 @@ body {
 
   & > .container, .container-fluid {
     padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -22,8 +22,8 @@ body {
 .corner-dropdown {
   z-index: 1000;
   position: fixed;
-  bottom: 5%;
-  right: 5%;
+  bottom: 2rem;
+  right: 2rem;
 }
 
 .corner-button {
