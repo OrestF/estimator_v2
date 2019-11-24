@@ -22,4 +22,12 @@ class Specification < ApplicationRecord
     estimation: 3,
     finished: 100
   }
+
+  def total_optimistic
+    estimations.sum(&:total_optimistic)
+  end
+
+  def total_pessimistic
+    estimations.sum(&:total_pessimistic)
+  end
 end

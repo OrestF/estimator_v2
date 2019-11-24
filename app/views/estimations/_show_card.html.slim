@@ -1,4 +1,4 @@
-.card
+.card class="border-#{state_label(estimation.state)}"
   .card-body
     .card-title
       span = estimation.user.email
@@ -7,20 +7,25 @@
       table.table.table-condensed.estimation-table
         thead
           tr
+            th width="25%" Feature
+            th width="40%" Description
             th width="25%" Title
-            th width="65%" Description
             th width="5%" Min
             th width="5%" Max
         tbody
-          - estimation.estimation_tasks.each do |e_task|
-            tr
-              td = e_task.title
-              td = e_task.description
-              td = e_task.optimistic
-              td = e_task.pessimistic
+          - estimation.estimation_tasks.includes(:feature).group_by(&:feature).each do |feature, e_tasks|
+            - e_tasks.each_with_index do |e_task, index|
+              tr
+                - if index.zero?
+                  td rowspan="#{e_tasks.size}" = feature.title
+                  td rowspan="#{e_tasks.size}" = feature.description
+                td = e_task.title
+                td = e_task.pessimistic
+                td = e_task.pessimistic
           tr
             td
               strong Total
+            td
             td
             td
               strong = estimation.total_optimistic

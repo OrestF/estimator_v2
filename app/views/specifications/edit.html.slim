@@ -15,3 +15,6 @@
         = render 'specifications/send_for_sign_off_form', specification: @record
       - else
         = render 'specifications/features/table_card', features: @record.features
+
+      - if @record.qa?
+        = render 'specifications/estimators_form', specification: @record

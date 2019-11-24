@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   patch 'organization' => 'organizations#update'
 
   resources :projects do
-    member do
-      patch 'assign_estimators'
-    end
   end
 
   resources :estimations do
@@ -33,6 +30,7 @@ Rails.application.routes.draw do
       patch 'send_for_sign_off'
       get 'sign_off_request/:client_auth' => 'specifications#sign_off_request', as: 'sign_off_request'
       patch 'sign_off'
+      patch 'assign_estimators'
     end
   end
 

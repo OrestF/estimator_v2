@@ -1,9 +1,15 @@
 h1 = @record.title
-- unless @record.done?
-  = link_to('Mark as done', done_estimation_path(@record), method: :patch, data: { confirm: 'Are your sure?' }, class: 'btn btn-warning' )
+
   br
   br
-.row
+.row.mb-3
+  .col-sm-12
+    .card
+      .card-body
+        .card-title = @record.project.title
+        p == @record.project.description
+
+.row.mb-3
   - if @record.done?
     .col-sm-12
       = render 'estimations/show_card', estimation: @record
@@ -24,13 +30,19 @@ h1 = @record.title
                 td = feature.description
                 td == feature.acceptance_criteria
                 td = render 'estimations/estimation_tasks/main_form', feature: feature, estimation: @record
-hr
-.float-left
-  h3
-    strong Total
-.float-right
-  .h3
-    .badge.h3.badge-success#total_optimistic
-      = @record.total_optimistic
-    .badge.badge-danger#total_pessimistic
-      = @record.total_pessimistic
+.row
+  .col-sm-12
+    .float-left
+      h3
+        strong Total
+    .float-right
+      .h3
+        .badge.h3.badge-success#total_optimistic
+          = @record.total_optimistic
+        .badge.badge-danger#total_pessimistic
+          = @record.total_pessimistic
+
+- unless @record.done?
+  .row
+    .col-sm-12
+      = link_to('Mark as done', done_estimation_path(@record), method: :patch, data: { confirm: 'Are your sure?' }, class: 'btn btn-warning' )
