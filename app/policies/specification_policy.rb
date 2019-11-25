@@ -57,6 +57,10 @@ class SpecificationPolicy < ApplicationPolicy
     update?
   end
 
+  def finish?
+    update?
+  end
+
   def create_feature?
     user.can?(:features, :create) { own_org? }
   end

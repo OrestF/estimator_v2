@@ -1,7 +1,9 @@
 = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_estimation_path(@record), icon: 'edit'),
         icon_link(estimation_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 
-h1 = @record.title
+= render 'ui/title_state', record: @record
+= render 'ui/states_flow', record: @record
+
 = link_to('Specification', specification_path(@record.specification), class: 'btn btn-primary')
 br
 br

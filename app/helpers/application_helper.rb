@@ -25,12 +25,33 @@ module ApplicationHelper
 
   def state_label(state)
     case state
-    when 'in_progress'
-      'light'
-    when 'won', 'done'
+    when 'in_progress', 'qa'
+      'info'
+    when 'won', 'done', 'finished'
       'success'
+    when 'estimation'
+      'secondary'
     when 'failed'
       'danger'
+    when 'client_sign_off'
+      'warning'
+    else
+      'dark'
     end
+  end
+
+  def breadcrumbs(size = 3)
+    return [] if session[:breadcrumbs].blank?
+
+    if request.format.html?
+      cname = controller.controller_name
+      cname = cname.singularize unless (aname = controller.action_name) == 'index'
+      cname.prepend("#{aname} ") if aname == 'edit'
+      session[:breadcrumbs] = (session[:breadcrumbs].to_a << { cname => request.fullpath })
+    end
+
+    session[:breadcrumbs].shift if session[:breadcrumbs].size > size
+
+    session[:breadcrumbs]
   end
 end

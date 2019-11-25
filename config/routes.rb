@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get 'sign_off_request/:client_auth' => 'specifications#sign_off_request', as: 'sign_off_request'
       patch 'sign_off'
       patch 'assign_estimators'
+      patch 'finish'
     end
   end
 

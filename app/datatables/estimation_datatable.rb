@@ -13,7 +13,7 @@ class EstimationDatatable < ApplicationDatatable
       {
         id: record.id,
         title: record.title,
-        state: record.state,
+        state: record.decorate.dc_state_badge,
         project: record.project.title,
         actions: actions(record)
       }

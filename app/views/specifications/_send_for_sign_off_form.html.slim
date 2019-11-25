@@ -1,6 +1,6 @@
 = form_with(model: specification, url: send_for_sign_off_specification_path(specification), local: false, class: 'form-inline') do  |form|
   .form-group
     = form.label :client_email, 'Send for sing off', class: 'form-control'
-    = form.text_field :client_email, value: specification.project.client&.email, class: 'form-control', placeholder: 'client email'
+    = form.text_field :client_email, value: specification.project.client&.email, class: 'form-control m-3', placeholder: 'client email'
 
   = form.submit local_assigns[:submit_text] || 'Send', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }

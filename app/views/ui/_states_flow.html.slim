@@ -1,0 +1,6 @@
+nav aria-label="breadcrumb"
+  ol.breadcrumb.ml-0.mr-0.mt-0.pl-0.bg-transparent
+    - states = record.class.states.keys
+    - states.each do |state|
+      li.breadcrumb-item class="#{ states.index(state) < states.index(record.state) ? 'active' : '' }"
+        = record.send("#{state}?") ? record.decorate.dc_state_badge : state

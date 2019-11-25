@@ -1,7 +1,9 @@
 = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_project_path(@record), icon: 'edit'),
                                                 icon_link(project_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 
-h1 = @record.title
+= render 'ui/title_state', record: @record
+
+.clearfix
 - if @record.client
   .blockquote
     h4 Client: #{@record.client.email}

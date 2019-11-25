@@ -21,6 +21,7 @@ gem 'webpacker', '~> 4.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'ajax-datatables-rails'
+gem 'draper'
 gem 'passpartu'
 gem 'redis'
 gem 'sidekiq'

@@ -1,20 +1,24 @@
 .row
   .col-sm-8.offset-sm-2
-    h1
-      span = link_to(@record.title, specification_path(@record))
-      .badge.badge-light = @record.state
+    = render 'ui/title_state', record: @record
+    = render 'ui/states_flow', record: @record
     = render 'specifications/form', specification: @record, submit_text: 'Save'
     hr
 .row
   .col-sm-8.offset-sm-2
     h2 Features
-    .col-sm-12
-      - if @record.business_analysis?
-        = render 'specifications/features/main_form', specification: @record
-        hr
-        = render 'specifications/send_for_sign_off_form', specification: @record
-      - else
-        = render 'specifications/features/table_card', features: @record.features
+    .row
+      .col-sm-12
+        - if @record.business_analysis?
+          = render 'specifications/features/main_form', specification: @record
+          hr
+          = render 'specifications/send_for_sign_off_form', specification: @record
+        - else
+          = render 'specifications/features/table_card', features: @record.features
 
-      - if @record.qa?
-        = render 'specifications/estimators_form', specification: @record
+        - if @record.qa?
+          = render 'specifications/estimators_form', specification: @record
+
+        - if @record.estimation?
+          hr
+          = link_to('Mark as finished', finish_specification_path(@record), method: :patch, remote: true, data: { confirm: 'Are your sure?' }, class: 'btn btn-warning' )
