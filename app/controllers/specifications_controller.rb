@@ -73,6 +73,14 @@ class SpecificationsController < ResourcesController
     end
   end
 
+  def finish
+    if (res = Specifications::Operations::Finish.call(record: record)).success?
+      success_nf(MessageHelper.action('Specifications', 'marked as finished'), url: specification_path(record))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_class

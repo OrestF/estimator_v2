@@ -12,4 +12,8 @@ module EstimationsHelper
   def estimation_task_form_class(et, css_class)
     "estimation_task_form estimation_task_#{et.id} #{css_class}"
   end
+
+  def due_specifications_count
+    current_organization.specifications.group(:state).count
+  end
 end

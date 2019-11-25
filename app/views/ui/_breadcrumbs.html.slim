@@ -1,0 +1,5 @@
+nav aria-label="breadcrumb"
+  ol.breadcrumb
+    - (bcms = breadcrumbs).each_with_index do |crumb, index|
+      li.breadcrumb-item class="#{index + 1 == bcms.size ? 'active' : ''}"
+        = link_to(crumb.keys[0].humanize, crumb.values[0])
