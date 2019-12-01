@@ -1,6 +1,7 @@
 class ResourcesController < ApplicationController
   before_action :verify_class, only: %i[index new create]
   before_action :verify_record, except: %i[index new create]
+  around_action :connect_organization_database
 
   protected
 
@@ -30,5 +31,11 @@ class ResourcesController < ApplicationController
 
   def dt_params
     { current_user: current_user, current_organization: current_organization, policy_class: policy_class }
+  end
+
+  def connect_organization_database
+    current_organization.db do
+      yield
+    end
   end
 end

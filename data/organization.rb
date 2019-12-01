@@ -7,4 +7,9 @@ class Organization < ApplicationRecord
   has_many :estimations, through: :specifications
 
   validates :name, presence: true, uniqueness: true
+
+
+  def db(&block)
+    DbConnect.call(self, &block)
+  end
 end
