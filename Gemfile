@@ -23,6 +23,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'ajax-datatables-rails'
 gem 'draper'
 gem 'passpartu'
+gem 'r_creds'
 gem 'redis'
 gem 'sidekiq'
 gem 'slim-rails'

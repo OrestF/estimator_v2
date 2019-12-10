@@ -1,0 +1,18 @@
+h1
+  = chat_room.name
+.row
+  .col-sm-12
+    .chat data-channel-subscribe="chat-room" data-chat-room-id="#{chat_room.id}"
+      ul
+        - chat_room.chat_room_messages.each do |room_message|
+          li = room_message.body
+
+
+      .d-none data-role="message-template"
+        .chat-message-container
+          .row.no-gutters
+            .col
+              .message-content
+                p.mb-1 data-role="message-body"
+                .text-right
+                  small data-role="message-date"

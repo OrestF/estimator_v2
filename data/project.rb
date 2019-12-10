@@ -10,6 +10,8 @@ class Project < ApplicationRecord
   #
   # has_many :estimations
 
+  has_many :chat_rooms, as: :chatable
+
   has_rich_text :description
 
   validates :organization, :user, :title, :description, presence: true

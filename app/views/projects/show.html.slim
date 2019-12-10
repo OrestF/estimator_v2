@@ -20,3 +20,6 @@
   .col-sm-3
     h3 Create specification
     = render 'specifications/form', specification: @new_specification
+.row
+  .col-sm-12
+    = render 'chat_rooms/dialog', chat_room: @record.chat_rooms.last
