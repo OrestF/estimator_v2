@@ -3,22 +3,26 @@ import {createConsumer} from "@rails/actioncable";
 $(function () {
     $('[data-channel-subscribe="chat-room"]').each(function (index, chatRoom) {
         var $chatRoom = $(chatRoom);
-        var messageTemplate = $('[data-role="message-template"]');
-        var chatRoomId = $chatRoom.data('chat-room-id')
+        var $chatRoomDialog = $chatRoom.find('.chat-room-dialog');
+        var chatRoomId = $chatRoom.data('chat-room-id');
 
-        $chatRoom.animate({scrollTop: $chatRoom.prop("scrollHeight")}, 1000)
+        $chatRoomDialog.animate({scrollTop: $chatRoomDialog.prop("scrollHeight")}, 1000);
 
-        createConsumer().subscriptions.create({
+        var consumer = createConsumer();
+        var subscription = consumer.subscriptions.create({
                 channel: "ChatRoomChannel",
                 chat_room_id: chatRoomId
             },
             {
                 received: function (data) {
-                    var content = messageTemplate.children().clone(true, true);
-                    content.find('[data-role="message-body"]').text(data.body);
-                    content.find('[data-role="message-date"]').text(data.updated_at);
-                    $chatRoom.append(content);
-                    $chatRoom.animate({scrollTop: $chatRoom.prop("scrollHeight")}, 1000);
+                    var content = $('[data-role="chat-message-template"]').children().clone(true, true);
+                    content.find('[data-role="chat-message-body"]').text(data.body);
+                    content.find('[data-role="chat-message-date"]').text(data.updated_at);
+                    if (data.user_id == $chatRoom.data('current-user-id')) {
+                        content.addClass('current-user');
+                    }
+                    $chatRoomDialog.append(content);
+                    $chatRoomDialog.animate({scrollTop: $chatRoomDialog.prop("scrollHeight")}, 1000);
                 },
                 connected: function (data) {
                     console.log("ChatRoom connected: ", chatRoomId);
@@ -28,5 +32,14 @@ $(function () {
                 }
             }
         );
+
+        $chatRoom.on('submit', '#chat_room_submit', function(e) {
+            var $form = $(this);
+            subscription.send({chat_room_id: chatRoomId, message: $form.serializeArray()[0]['value']});
+
+            e.preventDefault();
+            $form.trigger('reset');
+            $form.removeAttr('disabled');
+        });
     });
 });

@@ -1,0 +1,4 @@
+.chat-message class="#{current_user.id == chat_message&.user_id ? 'current-user' : ''}" data-role="chat-message"
+  span.mr-1 data-role="chat-message-body" #{chat_message&.body}
+  sup data-role="chat-message-date" #{chat_message&.created_at&.strftime('%H:%M')}
+  .mb-1
