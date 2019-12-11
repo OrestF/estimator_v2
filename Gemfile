@@ -28,6 +28,8 @@ gem 'redis'
 gem 'sidekiq'
 gem 'slim-rails'
 
+gem 'anycable-rails'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do

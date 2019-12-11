@@ -64,6 +64,13 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     ajax-datatables-rails (1.0.0)
       railties (>= 4.2)
+    anycable (0.6.3)
+      anyway_config (~> 1.4.2)
+      grpc (~> 1.17)
+    anycable-rails (0.6.4)
+      anycable (~> 0.6.0)
+      rails (>= 5)
+    anyway_config (1.4.4)
     ast (2.4.0)
     autoprefixer-rails (9.6.1.1)
       execjs
@@ -140,6 +147,12 @@ GEM
       sexp_processor (~> 4.8)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    google-protobuf (3.11.1)
+    googleapis-common-protos-types (1.0.4)
+      google-protobuf (~> 3.0)
+    grpc (1.25.0)
+      google-protobuf (~> 3.8)
+      googleapis-common-protos-types (~> 1.0)
     hashdiff (1.0.0)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
@@ -374,6 +387,7 @@ PLATFORMS
 
 DEPENDENCIES
   ajax-datatables-rails
+  anycable-rails
   bootsnap (>= 1.4.2)
   bootstrap (>= 4.3.1)
   brakeman

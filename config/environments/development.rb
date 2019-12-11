@@ -66,4 +66,5 @@ Rails.application.configure do
 
   routes.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.preview_path ||= defined?(Rails.root) ? "#{Rails.root}/spec/mailers/previews" : nil
+  config.action_cable.url = 'ws://localhost:3334/cable'
 end

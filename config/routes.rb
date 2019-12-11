@@ -1,9 +1,11 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
   devise_for :users
   root 'pages#home'
   mount Sidekiq::Web => '/sidekiq'
+  mount ActionCable.server => '/cable'
 
   get 'organization' => 'organizations#show'
   get 'organization/edit' => 'organizations#edit'
