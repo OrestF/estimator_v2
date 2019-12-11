@@ -17,7 +17,8 @@ $(function () {
                 received: function (data) {
                     var content = $('[data-role="chat-message-template"]').children().clone(true, true);
                     content.find('[data-role="chat-message-body"]').text(data.body);
-                    content.find('[data-role="chat-message-date"]').text(data.updated_at);
+                    var time = new Date(data.updated_at);
+                    content.find('[data-role="chat-message-date"]').text(time.getHours() + ':' + time.getMinutes());
                     if (data.user_id == $chatRoom.data('current-user-id')) {
                         content.addClass('current-user');
                     }
@@ -25,10 +26,10 @@ $(function () {
                     $chatRoomDialog.animate({scrollTop: $chatRoomDialog.prop("scrollHeight")}, 1000);
                 },
                 connected: function (data) {
-                    console.log("ChatRoom connected: ", chatRoomId);
+                    console.log('ChatRoom',chatRoomId,'connected');
                 },
                 disconnected: function (data) {
-                    console.log("ChatRoom disconnected: ", chatRoomId);
+                    console.log('ChatRoom',chatRoomId,'disconnected');
                 }
             }
         );

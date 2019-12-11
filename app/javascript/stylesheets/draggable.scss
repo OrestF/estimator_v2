@@ -1,0 +1,9 @@
+#draggable {
+  position: fixed;
+  z-index: 9;
+}
+
+#draggable-area {
+  cursor: move;
+  z-index: 10;
+}

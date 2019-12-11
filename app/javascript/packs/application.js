@@ -23,6 +23,7 @@ import '../controllers/estimations';
 import '../controllers/specifications';
 import '../datatables/estimations';
 import '../datatables/specifications';
+import '../components/draggable';
 
 require('datatables.net-bs')(window, $);
 require('datatables.net-buttons-bs')(window, $);
