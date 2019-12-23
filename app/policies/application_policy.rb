@@ -39,6 +39,8 @@ class ApplicationPolicy
   protected
 
   def own_org?
+    return false if current_organization.blank?
+
     current_organization == user.organization
   end
 

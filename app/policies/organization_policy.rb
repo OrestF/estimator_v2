@@ -11,4 +11,8 @@ class OrganizationPolicy < ApplicationPolicy
     user.can?(:organizations, :update) { own_org? }
   end
   alias edit? update?
+
+  def invite_member?
+    update?
+  end
 end
