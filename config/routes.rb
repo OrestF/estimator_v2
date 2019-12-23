@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'organization/edit' => 'organizations#edit'
   put 'organization' => 'organizations#update'
   patch 'organization' => 'organizations#update'
+  post 'organization/invite_member' => 'organizations#invite_member'
 
   resources :projects do
   end

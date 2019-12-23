@@ -9,10 +9,18 @@ class OrganizationsController < ResourcesController
     redirect_to organization_path
   end
 
+  def invite_member
+    if (res = Organizations::Operations::InviteMember.call(record: current_organization, record_params: record_params)).success?
+      success_nf(MessageHelper.action('Member', 'invited'), url: organization_path(current_organization))
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_params
-    params.require(:organization).permit(:name, :logo)
+    params.require(:organization).permit!
   end
 
   def record_class

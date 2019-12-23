@@ -1,0 +1,9 @@
+= form_with(model: organization, url: organization_invite_member_path, local: false, class: 'form-inline', method: :post) do  |form|
+  .form-group
+    = form.label :email, 'Member email', class: 'form-control'
+    = form.text_field :email, value: '', class: 'form-control m-3', placeholder: 'john@mail.com'
+  .form-group
+    = form.label :role, class: 'form-control'
+    = form.select :role, roles_for_select, {}, { class: 'form-control m-3', placeholder: 'john@mail.com' }
+
+  = form.submit 'Invite', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }

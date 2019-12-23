@@ -3,8 +3,10 @@ table.table.table-striped
     tr
       th Email
       th Role
+      th Invitation state
   tbody
     - users.each do |user|
       tr
         th = user.email
         td = user.role
+        td = user.invitation_accepted_at

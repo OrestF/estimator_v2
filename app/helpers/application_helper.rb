@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def breadcrumbs(size = 3)
-    return [] if session[:breadcrumbs].blank?
+    session[:breadcrumbs] ||= []
 
     if request.format.html?
       cname = controller.controller_name
@@ -53,5 +53,9 @@ module ApplicationHelper
     session[:breadcrumbs].shift if session[:breadcrumbs].size > size
 
     session[:breadcrumbs]
+  end
+
+  def roles_for_select
+    User.roles.keys - ['admin']
   end
 end
