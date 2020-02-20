@@ -33,3 +33,5 @@ yarn-debug.log*
 /config/credentials/staging.key
 
 /config/credentials/development.key
+
+/config/credentials/production.key
