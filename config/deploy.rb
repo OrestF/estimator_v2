@@ -12,7 +12,7 @@ set :deploy_to,               "/var/www/#{fetch(:application)}"
 set :assets_roles,            :app
 set :migration_role,          :app
 set :linked_dirs,             %w{log, tmp/pids, tmp/cache, tmp/sockets, vendor/bundle, .bundle, public/system, public/uploads}
-set :linked_files,            %w{config/master.key config/database.yml config/credentials/production.yml}
+set :linked_files,            %w{config/master.key config/database.yml}
 
 # Sidekiq setting
 # See https://github.com/seuros/capistrano-sidekiq

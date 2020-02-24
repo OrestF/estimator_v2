@@ -16,7 +16,7 @@ set :branch,       :master
 set :puma_env,     fetch(:rails_env)
 set :sidekiq_env,  fetch(:rails_env)
 
-append :linked_files, "config/credentials/#{fetch(:rails_env)}.yml"
+append :linked_files, "config/credentials/#{fetch(:rails_env)}.key"
 # role-based syntax
 # ==================
 
