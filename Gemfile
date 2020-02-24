@@ -26,6 +26,7 @@ gem 'passpartu'
 gem 'redis'
 gem 'sidekiq'
 gem 'slim-rails'
+gem 'r_creds'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

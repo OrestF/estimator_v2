@@ -222,6 +222,7 @@ GEM
     puma (3.12.1)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
+    r_creds (1.0.1)
     rack (2.0.7)
     rack-protection (2.0.7)
       rack
@@ -436,6 +437,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   pundit
+  r_creds
   rails (~> 6.0.0)
   redis
   rspec-rails
