@@ -39,6 +39,17 @@ end
 group :development do
   gem 'brakeman'
   gem 'bullet'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-yarn'
+  # --- Optional --- #
+  # allows to modify custom settings on a fly )
+  gem 'capistrano-sidekiq'
+  gem 'capistrano3-puma',   require: false
+  # if you want "localhost" deployment.
+  gem 'capistrano-locally', require: false
   gem 'letter_opener'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
