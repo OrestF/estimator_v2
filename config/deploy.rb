@@ -3,7 +3,7 @@ lock "~> 3.12.0"
 
 # Main settings
 # See https://github.com/capistrano/rails
-set :application,             'project_name'
+set :application,             'estimator'
 set :pty,                     true
 set :use_sudo,                true
 set :deploy_via,              :remote_cache
