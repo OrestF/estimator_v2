@@ -11,7 +11,7 @@ gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '>= 3.12.4'
 gem 'pundit'
 gem 'rails', '~> 6.0.0'
 gem 'sass-rails', '~> 5'
@@ -22,27 +22,31 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'ajax-datatables-rails'
 gem 'draper'
+gem 'factory_bot_rails'
+gem 'faker'
 gem 'passpartu'
+gem 'r_creds'
 gem 'redis'
 gem 'sidekiq'
 gem 'slim-rails'
-gem 'r_creds'
 
 gem 'bootsnap', '>= 1.4.2', require: false
+
+# DEPENDENCIES
+gem 'nokogiri', '>= 1.10.8'
+gem 'rack', '>= 2.0.8'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv'
-  gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do
   gem 'brakeman'
   gem 'bullet'
   gem 'capistrano',         require: false
-  gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails',   require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-yarn'
   # --- Optional --- #
