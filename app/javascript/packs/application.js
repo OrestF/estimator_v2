@@ -11,6 +11,8 @@ require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
+require.context('../images', true);
+
 import "@rails/actiontext";
 import "trix";
 import 'bootstrap/dist/js/bootstrap';

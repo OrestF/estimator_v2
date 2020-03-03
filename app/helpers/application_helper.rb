@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def nav_logo
-    org_logo(size: '32x32').presence || image_tag('estimator', size: '32x32')
+    org_logo(size: '32x32').presence || image_pack_tag('estimator.png', size: '32x32')
   end
 
   def corner_button(url, **args)
