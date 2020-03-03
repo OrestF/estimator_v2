@@ -17,6 +17,3 @@ user = User.find_or_initialize_by(email: 'orest.f@coaxsoft.com', role: 'organiza
 user.organization = coax
 user.password = 'password'
 user.save
-
-project = FactoryBot.create(:project, user: user, organization: coax)
-project.estimators << FactoryBot.create_list(:user, 3, role: :worker, organization_id: coax.id)

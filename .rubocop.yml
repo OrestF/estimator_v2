@@ -30,7 +30,7 @@ Style/BarePercentLiterals:
   Enabled: false
 Style/PercentLiteralDelimiters:
   Enabled: false
-Style/UnneededPercentQ:
+Style/RedundantPercentQ:
   Enabled: false
 Style/Lambda:
   Enabled: false
@@ -61,7 +61,7 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - "spec/**/*"
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 
 Lint/AmbiguousOperator:
