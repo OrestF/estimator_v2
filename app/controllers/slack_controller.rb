@@ -2,8 +2,8 @@ class SlackController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def connect
-    rc = Slack::Web::Client.new.oauth_access(client_id: RCreds.fetch(:my_slack, :client_id),
-                                             client_secret: RCreds.fetch(:my_slack, :client_secret),
+    rc = Slack::Web::Client.new.oauth_access(client_id: RCreds.fetch(:slack, :client_id),
+                                             client_secret: RCreds.fetch(:slack, :client_secret),
                                              code: params[:code])
 
     current_organization.update(slack_access_token: rc.access_token)

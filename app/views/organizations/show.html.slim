@@ -9,5 +9,8 @@ h2 Users
 .row
   .col-md-12
     = render 'organizations/users', users: current_organization.users
-    = link_to('Connect Slack', @slack_url, class: 'btn btn-warning')
+    - if current_organization.slack_access_token.blank?
+      = link_to('Connect Slack', @slack_url, class: 'btn btn-warning')
+    - else
+      .btn.btn-success Slack connected
     = render 'organizations/invite_form', organization: current_organization

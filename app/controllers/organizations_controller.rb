@@ -42,7 +42,7 @@ class OrganizationsController < ResourcesController
   end
 
   def connect_slack_url
-    "https://slack.com/oauth/authorize?scope=#{slack_scopes.join(' ')}&client_id=#{RCreds.fetch(:my_slack, :client_id)}&redirect_uri=#{connect_slack_index_url}"
+    "https://slack.com/oauth/authorize?scope=#{slack_scopes.join(' ')}&client_id=#{RCreds.fetch(:slack, :client_id)}&redirect_uri=#{connect_slack_index_url}"
   end
 
   def slack_scopes
