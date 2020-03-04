@@ -38,5 +38,6 @@ module EstimatorV2
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.hosts << '90cce37d.ngrok.io'
   end
 end
