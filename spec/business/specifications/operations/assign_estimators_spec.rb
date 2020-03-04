@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 describe Specifications::Operations::AssignEstimators do
+  include_context('fake_slack')
+
   let!(:user) { create(:user, role: 'organization_manager') }
   let!(:project) { create(:project, user: user, organization: user.organization) }
   let!(:specification) { create(:specification, user: user, project: project) }

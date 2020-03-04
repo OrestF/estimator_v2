@@ -28,6 +28,7 @@ gem 'mailjet'
 gem 'passpartu'
 gem 'r_creds'
 gem 'redis'
+gem 'slack-ruby-client'
 gem 'sidekiq'
 gem 'slim-rails'
 

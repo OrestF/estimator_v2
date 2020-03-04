@@ -5,6 +5,7 @@ class Specifications::Operations::AssignEstimators < BaseOperation
 
     create_estimations
     update_state
+    slack_notify
 
     success(args)
   end
@@ -37,5 +38,13 @@ class Specifications::Operations::AssignEstimators < BaseOperation
 
   def form_class
     Specifications::Forms::AssignEstimators
+  end
+
+  def slack_notify
+    return if record.organization.slack_access_token.blank?
+
+    SlackNotifier.new(organization.slack_access_token).m_send(message: "New estimation for: #{record.title}",
+                                                              emails: estimators.pluck(:email),
+                                                              url: Rails.application.routes.url_helpers.project_url(record.project))
   end
 end

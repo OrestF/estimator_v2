@@ -1,5 +1,7 @@
 class OrganizationsController < ResourcesController
-  def show; end
+  def show
+    @slack_url = connect_slack_url
+  end
 
   def edit; end
 
@@ -37,5 +39,13 @@ class OrganizationsController < ResourcesController
 
     current_organization.logo.purge
     current_organization.logo.attach(params[:organization][:logo])
+  end
+
+  def connect_slack_url
+    "https://slack.com/oauth/authorize?scope=#{slack_scopes.join(' ')}&client_id=#{RCreds.fetch(:slack, :client_id)}&redirect_uri=#{connect_slack_index_url}"
+  end
+
+  def slack_scopes
+    %w[chat:write:user bot users:read users:read.email]
   end
 end

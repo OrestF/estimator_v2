@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   patch 'organization' => 'organizations#update'
   post 'organization/invite_member' => 'organizations#invite_member'
 
+
+  resources :slack, only: [] do
+    collection do
+      get 'connect', to: 'slack#connect', as: 'connect'
+    end
+  end
+
   resources :projects do
   end
 
