@@ -43,8 +43,9 @@ class Specifications::Operations::AssignEstimators < BaseOperation
   def slack_notify
     return if record.organization.slack_access_token.blank?
 
-    SlackNotifier.new(organization.slack_access_token).m_send(message: "New estimation for: #{record.title}",
-                                                              emails: estimators.pluck(:email),
-                                                              url: Rails.application.routes.url_helpers.project_url(record.project))
+    SlackNotifier.new(record.organization.slack_access_token).m_send(message: "New estimation for: #{record.title}",
+                                                                     emails: estimators.pluck(:email),
+                                                                     url: Rails.application.routes.url_helpers.project_url(record.project))
+  rescue StandardError => _e
   end
 end

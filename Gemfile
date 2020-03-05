@@ -28,8 +28,8 @@ gem 'mailjet'
 gem 'passpartu'
 gem 'r_creds'
 gem 'redis'
-gem 'slack-ruby-client'
 gem 'sidekiq'
+gem 'slack-ruby-client'
 gem 'slim-rails'
 
 gem 'bootsnap', '>= 1.4.2', require: false

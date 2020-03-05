@@ -10,7 +10,7 @@ describe Organizations::Operations::InviteMember do
   describe '.call' do
     context 'with valid params' do
       let(:record_params) do
-        { email: 'new@user.com', role: (User.roles.keys - ['admin']).sample }
+        { email: 'new@user.com', role: (User.roles.keys - ['admin']).sample, domain: User.domains.keys.sample }
       end
 
       it 'invites member' do

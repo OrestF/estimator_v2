@@ -2,8 +2,11 @@
   .form-group
     = form.label :email, 'Member email', class: 'form-control'
     = form.text_field :email, value: '', class: 'form-control m-3', placeholder: 'john@mail.com'
-  .form-group
+  .form-group.m-3
     = form.label :role, class: 'form-control'
-    = form.select :role, roles_for_select, {}, { class: 'form-control m-3', placeholder: 'john@mail.com' }
+    = form.select :role, roles_for_select, {}, { class: 'select2-js' }
+  .form-group.m-3
+    = form.label :domain, class: 'form-control'
+    = form.select :domain, User.domains.keys, {}, { class: 'select2-js m-3' }
 
   = form.submit 'Invite', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }
