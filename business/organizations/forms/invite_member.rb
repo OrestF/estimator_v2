@@ -1,9 +1,10 @@
 class Organizations::Forms::InviteMember < BaseForm
-  PERMITTED_ATTRIBUTES = %i[email role].freeze
-  REQUIRED_ATTRIBUTES = %i[email role].freeze
+  PERMITTED_ATTRIBUTES = %i[email role domain].freeze
+  REQUIRED_ATTRIBUTES = %i[email role domain].freeze
   attr_accessor(*PERMITTED_ATTRIBUTES, :record)
 
   validates :email, format: Devise.email_regexp
+  validates :domain, inclusion: { in: User.domains.keys }
 
   validate :validate_user_existence
 

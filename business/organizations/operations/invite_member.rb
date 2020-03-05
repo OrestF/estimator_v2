@@ -12,7 +12,10 @@ class Organizations::Operations::InviteMember < BaseOperation
   private
 
   def build_user
-    @user = User.new(email: record_params[:email], role: record_params[:role], organization: record)
+    @user = User.new(email: record_params[:email],
+                     role: record_params[:role],
+                     domain: record_params[:domain],
+                     organization: record)
   end
 
   def invite_user

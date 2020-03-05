@@ -2,11 +2,15 @@ table.table.table-striped
   thead
     tr
       th Email
+      th Full name
       th Role
+      th Domain
       th Invitation state
   tbody
     - users.each do |user|
       tr
         th = user.email
+        th = user.decorate.dc_full_name
         td = user.role
+        td = user.domain.humanize
         td = user.invitation_accepted_at
