@@ -1,6 +1,7 @@
 javascript:
     alertify.set('notifier', 'position', 'top-right');
-    alertify.notify("#{message}", "#{status}", 5, function () {
+    var wait = status == 'success' ? 2 : 7;
+    alertify.notify("#{message}", "#{status}", wait, function () {
         if ("#{url}") {
             console.log('here');
             window.location = "#{url}"

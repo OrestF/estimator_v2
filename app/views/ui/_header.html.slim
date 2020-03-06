@@ -17,12 +17,12 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           = link_to(estimations_path, class: 'nav-link') do
             spa.mr-1 Estimations
             span.badge.badge-danger = due_estimations_count
+        li.nav-item
+          = link_to('My organization', organization_path, class: 'nav-link')
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             | More
           .dropdown-menu aria-labelledby="navbarDropdown"
-            = link_to('My organization', organization_path, class: 'dropdown-item')
-            .dropdown-divider
             = link_to('Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete)
     .navbar-text
       | #{current_user&.email} [#{current_user.role}]
