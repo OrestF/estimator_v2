@@ -8,6 +8,7 @@
       .card-body
         .card-title = @record.project.title
         p == @record.project.description
+        = render 'projects/attachments', project: @record.project
 
 .row.mb-3
   - if @record.done?

@@ -1,4 +1,5 @@
 - flash.each do |status, message|
   javascript:
     alertify.set('notifier','position', 'top-right');
-    alertify.notify("#{message}", "#{status}", 7);
+    var wait = status == 'success' ? 2 : 7;
+    alertify.notify("#{message}", "#{status}", wait);

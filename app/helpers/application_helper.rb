@@ -58,4 +58,13 @@ module ApplicationHelper
   def roles_for_select
     User.roles.keys - ['admin']
   end
+
+  def policy_plus(record, action_name, configs = {})
+    policy_klass = configs[:policy_class] || "#{record.class}Policy".constantize
+    policy_klass.new(current_user, record, configs.merge!(current_organization: current_organization)).send("#{action_name}?")
+  end
+
+  def attachment_url(attachment, name: nil)
+    link_to(name || attachment.filename, attachment, target: '_blank', rel: 'noopener')
+  end
 end

@@ -1,11 +1,11 @@
 class ApplicationPolicy
-  attr_reader :user, :record, :configs, :current_organization
+  attr_reader :user, :record, :configs , :current_organization
 
   def initialize(user, record, configs = {})
     @user = user
     @record = record
     @configs = configs
-    @current_organization = @configs[:current_organization]
+    @current_organization = @configs[:current_organization] || try(:current_organization)
   end
 
   def index?

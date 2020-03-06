@@ -8,15 +8,17 @@
   .blockquote
     h4 Client: #{@record.client.email}
 .row
-  .col-sm-9
+  .col class="#{'col-sm-9' if policy_plus(@new_specification, :create)}"
     div
       h3 Description
       == @record.description
+      = render 'projects/attachments', project: @record
     hr
     div
       h3 Specifications
       = render 'specifications/datatable', datatable_source: specifications_path(by_project: @record.id, format: :json)
 
-  .col-sm-3
-    h3 Create specification
-    = render 'specifications/form', specification: @new_specification
+  - if policy_plus(@new_specification, :create)
+    .col-sm-3
+      h3 Create specification
+      = render 'specifications/form', specification: @new_specification

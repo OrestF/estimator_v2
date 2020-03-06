@@ -47,4 +47,5 @@ worker: &worker
     read: true
     update: true
   specifications:
-    crud: false
+    read: true
+    update: false
