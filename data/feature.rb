@@ -1,4 +1,6 @@
 class Feature < ApplicationRecord
+  include SoftDeletable.new(dependant_relations: [:estimation_tasks])
+
   belongs_to :specification
   belongs_to :user
 

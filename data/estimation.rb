@@ -1,4 +1,5 @@
 class Estimation < ApplicationRecord
+  include SoftDeletable.new(dependant_relations: [:estimation_tasks])
   include Filterable
 
   belongs_to :user

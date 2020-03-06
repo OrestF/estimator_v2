@@ -1,14 +1,11 @@
 class Project < ApplicationRecord
+  include SoftDeletable.new(dependant_relations: [:specifications])
+
   belongs_to :organization
   belongs_to :user
   belongs_to :client, foreign_key: :client_id, class_name: 'User', optional: true
 
   has_many :specifications
-
-  # has_many :project_users
-  # has_many :estimators, through: :project_users, source: :user
-  #
-  # has_many :estimations
 
   has_rich_text :description
 
