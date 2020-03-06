@@ -1,4 +1,5 @@
 class Specification < ApplicationRecord
+  include SoftDeletable.new(dependant_relations: [:estimations, :features])
   include Filterable
 
   belongs_to :user
