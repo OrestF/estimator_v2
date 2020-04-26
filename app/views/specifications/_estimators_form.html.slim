@@ -3,4 +3,4 @@
     = form.label :estimator_ids, 'Estimators', class: 'form-control'
     = form.collection_select :estimator_ids, specification.organization.users.decorate, :id, :dc_title, { selected: specification.estimator_ids }, multiple: true, class: 'select2-js'
 
-    = form.submit 'Update', class: 'btn btn-success m-t-5'
+    = form.submit 'Update', class: 'btn m-t-5'

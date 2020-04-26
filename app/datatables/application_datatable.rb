@@ -26,13 +26,13 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
   def view_link(record, path)
     return unless policy(record).show?
 
-    link_to('View', routes.public_send(path, record), class: 'btn btn-default')
+    link_to('View', routes.public_send(path, record), class: 'btn')
   end
 
   def edit_link(record, path, button_name = nil)
     return unless policy(record).edit? || policy(record).show?
 
-    link_to(button_name || 'Edit', routes.public_send(path, record), class: 'btn btn-primary')
+    link_to(button_name || 'Edit', routes.public_send(path, record), class: 'btn')
   end
 
   def policy(record, configs = {})

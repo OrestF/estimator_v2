@@ -1,8 +1,8 @@
-h1 = @record.title
+h1 = @record.project.title
+h3 = @record.title
 .row
   .col-sm-12
     .specification-tables
       = render 'specifications/features/table_card', features: @record.features
-      hr
       - if @record.client_sign_off?
         = link_to('Sign off', sign_off_specification_path(@record), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning')

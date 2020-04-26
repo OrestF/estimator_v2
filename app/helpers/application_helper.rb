@@ -14,13 +14,26 @@ module ApplicationHelper
   end
 
   def icon_link(url, **args)
-    link_to(url, **args[:link_params].to_h) do
+    link_to(url, **args[:link_params].to_h, style: 'display: block') do
       content_tag(:i, args[:icon] || 'link', class: 'material-icons', title: args[:title].presence || args[:icon].to_s.humanize)
+    end
+  end
+
+  def bottom_action_btn(url, **args)
+    link_to(url, class: "nav-item btn #{args[:class]}", **args[:link_params].to_h) do
+      capture do
+        content_tag(:i, args[:icon] || 'link', class: 'material-icons mr-1') +
+          content_tag(:span, args[:title] || args[:icon])
+      end
     end
   end
 
   def corner_dropdown(**args)
     ApplicationController.new.render_to_string(partial: 'ui/corner_dropdown', assigns: args)
+  end
+
+  def bottom_actions(**args)
+    ApplicationController.new.render_to_string(partial: 'ui/bottom_actions', assigns: args)
   end
 
   def state_label(state)

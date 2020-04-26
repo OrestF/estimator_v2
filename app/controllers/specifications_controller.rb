@@ -53,6 +53,8 @@ class SpecificationsController < ResourcesController
 
   def sign_off_request
     @hide_header = true
+    @hide_breadcrumbs = true
+
     authorize_client
     verify_record
   end

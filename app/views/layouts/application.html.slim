@@ -10,7 +10,8 @@ html
     = javascript_include_tag '//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js'
   body
     = render 'ui/header' unless @hide_header
-    = render 'ui/breadcrumbs'
+    = render 'ui/breadcrumbs' unless @hide_breadcrumbs
     .container-fluid
       = yield
+    = render 'ui/bottom_actions' if content_for?(:bottom_actions)
     = render 'ui/flash'

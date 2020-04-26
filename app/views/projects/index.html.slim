@@ -1,4 +1,7 @@
-= corner_button(new_project_path, icon: 'add')
+/ = corner_button(new_project_path, icon: 'add')
+
+- content_for :bottom_actions do
+  = bottom_action_btn(new_project_path, icon: 'add', title: 'Create', class: 'btn-success')
 
 h1 Projects
 .row

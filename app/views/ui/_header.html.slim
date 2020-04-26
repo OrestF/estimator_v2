@@ -1,4 +1,4 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow-1
   - if current_user
     a.navbar-brand
       = link_to(root_path) do
@@ -8,21 +8,21 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         li.nav-item
+          = link_to('Projects', projects_path, class: 'nav-link')
+        li.nav-item
           = link_to(specifications_path, class: 'nav-link') do
             span.mr-1 Specifications
             = render 'specifications/components/count_badges'
         li.nav-item
-          = link_to('Projects', projects_path, class: 'nav-link')
-        li.nav-item
           = link_to(estimations_path, class: 'nav-link') do
             spa.mr-1 Estimations
             span.badge.badge-danger = due_estimations_count
+      ul.navbar-nav.ml-auto
         li.nav-item
           = link_to('My organization', organization_path, class: 'nav-link')
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            | More
+            | #{current_user&.email} [#{current_user.role}]
           .dropdown-menu aria-labelledby="navbarDropdown"
+            = link_to('Profile', edit_user_registration_path, class: 'dropdown-item')
             = link_to('Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete)
-    .navbar-text
-      | #{current_user&.email} [#{current_user.role}]
