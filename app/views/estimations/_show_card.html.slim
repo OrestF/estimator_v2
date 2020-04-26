@@ -1,7 +1,7 @@
 .card class="border-#{state_label(estimation.state)}"
   .card-body
     .card-title
-      span = estimation.user.email
+      span = estimation.user.decorate.dc_title
       .float-right = estimation.decorate.dc_state_badge
     .table-responsive
       table.table.table-condensed.estimation-table

@@ -1,5 +1,9 @@
-= corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_estimation_path(@record), icon: 'edit'),
+/ = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_estimation_path(@record), icon: 'edit'),
         icon_link(estimation_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
+
+- content_for :bottom_actions do
+  = bottom_action_btn(edit_estimation_path(@record), icon: 'timelapse', title: 'Start estimation', class: 'btn-success')
+  = bottom_action_btn(estimation_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
 
 = render 'ui/title_state', record: @record
 = render 'ui/states_flow', record: @record

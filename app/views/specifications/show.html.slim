@@ -1,29 +1,40 @@
-= corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_specification_path(@record), icon: 'edit'),
-        icon_link(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
-
-= render 'ui/title_state', record: @record
-= render 'ui/states_flow', record: @record
-
-- if @record.signed_off_at
-  .blockquote Signed of at #{@record.signed_off_at}
+/ = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_specification_path(@record), icon: 'edit'),
+/         icon_link(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
+- content_for :bottom_actions do
+  - if policy_plus(@record, :finish)
+    = bottom_action_btn(finish_specification_path(@record), title: 'Mark as finished', icon: 'check_circle_outline', class: 'btn-warning', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}})
+  = bottom_action_btn(edit_specification_path(@record), icon: 'edit')
+  = bottom_action_btn(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
 .row
-  .col-sm-12
-    .specification-tables
-      = render 'specifications/features/table_card', features: @record.features
-.row
-  .col-sm-12
-    .specification-tables
-      - @record.estimations.each do |estimation|
-        = render 'estimations/show_card', estimation: estimation
+  .col-sm-8.offset-sm-2
+    = render 'ui/title_state', record: @record
+    = render 'ui/states_flow', record: @record
+    - if @record.signed_off_at
+      .chip Signed of at #{@record.signed_off_at}
 
-.row
-  .col-sm-12
-    .float-left
-      h3
-        strong Total
-    .float-right
-      .h3
-        .badge.h3.badge-success#total_optimistic
-          = @record.total_optimistic
-        .badge.badge-danger#total_pessimistic
-          = @record.total_pessimistic
+    .row
+      - if @record.estimators.none? && policy_plus(@record, :assign_estimators)
+        .col-sm-4
+          = render 'specifications/estimators_form', specification: @record
+
+    .row.mt-3
+      .col-sm-12
+        .specification-tables
+          = render 'specifications/features/table_card', features: @record.features
+    .row
+      .col-sm-12
+        .specification-tables
+          - @record.estimations.each do |estimation|
+            = render 'estimations/show_card', estimation: estimation
+
+    .row
+      .col-sm-12
+        .float-left
+          h3
+            strong Total
+        .float-right
+          .h3
+            .badge.h3.badge-success#total_optimistic
+              = @record.total_optimistic
+            .badge.badge-danger#total_pessimistic
+              = @record.total_pessimistic

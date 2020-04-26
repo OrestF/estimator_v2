@@ -1,9 +1,21 @@
+- content_for :bottom_actions do
+  - if policy_plus(@record, :finish)
+    = bottom_action_btn(finish_specification_path(@record), title: 'Mark as finished', icon: 'check_circle_outline', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}}, class: 'btn btn-warning')
+
 .row
   .col-sm-8.offset-sm-2
     = render 'ui/title_state', record: @record
     = render 'ui/states_flow', record: @record
-    = render 'specifications/form', specification: @record, submit_text: 'Save'
-    hr
+    - if @record.signed_off_at
+      .chip Signed of at #{@record.signed_off_at}
+    h2.mt-3 Edit
+    .row
+      .col-sm-6
+        = render 'specifications/form', specification: @record, submit_text: 'Save'
+      .col-sm-6
+        - if policy_plus(@record, :assign_estimators)
+          = render 'specifications/estimators_form', specification: @record
+br
 .row
   .col-sm-8.offset-sm-2
     h2 Features
@@ -11,14 +23,6 @@
       .col-sm-12
         - if @record.business_analysis?
           = render 'specifications/features/main_form', specification: @record
-          hr
           = render 'specifications/send_for_sign_off_form', specification: @record
         - else
           = render 'specifications/features/table_card', features: @record.features
-
-        - if @record.qa?
-          = render 'specifications/estimators_form', specification: @record
-
-        - if @record.estimation?
-          hr
-          = link_to('Mark as finished', finish_specification_path(@record), method: :patch, remote: true, data: { confirm: 'Are your sure?' }, class: 'btn btn-warning' )

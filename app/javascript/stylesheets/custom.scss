@@ -157,5 +157,20 @@ table {
 }
 
 .breadcrumb {
-  margin: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  min-height: 0;
+}
+
+.bottom-actions-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 5;
+
+  .btn:not(.btn-primary):not(.btn-success):not(.btn-warning):not(.btn-info):not(.btn-danger) {
+    background-color: white;
+  }
 }

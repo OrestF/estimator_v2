@@ -1,0 +1,116 @@
+@import '../../../node_modules/daemonite-material/assets/scss/colors';
+@import '../../../node_modules/daemonite-material/assets/scss/functions';
+@import '../../../node_modules/daemonite-material/assets/scss/mixins';
+
+// Custom colors here
+$primary: (
+        color: $material-color-grey-900,
+        dark:  darken($material-color-grey-900, 10%),
+        light: lighten($material-color-grey-900, 10%)
+);
+
+$secondary: (
+        color: $material-color-light-blue-800,
+        dark:  $material-color-light-blue-900,
+        light: $material-color-light-blue-400
+) !default;
+$danger: (
+        color: $material-color-red-400,
+        dark:  $material-color-red-600,
+        light: $material-color-red-050
+) !default;
+
+$info: (
+        color: $material-color-teal-500,
+        dark:  $material-color-teal-700,
+        light: $material-color-teal-100
+) !default;
+
+$success: (
+        color: $material-color-light-green-300,
+        dark:  $material-color-light-green-500,
+        light: $material-color-light-green-100
+) !default;
+
+$warning: (
+        color: $material-color-amber-500,
+        dark:  $material-color-amber-700,
+        light: $material-color-amber-100
+) !default;
+
+$dark: (
+        color: $material-color-grey-800,
+        dark:  $material-color-grey-900,
+        light: $material-color-grey-600
+) !default;
+
+$light: (
+        color: $material-color-grey-100,
+        dark:  $material-color-grey-300,
+        light: $material-color-grey-050
+) !default;
+// Custom colors here END
+
+@import '../../../node_modules/daemonite-material/assets/scss/variables';
+
+// Base CSS
+
+@import '../../../node_modules/daemonite-material/assets/scss/base/base';
+@import '../../../node_modules/daemonite-material/assets/scss/base/grid';
+@import '../../../node_modules/daemonite-material/assets/scss/base/typography';
+
+// Bootstrap components
+// Components covered in Bootstrap's css but not in Material design
+
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/alert';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/badge';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/breadcrumb';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/carousel';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/close';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/code';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/form';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/image';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/jumbotron';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/media';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/nav';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/pagination';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/popover';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/responsive-embed';
+@import '../../../node_modules/daemonite-material/assets/scss/bootstrap/transition';
+
+// Material components
+// Components covered in Material design (https://material.google.com/components)
+
+@import '../../../node_modules/daemonite-material/assets/scss/material/button';
+@import '../../../node_modules/daemonite-material/assets/scss/material/button-flat';
+@import '../../../node_modules/daemonite-material/assets/scss/material/button-float';
+@import '../../../node_modules/daemonite-material/assets/scss/material/button-group';
+@import '../../../node_modules/daemonite-material/assets/scss/material/card';
+@import '../../../node_modules/daemonite-material/assets/scss/material/chip';
+@import '../../../node_modules/daemonite-material/assets/scss/material/data-table';
+@import '../../../node_modules/daemonite-material/assets/scss/material/dialog';
+@import '../../../node_modules/daemonite-material/assets/scss/material/expansion-panel';
+@import '../../../node_modules/daemonite-material/assets/scss/material/menu';
+@import '../../../node_modules/daemonite-material/assets/scss/material/navdrawer';
+@import '../../../node_modules/daemonite-material/assets/scss/material/picker';
+@import '../../../node_modules/daemonite-material/assets/scss/material/progress';
+@import '../../../node_modules/daemonite-material/assets/scss/material/progress-circular';
+@import '../../../node_modules/daemonite-material/assets/scss/material/selection-control';
+@import '../../../node_modules/daemonite-material/assets/scss/material/slider';
+@import '../../../node_modules/daemonite-material/assets/scss/material/snackbar';
+@import '../../../node_modules/daemonite-material/assets/scss/material/stepper';
+@import '../../../node_modules/daemonite-material/assets/scss/material/tab';
+@import '../../../node_modules/daemonite-material/assets/scss/material/text-field';
+@import '../../../node_modules/daemonite-material/assets/scss/material/text-field-box';
+@import '../../../node_modules/daemonite-material/assets/scss/material/text-field-floating-label';
+@import '../../../node_modules/daemonite-material/assets/scss/material/text-field-input-group';
+@import '../../../node_modules/daemonite-material/assets/scss/material/toolbar';
+@import '../../../node_modules/daemonite-material/assets/scss/material/tooltip';
+
+// Utilities
+
+@import '../../../node_modules/daemonite-material/assets/scss/utilities';
+
+// Very basic print styles
+
+@import '../../../node_modules/daemonite-material/assets/scss/print';

@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :validatable
 
   belongs_to :organization
@@ -29,6 +29,8 @@ class User < ApplicationRecord
     python: 4,
     design: 5,
     pm: 6,
-    php: 7
+    php: 7,
+    devops: 8,
+    qa: 9
   }
 end
