@@ -1,28 +1,11 @@
-admin: &admin
-  organizations:
-    crud: true
-  projects:
-    crud: true
-  estimations:
-    crud: true
-  specifications:
-    crud: true
-  features:
-    crud: true
+admin: true
 
 organization_manager: &organization_manager
-  organizations:
-    read: true
-    update: true
-  projects:
-    crud: true
-  estimations:
-    crud: true
-  specifications:
-    crud: true
-    send_for_sign_off: true
-  features:
-    crud: true
+  organizations: true
+  projects: true
+  estimations: true
+  specifications: true
+  features: true
 
 sales_manager: &sales_manager
   <<: *organization_manager

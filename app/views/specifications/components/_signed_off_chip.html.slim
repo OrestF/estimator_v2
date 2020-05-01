@@ -1,0 +1,5 @@
+- if specification.signed_off_at
+  .chip.chip-actio
+    i class="chip-icon"
+      i.material-icons access_time
+    span Signed off by < #{specification.signed_off_by&.email} > at #{specification.signed_off_at}

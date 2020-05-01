@@ -4,6 +4,7 @@ class EstimationDatatable < ApplicationDatatable
       id: { source: 'Estimation.id' },
       title: { source: 'Estimation.title' },
       state: { source: 'Estimation.state' },
+      created_at: { source: 'Estimation.created_at' },
       project: { source: 'Project.title' }
     }
   end
@@ -15,6 +16,7 @@ class EstimationDatatable < ApplicationDatatable
         title: record.title,
         state: record.decorate.dc_state_badge,
         project: record.project.title,
+        created_at: record.created_at,
         actions: actions(record)
       }
     end

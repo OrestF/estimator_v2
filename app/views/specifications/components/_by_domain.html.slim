@@ -1,0 +1,5 @@
+.row
+  .col-sm-12
+    .specification-tables
+      - specification.estimations.each do |estimation|
+        = render 'estimations/show_card', estimation: estimation

@@ -1,6 +1,12 @@
-= form_with(model: specification, url: send_for_sign_off_specification_path(specification), local: false, class: 'form-inline') do  |form|
-  .form-group
-    = form.label :client_email, 'Send for sing off', class: 'form-control'
-    = form.text_field :client_email, value: specification.project.client&.email, class: 'form-control m-3', placeholder: 'client email'
+.row
+  .col-1.my-auto
+    = link_to('Sign off', sign_off_specification_path(@record), method: :patch, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning')
+  .col-1.my-auto
+    h2 OR
+  .col-7
+    = form_with(model: specification, url: send_for_sign_off_specification_path(specification), local: false, class: 'form-inline') do  |form|
+      .form-group
+        = form.label :client_email, 'Send for sing off', class: 'form-control'
+        = form.text_field :client_email, value: specification.project.client&.email, class: 'form-control m-3', placeholder: 'client email'
 
-  = form.submit local_assigns[:submit_text] || 'Send', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }
+      = form.submit local_assigns[:submit_text] || 'Send', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }

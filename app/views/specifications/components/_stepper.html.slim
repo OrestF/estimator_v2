@@ -1,0 +1,17 @@
+.stepper-vert
+  .stepper class="#{'active' if specification.features.exists?}"
+    .stepper-icon
+      i.material-icons format_list_bulleted
+    span.stepper-text 1. Fill in features list
+  .stepper class="#{'active' unless specification.business_analysis?}"
+    .stepper-icon
+      span.material-icons done_all
+    span.stepper-text 2. Sign off OR Send for sign off
+  .stepper class="#{'active' if specification.estimators.any?}"
+    .stepper-icon
+      span.material-icons people
+    span.stepper-text 3. Assign estimators
+  .stepper class="#{'active' if specification.finished?}"
+    .stepper-icon
+      span.material-icons flag
+    span.stepper-text 4. Finish

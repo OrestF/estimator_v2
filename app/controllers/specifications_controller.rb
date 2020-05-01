@@ -16,7 +16,7 @@ class SpecificationsController < ResourcesController
 
   def create
     if (res = Specifications::Operations::Create.call(record_params: record_params)).success?
-      success_nf(MessageHelper.saved(record_class.name), url: edit_specification_path(res.data[:record]))
+      success_nf(MessageHelper.saved(record_class.name), url: specification_path(res.data[:record]))
     else
       error_nf(html_humanize_errors(res.errors))
     end
@@ -37,7 +37,7 @@ class SpecificationsController < ResourcesController
   # TODO: create this operation
   def destroy
     if (res = Specifications::Operations::Delete.call(record: record)).success?
-      success_nf(MessageHelper.deleted(record_class.name), url: specification_path)
+      success_nf(MessageHelper.deleted(record_class.name), url: specifications_path)
     else
       error_nf(html_humanize_errors(res.errors))
     end
@@ -60,8 +60,8 @@ class SpecificationsController < ResourcesController
   end
 
   def sign_off
-    if (res = Specifications::Operations::SignOff.call(record: record)).success?
-      success_nf(MessageHelper.action('Specification', 'signed off'))
+    if (res = Specifications::Operations::SignOff.call(record: record, record_params: { signed_off_by: current_user })).success?
+      success_nf(MessageHelper.action('Specification', 'signed off'), url: request.referrer)
     else
       error_nf(html_humanize_errors(res.errors))
     end

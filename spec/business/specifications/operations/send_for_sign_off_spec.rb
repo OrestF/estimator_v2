@@ -19,7 +19,7 @@ describe Specifications::Operations::SendForSignOff do
         res = subject
 
         expect(res.success?).to eq true
-        expect(specification.reload.state).to eq 'client_sign_off'
+        expect(specification.reload.state).to eq 'sign_off'
         expect(specification.project.client.email).to eq record_params[:client_email]
       end
     end

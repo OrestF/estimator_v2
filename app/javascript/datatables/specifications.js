@@ -1,6 +1,7 @@
 $( document ).on('turbolinks:load ready', function() {
     if ($('#specifications-datatable_wrapper').length == 0 ) {
         $('#specifications-datatable').dataTable({
+            "order": [[ 0, "desc" ]],
             "processing": true,
             "serverSide": true,
             "ajax": {
