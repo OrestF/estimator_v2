@@ -1,0 +1,25 @@
+.card
+  .card-body
+    .grouped-view
+      - specification.estimation_tasks.includes(:feature).group_by(&:feature).each_with_index do |(feature, e_tasks), index|
+        .feature-item
+          - unless index.zero?
+            hr
+          .row
+            .col.col-sm-4.my-auto
+              h4
+                strong = feature.title
+            .col.col-sm-8.pl-0
+              - if feature.description.present?
+                .border-left.border-bottom.p-2.mb-2
+                  i = feature.description
+          - e_tasks.group_by(&:estimation).each do |estimation, tasks|
+            .row.mb-3
+              .col.col-sm-4.my-auto
+                = estimation.estimator.decorate.dc_domain
+              .col.col-sm-8.p-0
+                - tasks.each do |t|
+                  .row.mr-0
+                    .col-10 = t.title
+                    .col-1.p-0.text-center = t.optimistic
+                    .col-1.pl-0.text-center = t.pessimistic

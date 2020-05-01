@@ -4,13 +4,16 @@ class Specification < ApplicationRecord
 
   belongs_to :user
   belongs_to :project
+  belongs_to :signed_off_by, class_name: 'User', optional: true
 
   has_one :organization, through: :user
 
   has_many :estimations
+  has_many :estimation_tasks, through: :estimations
   has_many :estimators, through: :estimations, source: :user
 
   has_many :features
+
 
   scope :by_project, ->(project) { where(project: project) }
 
@@ -18,7 +21,7 @@ class Specification < ApplicationRecord
 
   enum state: {
     business_analysis: 0,
-    client_sign_off: 1,
+    sign_off: 1,
     qa: 2,
     estimation: 3,
     finished: 100
@@ -30,5 +33,13 @@ class Specification < ApplicationRecord
 
   def total_pessimistic
     estimations.sum(&:total_pessimistic)
+  end
+
+  def may_finish?
+    estimation?
+  end
+
+  def signed_off?
+    [signed_off_by, signed_off_at].all?
   end
 end

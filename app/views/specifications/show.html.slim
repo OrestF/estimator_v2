@@ -1,40 +1,68 @@
 / = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_specification_path(@record), icon: 'edit'),
 /         icon_link(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 - content_for :bottom_actions do
-  - if policy_plus(@record, :finish)
+  = bottom_action_btn(project_path(@record.project), title: 'Go to project', class: 'btn-info')
+
+  - if @record.may_finish? && policy_plus(@record, :finish)
     = bottom_action_btn(finish_specification_path(@record), title: 'Mark as finished', icon: 'check_circle_outline', class: 'btn-warning', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}})
   = bottom_action_btn(edit_specification_path(@record), icon: 'edit')
   = bottom_action_btn(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
 .row
-  .col-sm-8.offset-sm-2
+  .col-sm-3
+    = render 'specifications/components/stepper', specification: @record
+  .col-sm-9
     = render 'ui/title_state', record: @record
     = render 'ui/states_flow', record: @record
-    - if @record.signed_off_at
-      .chip Signed of at #{@record.signed_off_at}
 
-    .row
-      - if @record.estimators.none? && policy_plus(@record, :assign_estimators)
-        .col-sm-4
-          = render 'specifications/estimators_form', specification: @record
 
     .row.mt-3
-      .col-sm-12
-        .specification-tables
-          = render 'specifications/features/table_card', features: @record.features
-    .row
-      .col-sm-12
-        .specification-tables
-          - @record.estimations.each do |estimation|
-            = render 'estimations/show_card', estimation: estimation
+      - if @record.signed_off?
+        .col-sm-12
+          .specification-tables
+            = render 'specifications/features/table_card', features: @record.features
 
     .row
       .col-sm-12
-        .float-left
-          h3
-            strong Total
-        .float-right
-          .h3
-            .badge.h3.badge-success#total_optimistic
-              = @record.total_optimistic
-            .badge.badge-danger#total_pessimistic
-              = @record.total_pessimistic
+        - if @record.business_analysis?
+          = render 'specifications/features/main_form', specification: @record
+
+          .mt-3
+            - if @record.features.exists?
+              = render 'specifications/send_for_sign_off_form', specification: @record
+            - else
+              = link_to('Filled in', '#', onclick: 'window.location.reload()', class: 'btn btn-success')
+
+    .row
+      .col-sm-6
+        = render 'specifications/components/signed_off_chip', specification: @record
+      .col-sm-6
+        - if @record.qa? && policy_plus(@record, :assign_estimators)
+          = render 'specifications/estimators_form', specification: @record
+        - if @record.estimations.exists?
+          = render 'specifications/components/estimations_progress', specification: @record
+
+    - if @record.estimations.done.exists?
+      .row.mt-3
+        .col-12
+          ul#specificationTab.nav.nav-justified.nav-tabs role="tablist"
+            li.nav-item
+              a#by-feature-tab.nav-link.active aria-controls="by-feature" aria-selected="true" data-toggle="tab" href="#by-feature" role="tab"  By feature
+            li.nav-item
+              a#by-domain-tab.nav-link aria-controls="by-domain" aria-selected="false" data-toggle="tab" href="#by-domain" role="tab"  By domain
+          #specificationTabContent.tab-content.mt-3
+            #by-feature.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
+              = render 'specifications/components/by_feature', specification: @record
+            #by-domain.tab-pane.fade aria-labelledby="home-tab" role="tabpanel"
+              = render 'specifications/components/by_domain', specification: @record
+
+          .row.mt-3
+            .col-sm-12
+              .float-left
+                h3
+                  strong Total
+              .float-right
+                .h3
+                  .badge.h3.badge-success#total_optimistic
+                    = @record.total_optimistic
+                  .badge.badge-danger#total_pessimistic
+                    = @record.total_pessimistic

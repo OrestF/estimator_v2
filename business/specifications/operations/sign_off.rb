@@ -1,17 +1,22 @@
 class Specifications::Operations::SignOff < BaseOperation
   def call
-    if record.client_sign_off?
-      assign_timestamp
-      update_state
-    end
+    build_form
+    return validation_fail unless form_valid?
+
+    assign_attributes
+    update_state
 
     success(args)
   end
 
   private
 
-  def assign_timestamp
-    record.signed_off_at = Time.current
+  def form_class
+    Specifications::Forms::SignOff
+  end
+
+  def assign_attributes
+    record.assign_attributes(record_params.merge!(signed_off_at: Time.current))
   end
 
   def update_state

@@ -38,15 +38,15 @@ module ApplicationHelper
 
   def state_label(state)
     case state
-    when 'in_progress', 'qa'
+    when 'qa'
       'info'
     when 'won', 'done', 'finished'
       'success'
-    when 'estimation'
+    when 'in_progress', 'estimation'
       'secondary'
     when 'failed'
       'danger'
-    when 'client_sign_off'
+    when 'sign_off'
       'warning'
     else
       'dark'

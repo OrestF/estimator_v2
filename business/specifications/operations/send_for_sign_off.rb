@@ -7,7 +7,7 @@ class Specifications::Operations::SendForSignOff < BaseOperation
 
     assign_client_to_project
     send_email
-    mark_as_client_sign_off
+    mark_as_sign_off
 
     success(args)
   end
@@ -37,8 +37,8 @@ class Specifications::Operations::SendForSignOff < BaseOperation
     SpecificationMailer.with(specification: record, client: client).send_for_sign_off.deliver_now
   end
 
-  def mark_as_client_sign_off
-    record.client_sign_off!
+  def mark_as_sign_off
+    record.sign_off!
   end
 
   def form_class

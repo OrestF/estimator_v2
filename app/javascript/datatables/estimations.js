@@ -1,6 +1,7 @@
 $( document ).on('turbolinks:load ready', function() {
     if ($('#estimations-datatable_wrapper').length == 0 ) {
         $('#estimations-datatable').dataTable({
+            "order": [[ 0, "desc" ]],
             "processing": true,
             "serverSide": true,
             "ajax": {
@@ -12,6 +13,7 @@ $( document ).on('turbolinks:load ready', function() {
                 {"data": "project"},
                 {"data": "title"},
                 {"data": "state"},
+                {"data": "created_at"},
                 {"data": "actions", "orderable": false},
             ]
         });
