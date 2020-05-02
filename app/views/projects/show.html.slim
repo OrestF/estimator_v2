@@ -18,8 +18,9 @@
   .col-sm-8
     .card
       .card-body
-        .card-title Specifications
-        - if policy_plus(@new_specification, :create)
-          .mb-3
-            = render 'specifications/components/create_modal', specification: @new_specification
+        .card-title
+          span Specifications
+          - if policy_plus(@new_specification, :create)
+            .mb-3.float-right
+              = render 'specifications/components/create_modal', specification: @new_specification
         = render 'specifications/datatable', datatable_source: specifications_path(by_project: @record.id, format: :json)

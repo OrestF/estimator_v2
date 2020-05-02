@@ -12,6 +12,7 @@ h1 = current_organization.name
         i.material-icons.mr-1 chat
         span Slack connected
   .col-sm-7
+    h3 Members
     = render 'organizations/users', users: current_organization.users
   .col-sm-3
     h3 Invite member

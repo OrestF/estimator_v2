@@ -2,6 +2,7 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
   include Pundit
   include ActionView::Helpers::OutputSafetyHelper
   include ActionView::Helpers::UrlHelper
+  include ActionView::Context
 
   def current_user
     options[:current_user]
@@ -26,13 +27,17 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
   def view_link(record, path)
     return unless policy(record).show?
 
-    link_to('View', routes.public_send(path, record), class: 'btn')
+    link_to(routes.public_send(path, record), class: 'btn', title: 'Open') do
+      content_tag(:i, 'link', class: 'material-icons')
+    end
   end
 
-  def edit_link(record, path, button_name = nil)
+  def edit_link(record, path)
     return unless policy(record).edit? || policy(record).show?
 
-    link_to(button_name || 'Edit', routes.public_send(path, record), class: 'btn')
+    link_to(routes.public_send(path, record), class: 'btn', title: 'Edit') do
+      content_tag(:i, 'edit', class: 'material-icons')
+    end
   end
 
   def policy(record, configs = {})

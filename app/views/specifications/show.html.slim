@@ -43,10 +43,6 @@
       .col-sm-6
         - if @record.qa? && policy_plus(@record, :assign_estimators)
           = render 'specifications/estimators_form', specification: @record
-        / - if @record.estimations.exists?
-          = render 'specifications/components/estimations_progress', specification: @record
-      / .col-sm-6
-        = render 'specifications/components/signed_off_chip', specification: @record
 
     - if @record.estimations.done.exists?
       .row

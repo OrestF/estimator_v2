@@ -20,6 +20,14 @@ class EstimationsController < ResourcesController
     end
   end
 
+  def destroy
+    if (res = Estimations::Operations::Delete.call(record: record)).success?
+      success_nf(MessageHelper.deleted(record_class.name), url: estimations_path)
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_class
