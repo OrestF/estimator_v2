@@ -35,11 +35,26 @@ class SoftDeletable < Module
         end
       end
 
+      def restore_relations
+        ApplicationRecord.transaction do
+          dependant_relations.each do |dr|
+            relations = send(dr).unscoped
+            if relations.respond_to?(:update_all)
+              relations.each { |r| r.try(:restore) }
+            else
+              relations.try(:restore)
+            end
+          end
+        end
+      end
+
       def restore
         return unless deleted?
 
         self.deleted_at = nil
         save(valdiate: false)
+
+        restore_relations
       end
     end
   end

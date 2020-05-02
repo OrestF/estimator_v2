@@ -1,17 +1,17 @@
 .stepper-vert
-  .stepper class="#{'active' if specification.features.exists?}"
+  .stepper.active
     .stepper-icon
       i.material-icons format_list_bulleted
     span.stepper-text 1. Fill in features list
-  .stepper class="#{'active' unless specification.business_analysis?}"
+  .stepper class="#{'active' if specification.features.exists?}"
     .stepper-icon
-      span.material-icons done_all
+      span.material-icons fingerprint
     span.stepper-text 2. Sign off OR Send for sign off
-  .stepper class="#{'active' if specification.estimators.any?}"
+  .stepper class="#{'active' unless specification.business_analysis?}"
     .stepper-icon
       span.material-icons people
     span.stepper-text 3. Assign estimators
-  .stepper class="#{'active' if specification.estimations.exists? && specification.estimations.all?(&:done?)}"
+  .stepper class="#{'active' if specification.estimators.any?}"
     .stepper-icon
       span.material-icons people
     span.stepper-text 4. Wait all estimations to be done

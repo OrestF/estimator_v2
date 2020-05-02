@@ -1,6 +1,6 @@
 - content_for :page_actions do
   - unless @record.done?
-    = bottom_action_btn(done_estimation_path(@record), title: 'Mark as done', icon: 'check_circle_outline', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}}, class: 'btn btn-warning')
+    = bottom_action_btn(done_estimation_path(@record), title: 'Mark as done', icon: 'done', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}}, class: 'btn btn-warning')
 
 = render 'ui/title_state', record: @record
 = render 'ui/states_flow', record: @record
