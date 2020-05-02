@@ -11,7 +11,7 @@ html
   body
     = render 'ui/header' unless @hide_header
     = render 'ui/breadcrumbs' unless @hide_breadcrumbs
+    = render 'ui/page_actions' if content_for?(:page_actions)
     .container-fluid
       = yield
-    = render 'ui/bottom_actions' if content_for?(:bottom_actions)
     = render 'ui/flash'

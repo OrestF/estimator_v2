@@ -149,6 +149,7 @@ table {
 
 .task-row {
   min-height: 2rem;
+  margin: 0;
 
   .col {
     display: inline-flex;
@@ -167,10 +168,23 @@ table {
   bottom: 0;
   left: 0;
   right: 0;
+}
 
+.bottom-actions-nav, .page-actions-nav {
   z-index: 5;
 
   .btn:not(.btn-primary):not(.btn-success):not(.btn-warning):not(.btn-info):not(.btn-danger) {
     background-color: white;
   }
+}
+
+.page-actions-nav {
+  display: inline-block;
+  float: right;
+  position: sticky;
+  top: 0;
+}
+.breadcrumbs-nav {
+  max-width: 30%;
+  display: inline-block;
 }

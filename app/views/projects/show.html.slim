@@ -1,31 +1,25 @@
 / = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_project_path(@record), icon: 'edit'),
 /                                                 icon_link(project_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
-- content_for :bottom_actions do
-  = bottom_action_btn(edit_project_path(@record), icon: 'edit', title: 'Edit', class: 'btn-warning')
-  = bottom_action_btn(project_path(@record), icon: 'delete', class: 'btn-danger', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
+- content_for :page_actions do
+  = bottom_action_btn(edit_project_path(@record), icon: 'edit', title: 'Edit')
+  = bottom_action_btn(project_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
 
 = render 'ui/title_state', record: @record
 
-ul#projectTab.nav.nav-justified.nav-tabs role="tablist"
-  li.nav-item
-    a#info-tab.nav-link.active aria-controls="info" aria-selected="true" data-toggle="tab" href="#info" role="tab"  Info
-  li.nav-item
-    a#specifications-tab.nav-link aria-controls="specifications" aria-selected="false" data-toggle="tab" href="#specifications" role="tab"  Specifications
-#projectTabContent.tab-content.mt-3
-  #info.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
-    .clearfix
-    - if @record.client
-      .chip.m-3 Client: #{@record.client.email}
-    div
-      h3 Description
-      = render 'projects/attachments', project: @record
-      == @record.description
-  #specifications.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
-    .row
-      .col-sm-9
-        h3 Specifications
-        = render 'specifications/datatable', datatable_source: specifications_path(by_project: @record.id, format: :json)
-      .col-sm-3
+= render 'projects/components/client_chip', client: @record.client
+
+.row
+  .col-sm-4
+    .card
+      .card-body
+        .card-title Description
+        = render 'projects/attachments', project: @record
+        == @record.description
+  .col-sm-8
+    .card
+      .card-body
+        .card-title Specifications
         - if policy_plus(@new_specification, :create)
-          h3 Create specification
-          = render 'specifications/form', specification: @new_specification
+          .mb-3
+            = render 'specifications/components/create_modal', specification: @new_specification
+        = render 'specifications/datatable', datatable_source: specifications_path(by_project: @record.id, format: :json)

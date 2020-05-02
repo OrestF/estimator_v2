@@ -1,6 +1,7 @@
-- content_for :bottom_actions do
+- content_for :page_actions do
   - if @record.may_finish? && policy_plus(@record, :finish)
     = bottom_action_btn(finish_specification_path(@record), title: 'Mark as finished', icon: 'check_circle_outline', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}}, class: 'btn btn-warning')
+  = bottom_action_btn(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
 
 .row
   .col-sm-3

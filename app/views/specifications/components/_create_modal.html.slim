@@ -1,0 +1,15 @@
+/! Button trigger modal
+button.btn.btn-default data-target="#createSpecificationModal" data-toggle="modal" type="button"
+  | Create new
+/! Modal
+#createSpecificationModal.modal.fade aria-hidden="true" aria-labelledby="createSpecificationModalTitle" role="dialog" tabindex="-1"
+  .modal-dialog.modal-dialog-centered role="document"
+    .modal-content
+      .modal-header
+        h5#createSpecificationModalTitle.modal-title New specification
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+      .modal-body
+        = render 'specifications/form', specification: specification
+      .modal-footer
+        button.btn.btn-secondary data-dismiss="modal" type="button"  Close

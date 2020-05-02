@@ -11,7 +11,11 @@
     .stepper-icon
       span.material-icons people
     span.stepper-text 3. Assign estimators
+  .stepper class="#{'active' if specification.estimations.exists? && specification.estimations.all?(&:done?)}"
+    .stepper-icon
+      span.material-icons people
+    span.stepper-text 4. Wait all estimations to be done
   .stepper class="#{'active' if specification.finished?}"
     .stepper-icon
       span.material-icons flag
-    span.stepper-text 4. Finish
+    span.stepper-text 5. Finish
