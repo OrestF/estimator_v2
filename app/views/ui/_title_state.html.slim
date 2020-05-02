@@ -1,3 +1,4 @@
-h1.float-left.mr-1 = record.title
+h1.float-left.mr-1 = link_to(record.title, send("#{record.class.name.underscore}_path", record), class: 'text-black')
+/ h1.float-left.mr-1 = record.title
 .h6 = record.decorate.dc_state_badge
 .clearfix

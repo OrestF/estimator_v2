@@ -1,4 +1,4 @@
-alertify.set('notifier','position', 'top-right');
+alertify.set('notifier','position', 'top-center');
 var wait = '<%= status %>' == 'success' ? 2 : 7;
 alertify.notify("<%= message %>", '<%= status %>', wait, function() {
     if ('<%= url %>') {

@@ -1,8 +1,5 @@
-/ = corner_button(organization_edit_path, icon: 'edit')
-
-- content_for :bottom_actions do
-  / - @justify_bottom_actions = true
-  = bottom_action_btn(organization_edit_path, icon: 'edit', class: 'btn-warning')
+- content_for :page_actions do
+  = bottom_action_btn(organization_edit_path, icon: 'edit')
 
 h1 = current_organization.name
 .row

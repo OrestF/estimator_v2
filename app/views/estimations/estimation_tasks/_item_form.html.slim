@@ -5,7 +5,7 @@
     = f.hidden_field :estimation_id
     = f.hidden_field :feature_id, value: (f.object.feature_id || feature.id)
     .col-sm-6.col.title-col
-      = f.text_field :title, class: 'form-control'
+      = f.text_field :title, class: 'form-control', autofocus: true
     / .col.description-col
       = f.text_field :description, class: 'form-control'
     .col-sm-2.col.optimistic-col

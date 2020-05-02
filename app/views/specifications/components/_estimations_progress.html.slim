@@ -1,10 +1,12 @@
 - width = 100 / specification.estimations.size * specification.estimations.done.size
 .card
-  ul.list-group.list-group-flush
-    - specification.estimations.each do |estimation|
-      li.list-group-item
-        = link_to(estimation_path(estimation), target: 'blank') do
-          span = estimation.user.decorate.dc_title
-        .float-right = estimation.decorate.dc_state_badge
+  .card-body
+    .card-title Estimations progress
+    ul.list-group.list-group-flush
+      - specification.estimations.each do |estimation|
+        li.list-group-item
+          = link_to(estimation_path(estimation), target: 'blank') do
+            span = estimation.user.decorate.dc_title
+          .float-right = estimation.decorate.dc_state_badge
   .progress
     .progress-bar.bg-secondary class="#{'progress-bar-animated progress-bar-striped' if specification.estimations.in_progress.any?}" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" style="width: #{width}%"
