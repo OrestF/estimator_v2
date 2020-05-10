@@ -10,13 +10,17 @@ class UserDecorator < ApplicationDecorator
   end
 
   def dc_full_name
-    [first_name, last_name].join(' ')
+    [first_name, last_name].join(' ').presence || email
   end
 
   def dc_domain
     h.capture do
-      h.image_pack_tag("icons/#{domain}.svg", size: 32, alt: domain) +
+      dc_domain_icon +
       h.content_tag(:span, domain)
     end
+  end
+
+  def dc_domain_icon
+    h.image_pack_tag("icons/#{domain}.svg", size: 32, alt: domain)
   end
 end

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       post 'create_task'
       delete 'destroy_task'
       patch 'done'
+      get 'evaluate'
     end
   end
 

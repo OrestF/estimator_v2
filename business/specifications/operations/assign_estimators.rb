@@ -30,7 +30,7 @@ class Specifications::Operations::AssignEstimators < BaseOperation
 
   def estimation_params(estimator)
     {
-      title: "#{record.title} - #{estimator.email}",
+      title: "#{record.title}: #{estimator.domain}",
       specification_id: record.id,
       user_id: estimator.id
     }

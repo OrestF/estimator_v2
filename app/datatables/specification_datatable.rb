@@ -15,7 +15,7 @@ class SpecificationDatatable < ApplicationDatatable
       {
         id: record.id,
         title: record.title,
-        deadline: record.deadline,
+        deadline: record.decorate.dc_deadline,
         user: record.user.email,
         state: record.decorate.dc_state_badge,
         project: record.project.title,

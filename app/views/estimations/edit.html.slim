@@ -2,51 +2,8 @@
   - unless @record.done?
     = bottom_action_btn(done_estimation_path(@record), title: 'Mark as done', icon: 'done', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}}, class: 'btn btn-warning')
 
-= render 'ui/title_state', record: @record
-= render 'ui/states_flow', record: @record
-  br
-  br
-.row.mb-3
-  .col-sm-12
-
-
 .row
-  .col-sm-4
-    .card
-      .card-body
-        .card-title = @record.project.title
-        p == @record.project.description
-        = render 'projects/attachments', project: @record.project
-  .col-sm-8
-    .mb-3
-      - if @record.done?
-        = render 'estimations/show_card', estimation: @record
-      - else
-        .card
-          .card-body
-            .table-responsive
-              table.table.table-condensed
-                thead
-                  tr
-                    th width="15%" Title
-                    th width="25%" Description
-                    th width="30%" Acceptance criteria
-                    th width="30%" Estimation tasks
-                tbody
-                  - @record.specification.features.each do |feature|
-                    tr class="feature_#{feature.id}"
-                      td = feature.title
-                      td = feature.description
-                      td == feature.acceptance_criteria
-                      td = render 'estimations/estimation_tasks/main_form', feature: feature, estimation: @record
-    .row
-      .col-sm-12
-        .float-left
-          h3
-            strong Total
-        .float-right
-          .h3
-            .badge.h3.badge-success#total_optimistic
-              = @record.total_optimistic
-            .badge.badge-danger#total_pessimistic
-              = @record.total_pessimistic
+  .col-6.offset-3
+    = render 'ui/title_state', record: @record
+    = render 'ui/states_flow', record: @record
+    = render 'estimations/form', estimation: @record

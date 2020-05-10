@@ -27,7 +27,7 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
   def view_link(record, path)
     return unless policy(record).show?
 
-    link_to(routes.public_send(path, record), class: 'btn', title: 'Open') do
+    link_to(routes.public_send(path, record), class: 'btn mr-1', title: 'Open') do
       content_tag(:i, 'link', class: 'material-icons')
     end
   end
@@ -35,7 +35,7 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
   def edit_link(record, path)
     return unless policy(record).edit? || policy(record).show?
 
-    link_to(routes.public_send(path, record), class: 'btn', title: 'Edit') do
+    link_to(routes.public_send(path, record), class: 'btn mr-1', title: 'Edit') do
       content_tag(:i, 'edit', class: 'material-icons')
     end
   end

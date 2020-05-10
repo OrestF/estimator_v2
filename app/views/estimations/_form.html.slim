@@ -1,0 +1,6 @@
+= form_with(model: estimation, local: false) do  |form|
+  .form-group
+    = form.label :title, class: 'form-control'
+    = form.text_field :title, class: 'form-control'
+
+  = form.submit local_assigns[:submit_text] || 'Save', class: 'btn m-t-5', data: { confirm: 'Are you sure?' }
