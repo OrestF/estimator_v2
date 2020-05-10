@@ -16,7 +16,7 @@
           - e_tasks.group_by(&:estimation).each do |estimation, tasks|
             .row.mb-3
               .col.col-sm-4.my-auto
-                = estimation.estimator.decorate.dc_domain
+                = estimation.decorate.dc_title
               .col.col-sm-8.p-0
                 - tasks.each do |t|
                   .row.mr-0

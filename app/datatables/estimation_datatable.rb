@@ -3,6 +3,8 @@ class EstimationDatatable < ApplicationDatatable
     @view_columns ||= {
       id: { source: 'Estimation.id' },
       title: { source: 'Estimation.title' },
+      domain: { source: 'User.domain' },
+      estimator: { source: 'User.email' },
       state: { source: 'Estimation.state' },
       created_at: { source: 'Estimation.created_at' },
       project: { source: 'Project.title' }
@@ -13,7 +15,9 @@ class EstimationDatatable < ApplicationDatatable
     records.map do |record|
       {
         id: record.id,
-        title: record.title,
+        title: record.decorate.dc_title,
+        domain: record.estimator.decorate.dc_domain,
+        estimator: record.estimator.decorate.dc_full_name,
         state: record.decorate.dc_state_badge,
         project: record.project.title,
         created_at: record.created_at,
@@ -29,8 +33,16 @@ class EstimationDatatable < ApplicationDatatable
   end
 
   def actions(record)
-    actions = safe_join([view_link(record, :estimation_path), edit_link(record, :edit_estimation_path)])
+    actions = safe_join([view_link(record, :estimation_path), edit_link(record, :edit_estimation_path), evaluate_link(record)])
 
     actions.presence || 'Not allowed'
+  end
+
+  def evaluate_link(record)
+    return unless policy(record).evaluate?
+
+    link_to(routes.evaluate_estimation_path(record), class: 'btn mr-1', title: 'Evaluate') do
+      content_tag(:i, 'timelapse', class: 'material-icons')
+    end
   end
 end

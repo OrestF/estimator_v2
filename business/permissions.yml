@@ -28,7 +28,7 @@ worker: &worker
     read: true
   estimations:
     read: true
-    update: true
+    evaluate: true
   specifications:
     read: true
     update: false

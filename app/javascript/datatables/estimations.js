@@ -12,6 +12,8 @@ $( document ).on('turbolinks:load ready', function() {
                 {"data": "id"},
                 {"data": "project"},
                 {"data": "title"},
+                {"data": "domain"},
+                {"data": "estimator"},
                 {"data": "state"},
                 {"data": "created_at"},
                 {"data": "actions", "orderable": false},

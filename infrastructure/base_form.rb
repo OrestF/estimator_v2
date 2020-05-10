@@ -5,12 +5,19 @@ class BaseForm
 
   attr_accessor :record, :params
 
+  REQUIRED_ATTRIBUTES = [].freeze
+
   def initialize(params, record: nil)
     @params = params
     @record = record
     # Slice all attributes which is not required by form
     # to omit save of unpredictable params
     @params.slice!(*permitted_attributes)
+
+    # automatically validates all REQUIRED_ATTRIBUTES
+    self.class.class_eval do
+      validates *self::REQUIRED_ATTRIBUTES, presence: true if self::REQUIRED_ATTRIBUTES.present?
+    end
 
     super(@params)
   end
