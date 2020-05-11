@@ -1,0 +1,16 @@
+h1 = specification.title
+= render 'specifications/components/deadline_chip', specification: specification
+= render 'specifications/components/signed_off_chip', specification: specification
+.mt-3
+  = render 'specifications/components/by_feature', specification: specification
+.row.mt-3
+  .col-sm-12
+    .float-left
+      h3
+        strong Total
+    .float-right
+      .h3
+        .badge.h3.badge-success#total_optimistic
+          = specification.total_optimistic
+        .badge.badge-danger#total_pessimistic
+          = specification.total_pessimistic

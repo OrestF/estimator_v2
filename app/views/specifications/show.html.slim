@@ -7,6 +7,10 @@
   = bottom_action_btn(project_path(@record.project), title: 'Go to project')
   = bottom_action_btn(edit_specification_path(@record), icon: 'edit')
   = bottom_action_btn(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
+
+  = bottom_action_btn('#', icon: 'picture_as_pdf', title: 'Preview', link_params: { data: { target: '#previewPdf', toggle: 'modal' } })
+
+= render 'specifications/pdf/preview_modal', specification: @record
 .row
   .col-sm-3
     = render 'specifications/components/stepper', specification: @record
