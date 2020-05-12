@@ -3,7 +3,6 @@
   <head>
     <meta charset='utf-8' />
       <%= wicked_pdf_stylesheet_pack_tag "application" %>
-      <%= wicked_pdf_javascript_pack_tag "application" %>
     <style>
       div {
         color: red;
@@ -12,7 +11,5 @@
   </head>
   <body>
     <%= yield %>
-    <%= wicked_pdf_stylesheet_pack_tag "application" %>
-    <%= wicked_pdf_javascript_pack_tag "application" %>
   </body>
 </html>
