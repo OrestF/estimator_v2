@@ -22,7 +22,21 @@ class SpecificationsController < ResourcesController
     end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Specification #{@record.title}",
+               page_size: 'A4',
+               template: 'specifications/pdf/summary.html',
+               layout: 'pdf.erb',
+               orientation: 'Landscape',
+               lowquality: false,
+               zoom: 1,
+               dpi: 75
+      end
+    end
+  end
 
   def edit; end
 

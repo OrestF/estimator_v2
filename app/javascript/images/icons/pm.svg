@@ -1,1 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>file_type_todo</title><polygon points="17.866 15.509 17.866 15.509 16.886 16.489 15.906 15.511 15.906 15.511 13.949 13.554 14.926 12.577 16.883 14.534 21.774 9.64 22.754 10.617 17.866 15.509" style="fill:green"/><rect x="14.454" y="21.443" width="8.303" height="1.383" style="fill:#c00000"/><path d="M2,5.74V29.449H26.909V5.74ZM25.477,28.189,3.394,28.131,3.417,7.157H25.494ZM6.151,10.951v5.534h5.534V10.951ZM10.3,15.1H7.534V12.334H10.3Zm-4.151,4.22v5.534h5.534V19.323ZM10.3,23.474H7.534V20.709H10.3ZM30,2.551V26.24H28.569L28.549,4l-22.4-.029V2.551H30Z" style="fill:#cfcfcf"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Tech/32x32/NodeJS@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="26.3258261%" y1="19.5011988%" x2="63.9110201%" y2="59.7293538%" id="linearGradient-1">
+            <stop stop-color="#5CE6FF" offset="0%"></stop>
+            <stop stop-color="#2FC8FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="41.0923079%" y1="108.907692%" x2="41.0923094%" y2="7.44410198%" id="linearGradient-2">
+            <stop stop-color="#5CE6FF" offset="0%"></stop>
+            <stop stop-color="#2FAAFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="46.4398293%" y1="80.1656005%" x2="52.9622732%" y2="0%" id="linearGradient-3">
+            <stop stop-color="#4A7BF1" offset="0%"></stop>
+            <stop stop-color="#1B50CE" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="50%" x2="-17.8153842%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#5CE6FF" offset="0%"></stop>
+            <stop stop-color="#2FAAFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="27.9364888%" y1="19.5011988%" x2="62.9645896%" y2="59.7293538%" id="linearGradient-5">
+            <stop stop-color="#5CE6FF" offset="0%"></stop>
+            <stop stop-color="#2FC8FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="22.3711361%" y1="80.1656005%" x2="72.9888536%" y2="0%" id="linearGradient-6">
+            <stop stop-color="#4A7BF1" offset="0%"></stop>
+            <stop stop-color="#1B50CE" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Tech/32x32/NodeJS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="32" height="32"></rect>
+        <path d="M16,0.296072678 L29.12,7.87090821 C29.3180167,7.9852332 29.44,8.19651449 29.44,8.42516447 L29.44,23.5748355 C29.44,23.8034855 29.3180167,24.0147668 29.12,24.1290918 L16,31.7039273 C15.8019833,31.8182523 15.5580167,31.8182523 15.36,31.7039273 L2.24,24.1290918 C2.04198331,24.0147668 1.92,23.8034855 1.92,23.5748355 L1.92,8.42516447 C1.92,8.19651449 2.04198331,7.9852332 2.24,7.87090821 L15.36,0.296072678 C15.5580167,0.181747689 15.8019833,0.181747689 16,0.296072678 Z" id="Polygon" fill="url(#linearGradient-1)"></path>
+        <path d="M1.91987484,8.45616636 L1.91987484,23.5890001 C1.91987484,23.8911821 2.08082637,24.1704886 2.34227484,24.3220098 L2.34227484,24.3220098 L2.34227484,24.3220098 L6.88542151,16.0942191 L2.28845796,7.81684062 C2.06033392,7.948928 1.91987484,8.19256126 1.91987484,8.45616636 Z" id="Fill-1" fill="url(#linearGradient-2)"></path>
+        <path d="M29.2584164,7.81558523 L29.2584164,7.81558523 L29.2584164,7.81558523 L24.6602012,16.0973575 L29.2027221,24.3245206 C29.4668799,24.1714464 29.6295026,23.889256 29.6295026,23.5839511 L29.6295026,8.45896164 C29.6295026,8.19364253 29.4880757,7.94844156 29.2584164,7.81558523 Z" id="Fill-4" fill="url(#linearGradient-3)"></path>
+        <polygon id="Fill-13" fill="url(#linearGradient-4)" points="15.7762219 0.00759507692 16.167333 0.716259692 24.6597632 16.097232 29.2579783 7.81545969"></polygon>
+        <polygon id="Fill-15" fill="url(#linearGradient-5)" points="24.6599509 16.0974203 16.1675207 0.716448 15.7764096 0.00778338462 14.5498852 0.716448 2.28839538 7.81690338 6.88535893 16.0949095 15.6829199 32 29.2030976 24.3245834"></polygon>
+        <polygon id="Fill-17" fill="url(#linearGradient-6)" points="2.34246258 24.3220726 15.68 32 6.88498347 16.0942818"></polygon>
+    </g>
+</svg>

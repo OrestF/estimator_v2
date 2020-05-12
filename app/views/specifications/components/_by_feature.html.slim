@@ -1,25 +1,64 @@
-.card
-  .card-body
-    .grouped-view
-      - specification.estimation_tasks.includes(:feature).group_by(&:feature).each_with_index do |(feature, e_tasks), index|
-        .feature-item
-          - unless index.zero?
-            hr
-          .row
-            .col.col-sm-4.my-auto
-              h4
-                strong = feature.title
-            .col.col-sm-8.pl-0
-              - if feature.description.present?
-                .border-left.border-bottom.p-2.mb-2
-                  i = feature.description
-          - e_tasks.group_by(&:estimation).each do |estimation, tasks|
-            .row.mb-3
+.features
+  .card
+    .card-body
+      .grouped-view
+        - specification.estimation_tasks.includes(:feature).group_by(&:feature).each_with_index do |(feature, e_tasks), index|
+          .feature-item
+            - unless index.zero?
+            .row.feature-info
               .col.col-sm-4.my-auto
-                = estimation.decorate.dc_title
-              .col.col-sm-8.p-0
-                - tasks.each do |t|
-                  .row.mr-0
-                    .col-10 = t.title
-                    .col-1.p-0.text-center = t.optimistic
-                    .col-1.pl-0.text-center = t.pessimistic
+                h4
+                  strong = feature.title
+              .col.col-sm-8.pl-0
+                - if feature.description.present?
+                  .p-2
+                    = feature.description
+            - e_tasks.group_by(&:estimation).each do |estimation, tasks|
+              .row.border-bottom
+                .col.col-sm-4.my-auto.p-2.pl-3.border-right
+                  = estimation.decorate.dc_title
+                .col.col-sm-8.feature-hours
+                  - tasks.each do |t|
+                    .row.m-0.overflow-hidden.feature-task
+                      .feature-task-cell.col-10 = t.title
+                      .feature-task-cell.col-1.text-center = t.optimistic
+                      .feature-task-cell.col-1.text-center = t.pessimistic
+
+scss:
+  .features {
+    .card {
+      .card-body {
+        padding: 0;
+
+        .feature-item {
+          padding: 0 1rem 0 1rem;
+          overflow: hidden;
+
+          .feature-info {
+            background-color: rgba(0, 0, 0, 0.12);
+
+            h4 {
+              margin: 0.5rem 0;
+            }
+          }
+
+          .feature-hours {
+            overflow: hidden;
+            padding: 0;
+          }
+
+          .feature-task-cell {
+            padding: 0.5rem;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+          }
+
+          .feature-hours .feature-task:last-child {
+            .feature-task-cell {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
