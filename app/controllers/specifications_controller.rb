@@ -29,7 +29,7 @@ class SpecificationsController < ResourcesController
         render pdf: "Specification #{@record.title}",
                page_size: 'A4',
                template: 'specifications/pdf/summary.html',
-               layout: 'pdf.html',
+               layout: 'pdf.erb',
                orientation: 'Landscape',
                lowquality: false,
                zoom: 1,
