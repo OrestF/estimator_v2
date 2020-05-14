@@ -26,14 +26,18 @@ class SpecificationsController < ResourcesController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Specification #{@record.title}",
-               page_size: 'A4',
-               template: 'specifications/pdf/summary.html',
-               layout: 'pdf.erb',
-               orientation: 'Landscape',
-               lowquality: false,
-               zoom: 1,
-               dpi: 75
+        # render pdf: "Specification #{@record.title}",
+        #        page_size: 'A4',
+        #        template: 'specifications/pdf/summary.html',
+        #        layout: 'pdf.erb',
+        #        orientation: 'Landscape',
+        #        lowquality: false,
+        #        zoom: 1,
+        #        dpi: 75
+        pdf = WickedPdf.new.pdf_from_string(ApplicationController.new.render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record },  layout: 'layouts/pdf.erb'))
+        Xlog.info('PDF', data: pdf)
+
+        send_file(pdf)
       end
     end
   end
