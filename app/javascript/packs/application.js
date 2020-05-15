@@ -20,7 +20,7 @@ import 'bootstrap/dist/js/bootstrap';
 // import '../../../node_modules/alertifyjs/build/css/alertify.css'
 import 'daemonite-material/js/material';
 import 'select2'
-import './initializers';
+import '../initializers/entrypoint';
 import '../controllers/estimations';
 import '../controllers/specifications';
 import '../datatables/estimations';

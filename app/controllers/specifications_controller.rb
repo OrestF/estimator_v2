@@ -34,10 +34,9 @@ class SpecificationsController < ResourcesController
         #        lowquality: false,
         #        zoom: 1,
         #        dpi: 75
-        pdf = WickedPdf.new.pdf_from_string(ApplicationController.new.render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record },  layout: 'layouts/pdf.erb'))
-        Xlog.info('PDF', data: pdf)
+        pdf = WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record },  layout: 'layouts/pdf.erb'))
 
-        send_file(pdf)
+        send_data(pdf, filename: 'test.pdf')
       end
     end
   end
