@@ -1,0 +1,42 @@
+@startuml C4_Elements
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+Container_Boundary(webContainer, "WEB") {
+   Container(app, "app", "application layer")
+   Container(business, "business", "business logic implementation / client's requirements")
+   Container(data, "data", "data mutation")
+   Container(infrastructure, "infrastructure", "additional tools")
+}
+
+Container_Boundary(appContainer, "App") {
+    Container(appIO, "Input/Output", "Authentication/Authorization, HTTP, WebSockets, AMQP...")
+    Container(appRepresentation, "Data representation", "View rendering, JSON serialization, file generation, email sending, data decoration")
+    Container(appData, "Data processing", "Report generation, analytics...")
+}
+
+Container_Boundary(businessContainer, "Business") {
+    Component(businessOperation, "Operation", "Do <this> and <this> and even <this>")
+    Component(businessAction, "Action", "Brick of the operation. Reusable. Usaully can not be called outside an Operation")
+    Component(businessForm, "Form", "Defines if context/data is valid for Operation execution")
+    Component(businessEtc, "Custom component", "Any other component that are needed to statisfy business requirement")   
+
+    Rel(businessOperation, businessForm, "validates input")
+    Rel(businessOperation, businessAction, "calls as a part of operation flow")
+}
+
+Container_Boundary(dataContainer, "Data") {
+    Container(dataOutput, "Read", "read from database")
+    Container(dataInput, "Write", "write from database")
+}
+
+Container_Boundary(infrastructureContainer, "Infrastructure") {
+    Component(infrastructureTool1, "Tool 1", "QRCode generater")
+    Component(infrastructureTool2, "Tool 2", "Image parser")
+    Component(infrastructureTool3, "External 1 system client", "SafeCharge client")
+    Component(infrastructureTool4, "External 2 system client", "Some other client")
+}
+
+@enduml

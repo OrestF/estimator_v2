@@ -1,0 +1,19 @@
+@startuml C4_Elements
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+System_Boundary(estimator, "Estimator"){
+    Container(web, "WEB", "core application")
+    Container(sidekiq, "Sidekiq", "background processing")
+    ContainerDb(redis, "Redis", "secondary")
+    ContainerDb(db, "Database", "main") 
+}
+
+Rel(web, db, 'read/write')
+Rel(web, sidekiq, 'delegate async job')
+Rel(sidekiq, db, 'read/write')
+Rel(sidekiq, redis, 'read')
+
+@enduml

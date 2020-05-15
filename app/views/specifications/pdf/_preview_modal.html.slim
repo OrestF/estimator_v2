@@ -11,6 +11,10 @@
       .modal-body
         = render 'specifications/pdf/summary', specification: specification
       .modal-footer
-        = link_to 'Download', specification_path(specification, format: :pdf), class: 'btn'
+        / - if specification.summary_pdf.present?
+        / - else
+        = link_to('Download', rails_blob_path(specification.summary_pdf, disposition: 'attachment'), class: 'btn') if specification.summary_pdf.present?
+        = link_to('Regenerate', specification_path(specification, format: :pdf), class: 'btn btn-danger')
+
         button.btn data-dismiss="modal" type="button"  Close
 

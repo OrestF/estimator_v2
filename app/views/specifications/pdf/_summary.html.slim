@@ -3,16 +3,45 @@
   h3 = specification.organization.name
   h1 = specification.project.title
   h2 = specification.title
-/ .mt-3
-/   = render 'specifications/components/by_feature', specification: specification
-/ .row.mt-3
-/   .col-sm-12
-/     .float-left
-/       h3
-/         strong Total
-/     .float-right
-/       .h3
-/         .badge.h3.badge-success#total_optimistic
-/           = specification.total_optimistic
-/         .badge.badge-danger#total_pessimistic
-/           = specification.total_pessimistic
+.mt-3
+  table.table.table-bordered.table-condensed width="100%"
+    - specification.estimation_tasks.includes(:feature).group_by(&:feature).each_with_index do |(feature, e_tasks), index|
+      tr style="background-color: rgba(0, 0, 0, 0.12);"
+        td width="30%"
+          strong = feature.title
+        td = feature.description
+        td.text-center Min
+        td.text-center Max
+
+      - e_tasks.group_by(&:estimation).each do |estimation, tasks|
+        tr
+          td.domain-cell rowspan="#{tasks.size + 1}" = estimation.title
+
+        - tasks.each do |t|
+          tr
+            td = t.title
+            td.text-center = t.optimistic
+            td.text-center = t.pessimistic
+    tr
+      td
+        strong Total
+      td
+      td.text-center
+        strong = specification.total_optimistic
+      td.text-center
+        strong = specification.total_pessimistic
+css:
+  .domain-cell {
+    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    vertical-align: middle;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  td {
+    padding: 0.5rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }

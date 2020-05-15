@@ -1,5 +1,3 @@
-/ = corner_dropdown(icon: 'menu', buttons_links: [icon_link(edit_specification_path(@record), icon: 'edit'),
-/         icon_link(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })])
 - content_for :page_actions do
   - if @record.may_finish? && policy_plus(@record, :finish)
     = bottom_action_btn(finish_specification_path(@record), title: 'Mark as finished', icon: 'check_circle_outline', class: 'btn-warning', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}})
@@ -7,9 +5,7 @@
   = bottom_action_btn(project_path(@record.project), title: 'Go to project')
   = bottom_action_btn(edit_specification_path(@record), icon: 'edit')
   = bottom_action_btn(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
-
-  = bottom_action_btn('#', icon: 'picture_as_pdf', title: 'Preview', link_params: { data: { target: '#previewPdf', toggle: 'modal' } })
-  = link_to('PDF', rails_blob_path(@record.summary_pdf, disposition: "attachment"), class: 'btn') if @record.summary_pdf.present?
+  = bottom_action_btn('#', icon: 'picture_as_pdf', title: 'Summary', link_params: { data: { target: '#previewPdf', toggle: 'modal' } })
 
 = render 'specifications/pdf/preview_modal', specification: @record
 .row
