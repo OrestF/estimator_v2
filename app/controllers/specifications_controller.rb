@@ -26,26 +26,40 @@ class SpecificationsController < ResourcesController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Specification #{@record.title}",
-               page_size: 'A4',
-               template: 'specifications/pdf/summary.pdf.erb',
-               layout: 'pdf.html.erb',
-               orientation: 'Landscape',
-               lowquality: false,
-               zoom: 1,
-               dpi: 75
-        # byebug
-        # pdf = WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record }, layout: 'layouts/pdf.html.erb'))
-        # byebug
-        # @record.summary_pdf.attach(pdf)
+        # render pdf: "Specification #{@record.title}",
+        #        page_size: 'A4',
+        #        template: 'specifications/pdf/summary.pdf.erb',
+        #        layout: 'pdf.html.erb',
+        #        orientation: 'Landscape',
+        #        lowquality: false,
+        #        zoom: 1,
+        #        dpi: 75
+        # pdf = WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record }, layout: 'layouts/pdf.html.erb'), encoding: "UTF-8")
+
+
+        # pdf_binary = {
+        #   io: StringIO.new(WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record }, layout: 'layouts/pdf.html.erb'), encoding: "UTF-8")),
+        #   filename: "Specification_#{@record.title}.pdf"
+        # }
+        #
+        # @record.summary_pdf.attach(pdf_binary)
+        # # save_path = Rails.root.join('filename.pdf')
+        # # File.open(save_path, 'w+') do |file|
+        # #   file << pdf
+        # # end
+        # #
         # # @record.summary_pdf.attach(
-        # #   io: pdf,
+        # #   io: File.open(save_path),
         # #   filename: 'file.pdf',
         # #   content_type: 'application/pdf',
         # #   identify: false
         # # )
+        # # @record.summary_pdf.attach(pdf)
         #
-        # send_data(pdf, filename: 'test.pdf')
+        # @record.save
+        # send_data(pdf_binary, filename: 'test.pdf')
+        PdfRendererJob.perform_later(@record)
+        redirect_to(@record)
       end
     end
   end

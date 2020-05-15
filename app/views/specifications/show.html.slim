@@ -9,7 +9,7 @@
   = bottom_action_btn(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
 
   = bottom_action_btn('#', icon: 'picture_as_pdf', title: 'Preview', link_params: { data: { target: '#previewPdf', toggle: 'modal' } })
-  = link_to(rails_blob_path(@record.summary_pdf, disposition: "attachment"), class: 'btn') if @record.summary_pdf.present?
+  = link_to('PDF', rails_blob_path(@record.summary_pdf, disposition: "attachment"), class: 'btn') if @record.summary_pdf.present?
 
 = render 'specifications/pdf/preview_modal', specification: @record
 .row

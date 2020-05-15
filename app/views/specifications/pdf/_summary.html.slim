@@ -1,5 +1,5 @@
 .text-center
-  = image_tag(specification.organization.logo, size: 300, class: 'img-fluid')
+  = wicked_pdf_image_tag(Rails.application.routes.url_helpers.url_for(specification.organization.logo), size: 300, class: 'img-fluid')
   h3 = specification.organization.name
   h1 = specification.project.title
   h2 = specification.title
@@ -16,3 +16,5 @@
 /           = specification.total_optimistic
 /         .badge.badge-danger#total_pessimistic
 /           = specification.total_pessimistic
+
+= wicked_pdf_stylesheet_pack_tag 'pdf'
