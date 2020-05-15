@@ -26,25 +26,26 @@ class SpecificationsController < ResourcesController
     respond_to do |format|
       format.html
       format.pdf do
-        # render pdf: "Specification #{@record.title}",
-        #        page_size: 'A4',
-        #        template: 'specifications/pdf/summary.html',
-        #        layout: 'pdf.erb',
-        #        orientation: 'Landscape',
-        #        lowquality: false,
-        #        zoom: 1,
-        #        dpi: 75
-        pdf = WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record }, layout: 'layouts/pdf.html.erb'))
-
+        render pdf: "Specification #{@record.title}",
+               page_size: 'A4',
+               template: 'specifications/pdf/summary.pdf.erb',
+               layout: 'pdf.html.erb',
+               orientation: 'Landscape',
+               lowquality: false,
+               zoom: 1,
+               dpi: 75
+        # byebug
+        # pdf = WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record }, layout: 'layouts/pdf.html.erb'))
+        # byebug
         # @record.summary_pdf.attach(pdf)
-        # @record.summary_pdf.attach(
-        #   io: pdf,
-        #   filename: 'file.pdf',
-        #   content_type: 'application/pdf',
-        #   identify: false
-        # )
-
-        send_data(pdf, filename: 'test.pdf')
+        # # @record.summary_pdf.attach(
+        # #   io: pdf,
+        # #   filename: 'file.pdf',
+        # #   content_type: 'application/pdf',
+        # #   identify: false
+        # # )
+        #
+        # send_data(pdf, filename: 'test.pdf')
       end
     end
   end
