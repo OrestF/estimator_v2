@@ -17,6 +17,8 @@ class Specification < ApplicationRecord
 
   scope :by_project, ->(project) { where(project: project) }
 
+  has_one_attached :summary_pdf
+
   validates :title, uniqueness: { scope: :project_id }
 
   enum state: {

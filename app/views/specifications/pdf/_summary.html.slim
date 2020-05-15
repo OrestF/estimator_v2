@@ -3,16 +3,16 @@
   h3 = specification.organization.name
   h1 = specification.project.title
   h2 = specification.title
-.mt-3
-  = render 'specifications/components/by_feature', specification: specification
-.row.mt-3
-  .col-sm-12
-    .float-left
-      h3
-        strong Total
-    .float-right
-      .h3
-        .badge.h3.badge-success#total_optimistic
-          = specification.total_optimistic
-        .badge.badge-danger#total_pessimistic
-          = specification.total_pessimistic
+/ .mt-3
+/   = render 'specifications/components/by_feature', specification: specification
+/ .row.mt-3
+/   .col-sm-12
+/     .float-left
+/       h3
+/         strong Total
+/     .float-right
+/       .h3
+/         .badge.h3.badge-success#total_optimistic
+/           = specification.total_optimistic
+/         .badge.badge-danger#total_pessimistic
+/           = specification.total_pessimistic

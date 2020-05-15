@@ -34,7 +34,15 @@ class SpecificationsController < ResourcesController
         #        lowquality: false,
         #        zoom: 1,
         #        dpi: 75
-        pdf = WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record },  layout: 'layouts/pdf.erb'))
+        pdf = WickedPdf.new.pdf_from_string(render_to_string('specifications/pdf/summary.html.slim', locals: { :'@record' =>  @record }, layout: 'layouts/pdf.html.erb'))
+
+        # @record.summary_pdf.attach(pdf)
+        # @record.summary_pdf.attach(
+        #   io: pdf,
+        #   filename: 'file.pdf',
+        #   content_type: 'application/pdf',
+        #   identify: false
+        # )
 
         send_data(pdf, filename: 'test.pdf')
       end
