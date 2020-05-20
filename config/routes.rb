@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  root 'specifications#index'
+  root 'pages#home'
   mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, controllers: {
