@@ -1,1 +1,28 @@
-h1.text-center Estimator
+h1.text-center
+  span Welcome to Estimator
+
+.row
+  .col-md-4.offset-5
+    .stepper-vert
+      .stepper.active
+        .stepper-icon
+          i.material-icons add
+        span.stepper-text
+          = link_to('1. Create a new project', new_project_path, class: 'text-black')
+      .stepper.active
+        .stepper-icon
+          span.material-icons menu_book
+        span.stepper-text 2. Create a new specification within a Project
+      .stepper.active
+        .stepper-icon
+          span.material-icons people
+        span.stepper-text 3. Assign estimators
+      .stepper.active
+        .stepper-icon
+          span.material-icons insert_chart_outlined
+        span.stepper-text
+          = link_to('4. Review estimated Specification', specifications_path, class: 'text-black')
+      .stepper.active
+        .stepper-icon
+          span.material-icons picture_as_pdf
+        span.stepper-text 5. Generate and download summary PDF

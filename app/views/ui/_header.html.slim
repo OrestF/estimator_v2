@@ -8,18 +8,24 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow-1
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         li.nav-item
-          = link_to('Projects', projects_path, class: 'nav-link')
+          = link_to(projects_path, class: 'nav-link')
+            i.material-icons work_outline
+            span  Projects
         li.nav-item
           = link_to(specifications_path, class: 'nav-link') do
-            span.mr-1 Specifications
+            i.material-icons menu_book
+            span.mr-1  Specifications
             = render 'specifications/components/count_badges'
         li.nav-item
           = link_to(estimations_path, class: 'nav-link') do
-            spa.mr-1 Estimations
+            i.material-icons insert_chart_outlined
+            spa.mr-1  Estimations
             span.badge.badge-danger = due_estimations_count
       ul.navbar-nav.ml-auto
         li.nav-item
-          = link_to('My organization', organization_path, class: 'nav-link')
+          = link_to(organization_path, class: 'nav-link') do
+            i.material-icons domain
+            span  My organization
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             | #{current_user&.email} [#{current_user.role}]
