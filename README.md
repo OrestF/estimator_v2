@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+```mermaid
+graph TL
+
+test1 --> test2
+test1 --> test3
+test2 --> test3
+```
