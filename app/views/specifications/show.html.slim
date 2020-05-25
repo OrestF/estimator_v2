@@ -24,8 +24,6 @@
 .row
   .col-sm-3
     = render 'specifications/components/stepper', specification: @record
-    - if @record.estimations.exists?
-      = render 'specifications/components/estimations_progress', specification: @record
   .col-sm-9
     .row
       .col-sm-6
@@ -58,16 +56,20 @@
         - if @record.qa? && policy_plus(@record, :assign_estimators)
           = render 'specifications/estimators_form', specification: @record
 
-    - if @record.estimations.done.exists?
+    - if @record.estimations.exists?
       .row
         .col-12
           ul#specificationTab.nav.nav-justified.nav-tabs role="tablist"
             li.nav-item
-              a#by-feature-tab.nav-link.active aria-controls="by-feature" aria-selected="true" data-toggle="tab" href="#by-feature" role="tab"  By feature
+              a#estimation-progress-tab.nav-link.active aria-controls="estimation-progress" aria-selected="true" data-toggle="tab" href="#estimation-progress" role="tab" Progress
             li.nav-item
-              a#by-domain-tab.nav-link aria-controls="by-domain" aria-selected="false" data-toggle="tab" href="#by-domain" role="tab"  By domain
+              a#by-feature-tab.nav-link aria-controls="by-feature" aria-selected="false" data-toggle="tab" href="#by-feature" role="tab" By feature
+            li.nav-item
+              a#by-domain-tab.nav-link aria-controls="by-domain" aria-selected="false" data-toggle="tab" href="#by-domain" role="tab" By domain
           #specificationTabContent.tab-content.mt-3
-            #by-feature.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
+            #estimation-progress.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
+              = render 'specifications/components/estimations_progress', specification: @record
+            #by-feature.tab-pane.fade aria-labelledby="home-tab" role="tabpanel"
               = render 'specifications/components/by_feature', specification: @record
             #by-domain.tab-pane.fade aria-labelledby="home-tab" role="tabpanel"
               = render 'specifications/components/by_domain', specification: @record

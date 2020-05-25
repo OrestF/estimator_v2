@@ -13,10 +13,16 @@ class EstimationsController < ResourcesController
   def edit; end
 
   def update
-    if (res = Estimations::Operations::Update.call(record: record, record_params: record_params)).success?
-      success_nf(MessageHelper.updated(record_class.name), url: estimation_path(record))
-    else
-      error_nf(html_humanize_errors(res.errors))
+    respond_to do |format|
+      if (res = Estimations::Operations::Update.call(record: record, record_params: record_params)).success?
+        format.json { render json: res.data[:record].attributes.merge!(dc_title: res.data[:record].decorate.dc_title) }
+        format.js   { success_nf(MessageHelper.updated(record_class.name), url: estimation_path(record)) }
+        format.html { success_nf(MessageHelper.updated(record_class.name), url: estimation_path(record)) }
+      else
+        format.json { error_nf(html_humanize_errors(res.errors)) }
+        format.js   { error_nf(html_humanize_errors(res.errors)) }
+        format.html { error_nf(html_humanize_errors(res.errors)) }
+      end
     end
   end
 
