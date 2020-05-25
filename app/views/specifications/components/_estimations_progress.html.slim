@@ -3,10 +3,20 @@
   .card-body
     .card-title Estimations progress
     ul.list-group.list-group-flush
-      - specification.estimations.each do |estimation|
+      - specification.estimations.order(:id).each do |estimation|
         li.list-group-item
-          = link_to(estimation_path(estimation), target: 'blank') do
-            span = estimation.decorate.dc_title
+          - if policy_plus(estimation, :update)
+            = form_with(model: estimation, remote: true, class: 'rename-estimation-form form-inline', html: { style: 'display: none' }) do |form|
+              .form-group.w-50
+                = form.text_field :title, class: 'form-control mr-1 w-100'
+
+              = form.submit 'Save', class: 'btn btn-sm'
+
+          = link_to(estimation_path(estimation), target: 'blank', style: 'display: block') do
+            span.estimation-title = estimation.decorate.dc_title
           .float-right = estimation.decorate.dc_state_badge
+
+          - if policy_plus(estimation, :update)
+            = link_to('Rename', '#', class: 'float-left text-black mr-1 rename-estimation-btn', style: 'display: block')
   .progress
     .progress-bar.bg-secondary class="#{'progress-bar-animated progress-bar-striped' if specification.estimations.in_progress.any?}" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" style="width: #{width}%"

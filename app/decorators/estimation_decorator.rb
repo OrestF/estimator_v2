@@ -8,6 +8,6 @@ class EstimationDecorator < ApplicationDecorator
   end
 
   def dc_domain
-    estimator.decorate.dc_domain_icon
+    estimator.decorate.dc_domain_icon(css_class: 'mr-2')
   end
 end

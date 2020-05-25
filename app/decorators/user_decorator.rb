@@ -20,7 +20,7 @@ class UserDecorator < ApplicationDecorator
     end
   end
 
-  def dc_domain_icon
-    h.image_pack_tag("icons/#{domain}.svg", size: 32, alt: domain)
+  def dc_domain_icon(css_class: '')
+    h.image_pack_tag("icons/#{domain}.svg", size: 32, alt: domain, class: css_class)
   end
 end
