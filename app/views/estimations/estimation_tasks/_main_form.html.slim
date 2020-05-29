@@ -1,13 +1,16 @@
 .estimation-tasks-pseudo-table
   .row
-    .col.col-sm-6.text-center
-      strong Title
+    - if policy_plus(estimation, :update)
+      .col.col-sm-2.text-center
+        span Experience
+    .col.col-sm-6.text-center class="#{policy_plus(estimation, :update) ? 'col-sm-4' : 'col-sm-6'}"
+      span Task
     / .col.text-center
-      strong Description
+      span Description
     .col.col-sm-2.text-center
-      strong Min
+      span Min
     .col.col-sm-2.text-center
-      strong Max
+      span Max
     .col.col-sm-2
   - estimation.estimation_tasks.by_feature(feature).order(:id).each do |et|
     = render 'estimations/estimation_tasks/item_form', estimation_task: et, feature: feature, url: update_task_estimation_path(estimation)

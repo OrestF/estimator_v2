@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_123642) do
+ActiveRecord::Schema.define(version: 2020_05_29_141350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 2020_05_01_123642) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "feature_id"
     t.datetime "deleted_at"
+    t.string "experience_level"
+    t.decimal "price_per_hour", default: "0.0"
+    t.decimal "min_price", default: "0.0"
+    t.decimal "max_price", default: "0.0"
     t.index ["estimation_id"], name: "index_estimation_tasks_on_estimation_id"
     t.index ["feature_id"], name: "index_estimation_tasks_on_feature_id"
   end
@@ -145,6 +149,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_123642) do
     t.integer "domain", default: 0, null: false
     t.string "first_name"
     t.string "last_name"
+    t.integer "experience_level", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

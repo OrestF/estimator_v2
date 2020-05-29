@@ -1,0 +1,15 @@
+- source = local_assigns[:datatable_source] || users_path(format: :json)
+.table-responsive
+  table#users-datatable.table.table-striped data-source=source
+    thead
+      tr
+        th ID
+        th Email
+        th First_name
+        th Last_name
+        th Role
+        th Domain
+        th Experience level
+        th Invitation state
+        th Actions
+    tbody

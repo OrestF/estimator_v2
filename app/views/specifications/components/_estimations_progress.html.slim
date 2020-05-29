@@ -12,11 +12,11 @@
 
               = form.submit 'Save', class: 'btn btn-sm'
 
-          = link_to(estimation_path(estimation), target: 'blank', style: 'display: block') do
+          - if policy_plus(estimation, :update)
+            = link_to('Rename', '#', class: 'float-left p-1 mr-3 btn btn-sm text-black mr-1 rename-estimation-btn', style: 'display: block')
+          = link_to(estimation_path(estimation), target: 'blank') do
             span.estimation-title = estimation.decorate.dc_title
           .float-right = estimation.decorate.dc_state_badge
 
-          - if policy_plus(estimation, :update)
-            = link_to('Rename', '#', class: 'float-left text-black mr-1 rename-estimation-btn', style: 'display: block')
   .progress
     .progress-bar.bg-secondary class="#{'progress-bar-animated progress-bar-striped' if specification.estimations.in_progress.any?}" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" style="width: #{width}%"

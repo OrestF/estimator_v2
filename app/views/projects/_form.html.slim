@@ -4,8 +4,8 @@
     = form.label :title, class: 'form-control'
     = form.text_field :title, class: 'form-control'
   .form-group
-    = form.label :description, class: 'form-control'
-    = form.rich_text_area :description, class: 'form-control'
+    = form.label :description, 'Project details',  class: 'form-control'
+    = form.rich_text_area :description, class: 'form-control', placeholder: 'Add details or drop attachments here'
 
   - if project.persisted?
     .form-group

@@ -1,6 +1,11 @@
 class ProjectsController < ResourcesController
   def index
     @records = current_organization.projects
+
+    respond_to do |format|
+      format.html
+      format.json { render json: ProjectDatatable.new(params, **dt_params) }
+    end
   end
 
   def new

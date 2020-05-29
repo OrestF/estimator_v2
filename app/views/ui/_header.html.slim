@@ -25,7 +25,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow-1
         li.nav-item
           = link_to(organization_path, class: 'nav-link') do
             i.material-icons domain
-            span  My organization
+            span  = current_organization.name
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             | #{current_user&.email} [#{current_user.role}]

@@ -1,9 +1,6 @@
 .col-sm-4.offset-sm-4
-  h1
-    = t('.title', resource: resource_name.to_s.humanize)
-  / = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
-  = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
-    = bootstrap_devise_error_messages!
+  h1 Edit
+  = form_with(model: @record, local: false) do |f|
     .row
       .col-sm-6
         .form-group
@@ -36,4 +33,4 @@
         small.form-text.text-muted
         = t('.we_need_your_current_password_to_confirm_your_changes')
     .form-group
-      = f.submit t('.update'), class: 'btn'
+      = f.submit 'Save', class: 'btn'

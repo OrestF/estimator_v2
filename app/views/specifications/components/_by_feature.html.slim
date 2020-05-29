@@ -20,7 +20,8 @@
                 .col.col-sm-8.feature-hours
                   - tasks.each do |t|
                     .row.m-0.overflow-hidden.feature-task
-                      .feature-task-cell.col-10 = t.title
+                      .feature-task-cell.col-9 = t.title
+                      .feature-task-cell.col-1 = t.experience_level
                       .feature-task-cell.col-1.text-center = t.optimistic
                       .feature-task-cell.col-1.text-center = t.pessimistic
 

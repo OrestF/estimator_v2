@@ -28,7 +28,7 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
     return unless policy(record).show?
 
     link_to(routes.public_send(path, record), class: 'btn mr-1', title: 'Open') do
-      content_tag(:i, 'link', class: 'material-icons')
+      content_tag(:span, 'open')
     end
   end
 

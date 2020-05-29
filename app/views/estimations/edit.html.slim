@@ -3,7 +3,11 @@
     = bottom_action_btn(done_estimation_path(@record), title: 'Mark as done', icon: 'done', link_params: { method: :patch, remote: true, data: {confirm: 'Are your sure?'}}, class: 'btn btn-warning')
 
 .row
-  .col-6.offset-3
+  .col-sm-3
     = render 'ui/title_state', record: @record
     = render 'ui/states_flow', record: @record
     = render 'estimations/form', estimation: @record
+  .col-sm-9
+    = render 'estimations/components/features_form', estimation: @record
+
+

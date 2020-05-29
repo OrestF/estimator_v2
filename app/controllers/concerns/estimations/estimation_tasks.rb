@@ -3,7 +3,7 @@ module Estimations::EstimationTasks
 
   def create_task
     respond_to do |format|
-      if (res = EstimationTasks::Operations::Create.call(record_params: estimation_task_params)).success?
+      if (res = EstimationTasks::Operations::Create.call(record_params: estimation_task_params.merge!(experience_level: current_user.experience_level.humanize))).success?
         format.json { render_task_created(res.data[:record]) }
         format.js   { render_task_created(res.data[:record]) }
       else
