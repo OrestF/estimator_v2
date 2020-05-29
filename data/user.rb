@@ -33,4 +33,12 @@ class User < ApplicationRecord
     devops: 8,
     qa: 9
   }
+
+
+  enum experience_level: {
+    trainee: 0,
+    junior: 1,
+    middle: 2,
+    senior: 3
+  }
 end

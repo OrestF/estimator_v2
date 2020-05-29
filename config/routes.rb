@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   root 'pages#home'
   mount Sidekiq::Web => '/sidekiq'
 
-  devise_for :users, controllers: {
+  devise_for :users, prefix: 'my', controllers: {
     sessions: 'users/sessions'
   }
   as :user do
     get 'users/edit' => 'users/registrations#edit', :as => 'edit_user_registration'
     put 'users' => 'users/registrations#update', :as => 'user_registration'
   end
+
+  resources :users
 
   get 'organization' => 'organizations#show'
   get 'organization/edit' => 'organizations#edit'

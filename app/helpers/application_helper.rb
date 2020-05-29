@@ -1,4 +1,10 @@
 module ApplicationHelper
+  STATES_MAP = {
+    qa: 'ready_for_estimation',
+    estimation: 'estimation_in_progress',
+    business_analysis: 'features_list'
+  }.freeze
+
   def current_organization
     current_user&.organization
   end
@@ -79,5 +85,9 @@ module ApplicationHelper
 
   def attachment_url(attachment, name: nil)
     link_to(name || attachment.filename, attachment, target: '_blank', rel: 'noopener')
+  end
+
+  def humanized_state(state)
+    (STATES_MAP[state.to_sym] || state).humanize
   end
 end

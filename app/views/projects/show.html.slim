@@ -24,3 +24,13 @@
             .mb-3.float-right
               = render 'specifications/components/create_modal', specification: @new_specification
         = render 'specifications/datatable', datatable_source: specifications_path(by_project: @record.id, format: :json)
+
+- if @record.specifications.persisted.none?
+  .snackbar.show
+    .snackbar-body
+      | Create first specification
+    button.btn.btn-success.ml-3 data-target="#createSpecificationModal" data-toggle="modal" type="button"
+      i.material-icons add
+      span Create new
+
+

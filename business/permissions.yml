@@ -6,6 +6,7 @@ organization_manager: &organization_manager
   estimations: true
   specifications: true
   features: true
+  users: true
 
 sales_manager: &sales_manager
   <<: *organization_manager

@@ -25,6 +25,8 @@ import '../controllers/estimations';
 import '../controllers/specifications';
 import '../datatables/estimations';
 import '../datatables/specifications';
+import '../datatables/projects';
+import '../datatables/users';
 
 require('datatables.net-bs')(window, $);
 require('datatables.net-buttons-bs')(window, $);

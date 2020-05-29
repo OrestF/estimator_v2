@@ -1,19 +1,20 @@
 - content_for :page_actions do
   = bottom_action_btn(organization_edit_path, icon: 'edit')
 
-h1 = current_organization.name
 .row
-  .col-sm-2
-    = org_logo
+  .col-sm-3
+    div
+      span.mr-5 = org_logo(style: 'max-width: 90px')
+      span.h1.text-center.w-100 style="vertical-align: middle" = current_organization.name
     - if current_organization.slack_access_token.blank?
       = link_to('Connect Slack', @slack_url, class: 'btn btn-warning')
     - else
       .btn.btn-success.mt-3
         i.material-icons.mr-1 chat
         span Slack connected
-  .col-sm-7
-    h3 Members
-    = render 'organizations/users', users: current_organization.users
-  .col-sm-3
+    hr
     h3 Invite member
     = render 'organizations/invite_form', organization: current_organization
+  .col-sm-9
+    h3 Members
+    = render 'users/datatable'

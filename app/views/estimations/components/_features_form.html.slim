@@ -1,0 +1,17 @@
+.card
+  .card-body
+    .table-responsive
+      table.table.table-condensed
+        thead
+          tr
+            th width="15%" Feature
+            th width="25%" Description
+            th width="20%" Acceptance criteria
+            th width="40%" Estimation tasks
+        tbody
+          - estimation.specification.features.each do |feature|
+            tr class="feature_#{feature.id}"
+              td = feature.title
+              td = feature.description
+              td == feature.acceptance_criteria
+              td = render 'estimations/estimation_tasks/main_form', feature: feature, estimation: estimation

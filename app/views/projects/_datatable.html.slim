@@ -1,0 +1,12 @@
+- source = local_assigns[:datatable_source] || projects_path(format: :json)
+.table-responsive
+  table#projects-datatable.table.table-striped data-source=source
+    thead
+      tr
+        th ID
+        th Title
+        th State
+        th Created by
+        th Client
+        th Actions
+    tbody
