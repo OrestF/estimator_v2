@@ -16,6 +16,7 @@
         span Summary
       .dropdown-menu.dropdown-menu-sm aria-labelledby="pdfBtnDrop1"
         = link_to('Preview', '#', data: { target: '#previewPdf', toggle: 'modal' }, class: 'dropdown-item')
+        = link_to('Download XLSX', specification_path(@record, format: 'xlsx'), class: 'dropdown-item')
         - if @record.summary_pdf.present?
           = link_to('Download PDF', rails_blob_path(@record.summary_pdf, disposition: 'attachment'), class: 'dropdown-item')
         = link_to('Generate PDF', specification_path(@record, format: :pdf), class: 'dropdown-item')
