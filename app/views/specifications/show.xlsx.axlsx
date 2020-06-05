@@ -2,7 +2,8 @@ specification = @record
 
 wb = xlsx_package.workbook
 
-feature_row_style = wb.styles.add_style(bg_color: '000001f', alignment: { horizontal: :center, vertical: :center })
+header_row_style = wb.styles.add_style(bg_color: '000000', alignment: { horizontal: :center, vertical: :center })
+feature_row_style = wb.styles.add_style(bg_color: 'D3D3D3', alignment: { horizontal: :center, vertical: :center })
 simple_cell_style = wb.styles.add_style(alignment: { vertical: :center })
 center_cell_style = wb.styles.add_style(alignment: { horizontal: :center, vertical: :center })
 
@@ -11,7 +12,7 @@ simple_row_style = [simple_cell_style, simple_cell_style, center_cell_style, cen
 totals_row_style = [simple_cell_style, simple_cell_style, center_cell_style, center_cell_style, center_cell_style, ]
 
 wb.add_worksheet(name: "Specification") do |sheet|
-  sheet.add_row(['Feature', 'Description', 'Experience', 'Min','Max'], style: feature_row_style)
+  sheet.add_row(['Feature', 'Description', 'Experience', 'Min','Max'], style: header_row_style)
 
   specification.estimation_tasks.includes(:feature).group_by(&:feature).each_with_index do |(feature, e_tasks), f_index|
     sheet.add_row([feature.title, feature.description.to_s, '', '', ''], style: feature_row_style)
