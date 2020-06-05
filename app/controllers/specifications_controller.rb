@@ -25,6 +25,7 @@ class SpecificationsController < ResourcesController
   def show
     respond_to do |format|
       format.html
+      format.xlsx
       format.pdf do
         PdfRendererJob.perform_later(@record)
 
