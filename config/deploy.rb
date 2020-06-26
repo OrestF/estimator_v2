@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.12.0"
+lock "~> 3.14.1"
 
 # Main settings
 # See https://github.com/capistrano/rails
