@@ -6,7 +6,11 @@ class SoftDeletable < Module
   def included(base)
 
     base.class_eval do
-      default_scope -> { where(deleted_at: nil) }
+      default_scope -> { not_deleted }
+
+      scope :deleted, -> { with_deleted.where.not(deleted_at: nil) }
+      scope :not_deleted, -> { where(deleted_at: nil) }
+      scope :with_deleted, -> { unscope(where: :deleted_at) }
 
       def deleted?
         !deleted_at.nil?

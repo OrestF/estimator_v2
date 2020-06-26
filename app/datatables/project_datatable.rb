@@ -26,12 +26,17 @@ class ProjectDatatable < ApplicationDatatable
 
   def get_raw_records
     policy_scope(
-      current_organization.projects.includes(:user, :client)
+      current_organization.projects.with_deleted.includes(:user, :client).references(:user).order(deleted_at: :desc, id: :desc)
     )
   end
 
   def actions(record)
-    actions = safe_join([view_link(record, :project_path), edit_link(record, :edit_project_path)])
+    # actions = safe_join([view_link(record, :project_path), edit_link(record, :edit_project_path)])
+    actions = if record.deleted?
+                safe_join([restore_link(record, :restore_project_path)])
+              else
+                safe_join([view_link(record, :project_path), edit_link(record, :edit_project_path)])
+              end
 
     actions.presence || 'Not allowed'
   end

@@ -23,4 +23,5 @@ class ProjectPolicy < ApplicationPolicy
   def destroy?
     user.can?(:projects, :delete) { own_org? }
   end
+  alias restore? destroy?
 end

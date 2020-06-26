@@ -40,6 +40,14 @@ class ApplicationDatatable < AjaxDatatablesRails::ActiveRecord
     end
   end
 
+  def restore_link(record, path)
+    return unless record.deleted? && policy(record).destroy?
+
+    link_to(routes.public_send(path, record), class: 'btn mr-1', title: 'Restore', method: :put) do
+      content_tag(:i, 'restore_from_trash', class: 'material-icons')
+    end
+  end
+
   def policy(record, configs = {})
     policy_class.new(current_user, record, configs.merge!(current_organization: current_organization))
   end

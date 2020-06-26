@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
+    member do
+      put 'restore'
+    end
   end
 
   resources :estimations do
