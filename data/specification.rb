@@ -14,12 +14,15 @@ class Specification < ApplicationRecord
 
   has_many :features
 
-
   scope :by_project, ->(project) { where(project: project) }
 
   has_one_attached :summary_pdf
 
   validates :title, uniqueness: { scope: :project_id }
+
+  before_save do
+    self.organization_id = project.organization_id
+  end
 
   enum state: {
     business_analysis: 0,

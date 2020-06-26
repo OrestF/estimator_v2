@@ -25,9 +25,7 @@ class SpecificationDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    policy_scope(
-      Specification.all.joins(:user, :project).filter_collection(params.permit(:by_project))
-    )
+    policy_scope(Specification.all.with_deleted.joins(:user, :project).references(:user).filter_collection(params.permit(:by_project)))
   end
 
   def actions(record)

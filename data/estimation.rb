@@ -17,6 +17,10 @@ class Estimation < ApplicationRecord
 
   scope :by_project, ->(project) { all.merge(Specification.by_project(project)) }
 
+  before_save do
+    self.organization_id = specification.organization_id
+  end
+
   def total_optimistic
     estimation_tasks.sum(:optimistic).round(2)
   end

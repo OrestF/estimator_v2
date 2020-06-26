@@ -43,6 +43,7 @@ class SpecificationPolicy < ApplicationPolicy
   def destroy?
     user.can?(:specifications, :delete) { own_org? }
   end
+  alias restore? destroy?
 
   def send_for_sign_off?
     user.can?(:specifications, :send_for_sign_off) { own_org? }
