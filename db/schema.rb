@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_141350) do
+ActiveRecord::Schema.define(version: 2020_06_26_142109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,8 +60,10 @@ ActiveRecord::Schema.define(version: 2020_05_29_141350) do
     t.decimal "price_per_hour", default: "0.0"
     t.decimal "min_price", default: "0.0"
     t.decimal "max_price", default: "0.0"
+    t.bigint "organization_id"
     t.index ["estimation_id"], name: "index_estimation_tasks_on_estimation_id"
     t.index ["feature_id"], name: "index_estimation_tasks_on_feature_id"
+    t.index ["organization_id"], name: "index_estimation_tasks_on_organization_id"
   end
 
   create_table "estimations", force: :cascade do |t|
@@ -72,6 +74,8 @@ ActiveRecord::Schema.define(version: 2020_05_29_141350) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "specification_id"
     t.datetime "deleted_at"
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_estimations_on_organization_id"
     t.index ["specification_id"], name: "index_estimations_on_specification_id"
     t.index ["user_id"], name: "index_estimations_on_user_id"
   end
@@ -85,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_05_29_141350) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_features_on_organization_id"
     t.index ["specification_id"], name: "index_features_on_specification_id"
     t.index ["user_id"], name: "index_features_on_user_id"
   end
@@ -120,6 +126,8 @@ ActiveRecord::Schema.define(version: 2020_05_29_141350) do
     t.datetime "signed_off_at"
     t.datetime "deleted_at"
     t.bigint "signed_off_by_id"
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_specifications_on_organization_id"
     t.index ["project_id"], name: "index_specifications_on_project_id"
     t.index ["user_id"], name: "index_specifications_on_user_id"
   end

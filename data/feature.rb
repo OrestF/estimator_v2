@@ -8,4 +8,8 @@ class Feature < ApplicationRecord
   has_many :estimation_tasks
 
   validates :title, presence: true, uniqueness: { scope: %i[specification_id deleted_at] }
+
+  before_save do
+    self.organization_id = specification.organization_id
+  end
 end

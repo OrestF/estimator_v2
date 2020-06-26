@@ -53,7 +53,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      scope.where(organization_id: user.organization.id)
     end
   end
 end
