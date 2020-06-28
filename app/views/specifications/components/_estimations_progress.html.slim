@@ -1,10 +1,19 @@
-- width = 100 / specification.estimations.size * specification.estimations.done.size
+- width = 100 / specification.estimations.with_inactive.size * specification.estimations.with_inactive.done.size
 .card
   .card-body
     .card-title Estimations progress
     ul.list-group.list-group-flush
-      - specification.estimations.order(:id).each do |estimation|
+      - specification.estimations.with_inactive.order(:id).each do |estimation|
         li.list-group-item
+          div
+            .custom-control.custom-switch.mb-3.record-toggle data-path="#{toggle_estimation_path(estimation)}" class="#{estimation.class.to_s.underscore}-toggle"
+              - if estimation.active
+                input.custom-control-input type="checkbox" checked="checked" id="#{estimation.class}Active-#{estimation.id}" value="#{estimation.active}"
+              - else
+                input.custom-control-input type="checkbox" id="#{estimation.class}Active-#{estimation.id}" value="#{estimation.active}"
+
+              span.custom-control-track
+              label.custom-control-label for="#{estimation.class}Active-#{estimation.id}" include in calculation
           - if policy_plus(estimation, :update)
             = form_with(model: estimation, remote: true, class: 'rename-estimation-form form-inline', html: { style: 'display: none' }) do |form|
               .form-group.w-50

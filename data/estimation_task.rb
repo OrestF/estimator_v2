@@ -8,7 +8,7 @@ class EstimationTask < ApplicationRecord
 
   scope :by_feature, ->(feature) { where(feature: feature) }
 
-  before_save do
+  before_validation do
     self.organization_id = estimation.organization_id
   end
 end

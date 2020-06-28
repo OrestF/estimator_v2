@@ -9,7 +9,7 @@ class Feature < ApplicationRecord
 
   validates :title, presence: true, uniqueness: { scope: %i[specification_id deleted_at] }
 
-  before_save do
+  before_validation do
     self.organization_id = specification.organization_id
   end
 end

@@ -31,6 +31,7 @@ class EstimationPolicy < ApplicationPolicy
     user.can?(:estimations, :update) { own_org? }
   end
   alias edit? update?
+  alias toggle? update?
 
   def create_task?
     evaluate?

@@ -20,7 +20,7 @@ class SoftDeletable < Module
         return if deleted?
 
         self.deleted_at = Time.current
-        save(valdiate: false)
+        save(validate: false)
 
         soft_delete_relations
       end
@@ -56,7 +56,7 @@ class SoftDeletable < Module
         return unless deleted?
 
         self.deleted_at = nil
-        save(valdiate: false)
+        save(validate: false)
 
         restore_relations
       end

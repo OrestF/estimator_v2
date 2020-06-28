@@ -3,5 +3,6 @@ FactoryBot.define do
     title { Faker::Book.title }
     user { nil }
     specification { nil }
+    active { true }
   end
 end

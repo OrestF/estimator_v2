@@ -16,8 +16,11 @@ class Estimation < ApplicationRecord
   }
 
   scope :by_project, ->(project) { all.merge(Specification.by_project(project)) }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+  scope :with_inactive, -> { unscope(where: :active) }
 
-  before_save do
+  before_validation do
     self.organization_id = specification.organization_id
   end
 
