@@ -8,7 +8,7 @@ class Specification < ApplicationRecord
 
   has_one :organization, through: :user
 
-  has_many :estimations
+  has_many :estimations, -> { merge(Estimation.active) }
   has_many :estimation_tasks, through: :estimations
   has_many :estimators, through: :estimations, source: :user
 
@@ -20,7 +20,7 @@ class Specification < ApplicationRecord
 
   validates :title, uniqueness: { scope: :project_id }
 
-  before_save do
+  before_validation do
     self.organization_id = project.organization_id
   end
 
@@ -33,11 +33,11 @@ class Specification < ApplicationRecord
   }
 
   def total_optimistic
-    estimations.sum(&:total_optimistic)
+    estimations.active.sum(&:total_optimistic)
   end
 
   def total_pessimistic
-    estimations.sum(&:total_pessimistic)
+    estimations.active.sum(&:total_pessimistic)
   end
 
   def may_finish?

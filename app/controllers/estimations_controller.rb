@@ -44,6 +44,17 @@ class EstimationsController < ResourcesController
 
   def evaluate; end
 
+  def toggle
+    record.toggle!(:active)
+
+    render json: {
+      specification: {
+        total_optimistic: record.specification.total_optimistic,
+        total_pessimistic: record.specification.total_pessimistic
+      }
+    }
+  end
+
   private
 
   def record_class

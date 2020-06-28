@@ -10,7 +10,7 @@ describe Estimations::Operations::Delete do
   let!(:feature) { create(:feature, specification: specification, user: user) }
   let!(:estimation_tasks) { create_list(:estimation_task, 3, estimation: estimation, feature: feature) }
 
-  subject { described_class.call(record: specification) }
+  subject { described_class.call(record: estimation) }
 
   describe '.call' do
     context 'with valid params' do

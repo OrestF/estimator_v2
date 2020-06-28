@@ -57,7 +57,7 @@
         - if @record.qa? && policy_plus(@record, :assign_estimators)
           = render 'specifications/estimators_form', specification: @record
 
-    - if @record.estimations.exists?
+    - if @record.estimations.with_inactive.exists?
       .row
         .col-12
           ul#specificationTab.nav.nav-justified.nav-tabs role="tablist"

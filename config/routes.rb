@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       delete 'destroy_task'
       patch 'done'
       get 'evaluate'
+      patch 'toggle'
     end
   end
 
