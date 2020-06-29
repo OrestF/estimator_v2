@@ -9,5 +9,7 @@
   / .form-group
   /   = form.label :estimator_ids, 'Estimators', class: 'form-control'
   /   = form.collection_select :estimator_ids, specification.project.organization.users, :id, :email, {selected: specification.estimator_ids}, multiple: true, class: 'select2-js'
-
+  .form-group
+    = form.label :template_id, class: 'form-control'
+    = form.select :template_id, specification_templates_options, {include_blank: true}, class: 'select2-js'
   = form.submit local_assigns[:submit_text] || 'Save', class: 'btn m-t-5', data: { confirm: 'Are you sure?' }

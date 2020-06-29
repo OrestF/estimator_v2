@@ -15,6 +15,32 @@ describe Specifications::Operations::Create do
       it 'creates record' do
         expect { subject }.to change { project.specifications.count }.from(0).to(1)
       end
+
+      context 'with template_id' do
+        let!(:specification_template) { create(:specification_template, user: user, organization: user.organization) }
+        let!(:features) do
+          create_list(:feature, 3, specification: specification_template,
+                           user_id: specification_template.user.id,
+                           organization_id: specification_template.organization&.id)
+        end
+
+        let(:record_params) do
+          attributes_for(:specification, user_id: user.id, project_id: project.id, template_id: specification_template.id)
+        end
+
+        it 'creates record from template' do
+          res = subject
+
+          expect(res).to be_success
+
+          expect(res.data[:record].features.count).to eq(specification_template.features.count)
+          res.data[:record].features.each do |feature|
+            expect(specification_template.features.find_by(title: feature.title)).to                             be_present
+            expect(specification_template.features.find_by(description: feature.description)).to                 be_present
+            expect(specification_template.features.find_by(acceptance_criteria: feature.acceptance_criteria)).to be_present
+          end
+        end
+      end
     end
 
     context 'with invalid params' do
