@@ -21,7 +21,7 @@ class Estimation < ApplicationRecord
   scope :with_inactive, -> { unscope(where: :active) }
 
   before_validation do
-    self.organization_id = specification.organization_id
+    self.organization_id ||= specification.organization_id
   end
 
   def total_optimistic

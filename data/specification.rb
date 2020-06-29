@@ -2,8 +2,12 @@ class Specification < ApplicationRecord
   include SoftDeletable.new(dependant_relations: [:estimations, :features])
   include Filterable
 
+  default_scope { not_deleted.where.not(project_id: nil) }
+
+  attr_reader :template_id
+
   belongs_to :user
-  belongs_to :project
+  belongs_to :project, optional: true # optional: true for SpecificationTemplate
   belongs_to :signed_off_by, class_name: 'User', optional: true
 
   has_one :organization, through: :user
@@ -21,7 +25,7 @@ class Specification < ApplicationRecord
   validates :title, uniqueness: { scope: :project_id }
 
   before_validation do
-    self.organization_id = project.organization_id
+    self.organization_id ||= project&.organization_id
   end
 
   enum state: {

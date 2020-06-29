@@ -1,8 +1,7 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow-1
   - if current_user
-    a.navbar-brand
-      = link_to(root_path) do
-        = nav_logo
+    = link_to(root_path, class: 'navbar-brand') do
+      = nav_logo
     button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
       span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse

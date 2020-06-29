@@ -5,17 +5,13 @@
   = bottom_action_btn(project_path(@record.project), title: 'Go to project')
   = bottom_action_btn(edit_specification_path(@record), icon: 'edit')
   = bottom_action_btn(specification_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
-
-  / = bottom_action_btn('#', icon: 'picture_as_pdf', title: 'Summary', link_params: { data: { target: '#previewPdf', toggle: 'modal' } })
-  / - if @record.summary_pdf.present?
-    = bottom_action_btn(rails_blob_path(@record.summary_pdf, disposition: 'attachment'), icon: 'picture_as_pdf', title: 'Download summary')
-  - if @record.estimations.done.any?
-    .btn-group.nav-item role="group"
-      button#pdfBtnDrop1.btn.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
-        i.material-icons picture_as_pdf
-        span Summary
-      .dropdown-menu.dropdown-menu-sm aria-labelledby="pdfBtnDrop1"
-        = link_to('Preview', '#', data: { target: '#previewPdf', toggle: 'modal' }, class: 'dropdown-item')
+  .btn-group.nav-item role="group"
+    button#optionsBtn.btn.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+      i.material-icons more_vert
+    .dropdown-menu.dropdown-menu-sm.dropdown-menu-right aria-labelledby="optionsBtn"
+      = link_to('Create template', specification_templates_path(id: @record),  data: { confirm: 'Create a template?', method: :post, remote: true }, class: 'dropdown-item')
+      - if @record.estimations.done.any?
+        = link_to('Preview', '#', data: {target: '#previewPdf', toggle: 'modal'}, class: 'dropdown-item')
         = link_to('Download XLSX', specification_path(@record, format: 'xlsx'), class: 'dropdown-item')
         - if @record.summary_pdf.present?
           = link_to('Download PDF', rails_blob_path(@record.summary_pdf, disposition: 'attachment'), class: 'dropdown-item')

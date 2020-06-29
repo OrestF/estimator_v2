@@ -6,25 +6,18 @@ class Specifications::Operations::Create < BaseOperation
     build_form
     return validation_fail unless form_valid?
 
-    return validation_fail unless save_record
+    copy_from_template if template.present?
 
-    # create_estimations
+    record_valid?
+    return validation_fail unless save_record
 
     success(args.merge!(record: record))
   end
 
   private
 
-  def create_estimations
-    record.organization.users.where(id: estimator_ids).each do |estimator|
-      Estimations::Operations::Create.call(record_params: { title: "#{record.title} - #{estimator.email}",
-                                                            user_id: estimator.id,
-                                                            specification: record })
-    end
-  end
-
   def build_record
-    @record = Specification.new(record_params.except(:estimator_ids))
+    @record = Specification.new(record_params.except(:estimator_ids, :template_id))
   end
 
   def estimator_ids
@@ -33,5 +26,20 @@ class Specifications::Operations::Create < BaseOperation
 
   def form_class
     Specifications::Forms::Base
+  end
+
+  def copy_from_template
+    template.features.each do |feature|
+      record.features.new(feature.slice(:title, :description, :acceptance_criteria).merge!(organization_id: organization.id,
+                                                                                           user_id: record.user_id))
+    end
+  end
+
+  def template
+    @template ||= SpecificationTemplate.find_by(id: record_params[:template_id])
+  end
+
+  def organization
+    @organization ||= User.find(record_params[:user_id]).organization
   end
 end

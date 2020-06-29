@@ -6,4 +6,8 @@ module SpecificationsHelper
 
     'default'
   end
+
+  def specification_templates_options
+    SpecificationTemplate.where(organization_id: current_organization.id).pluck(:title, :id)
+  end
 end
