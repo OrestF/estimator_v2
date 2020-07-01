@@ -1,0 +1,17 @@
+.card
+  .card-body
+    .card-title
+      span Features
+    .table-responsive
+      table.table.table-condensed
+        thead
+          tr
+            th width="20%" Title
+            th width="40%" Description
+            th width="40%" Acceptance criteria
+        tbody
+          - features.each do |feature|
+            tr
+              td = feature.title
+              td = feature.description
+              td == feature.acceptance_criteria

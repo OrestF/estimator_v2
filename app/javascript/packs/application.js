@@ -25,6 +25,7 @@ import '../controllers/estimations';
 import '../controllers/specifications';
 import '../datatables/estimations';
 import '../datatables/specifications';
+import '../datatables/specification_templates';
 import '../datatables/projects';
 import '../datatables/users';
 

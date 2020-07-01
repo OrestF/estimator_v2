@@ -48,10 +48,10 @@ class BaseOperation < BaseAction
   end
 
   def sync_errors_to_form
-    form.sync_errors_to_form
+    form&.sync_errors_to_form
   end
 
   def sync_errors_to_record
-    form.sync_errors_to_record
+    form&.sync_errors_to_record
   end
 end

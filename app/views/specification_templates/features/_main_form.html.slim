@@ -1,0 +1,15 @@
+.features-pseudo-table
+  .row
+    .col.text-center
+      strong Feature
+    .col.text-center
+      strong Description
+    .col.text-center
+      strong Acceptance criteria
+    .col-sm-1
+  - specification.features.order(:id).each do |feature|
+    = render 'specification_templates/features/item_form', feature: feature, url: update_feature_specification_template_path(specification)
+
+  = render 'specification_templates/features/item_form', feature: specification.features.new,
+          css_class: 'create_form',
+          url: create_feature_specification_template_path(specification)

@@ -1,0 +1,16 @@
+- edit_form = feature.id.present?
+= form_with(model: feature, url: url, remote: true, method: edit_form ? :put : :post, html: { class: feature_form_class(feature, local_assigns[:css_class]) }) do |f|
+  .row.task-row
+    = f.hidden_field :id
+    = f.hidden_field :specification_id
+    .col.title-col
+      = f.text_field :title, class: 'form-control', autofocus: true
+    .col.description-col
+      = f.text_field :description, class: 'form-control'
+    .col.description-col
+      = f.text_area :acceptance_criteria, class: 'form-control'
+    .col.col-sm-1
+      - if edit_form
+        = link_to('Delete', destroy_feature_specification_template_path(feature.specification_template, feature: { id: feature.id }), class: 'btn btn-danger', remote: true, method: :delete, data: {confirm: 'Are you sure?'})
+      - else
+        = f.submit 'Add', class: 'btn btn-success'

@@ -44,7 +44,7 @@ module Specifications::Features
   end
 
   def feature_params
-    params.require(:feature).permit!.to_h.merge!(user_id: current_user.id)
+    params.require(:feature).permit!.to_h.merge!(user_id: current_user.id, organization_id: current_organization.id)
   end
 
   def render_feature_created(feature, _message: nil)

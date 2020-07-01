@@ -1,7 +1,8 @@
 class Feature < ApplicationRecord
   include SoftDeletable.new(dependant_relations: [:estimation_tasks])
 
-  belongs_to :specification
+  belongs_to :specification, optional: true
+  belongs_to :specification_template, optional: true, foreign_key: :specification_id
   belongs_to :user
 
   has_one :project, through: :specification
