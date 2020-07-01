@@ -1,0 +1,8 @@
+- content_for :page_actions do
+  = bottom_action_btn(edit_specification_template_path(@record), icon: 'edit')
+  = bottom_action_btn(specification_template_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
+
+.row
+  .col-sm-6.offset-3
+    = render 'ui/title_state', record: @record
+    = render 'specifications/features/table_card', features: @record.features

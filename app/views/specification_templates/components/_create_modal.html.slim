@@ -1,0 +1,19 @@
+/! Button trigger modal
+- unless local_assigns[:hide_button]
+  button.btn.btn-success data-target="#createSpecificationTemplateModal" data-toggle="modal" type="button"
+    i.material-icons add
+    span Create
+
+- unless local_assigns[:hide_modal]
+  /! Modal
+  #createSpecificationTemplateModal.modal.fade aria-hidden="true" aria-labelledby="createSpecificationTemplateModalTitle" role="dialog" tabindex="-1"
+    .modal-dialog.modal-dialog-centered role="document"
+      .modal-content
+        .modal-header
+          h5#createSpecificationTemplateModalTitle.modal-title New specification template
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            span aria-hidden="true"  &times;
+        .modal-body
+          = render 'specification_templates/form', specification_template: specification_template
+        .modal-footer
+          button.btn.btn-secondary data-dismiss="modal" type="button"  Close

@@ -102,7 +102,7 @@ class SpecificationsController < ResourcesController
   end
 
   def record_params
-    params.require(:specification).permit!.to_h.merge!(user_id: current_user.id)
+    params.require(:specification).permit!.to_h.merge(organization_id: current_organization.id, user_id: current_user.id)
   end
 
   def authorize_client

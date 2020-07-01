@@ -4,27 +4,30 @@ require 'rails_helper'
 
 describe SpecificationTemplates::Operations::Create do
   let!(:user) { create(:user, role: 'organization_manager') }
-  let!(:project) { create(:project, user: user, organization: user.organization) }
-  let!(:specification) { create(:specification, user: user, project: project) }
-  let!(:features) { create_list(:feature, 3, specification_id: specification.id, user_id: user.id) }
 
-  subject { described_class.call(specification: specification, user: user) }
+  subject { described_class.call(record_params: record_params) }
 
   describe '.call' do
     context 'with valid params' do
-      let(:record_params) { attributes_for(:specification, user_id: user.id, project_id: project.id) }
+      let(:record_params) { attributes_for(:specification_template, user_id: user.id, organization_id: user.organization.id) }
 
-      it 'creates template from specification' do
+      it 'creates record' do
         res = subject
 
-        expect(res.data[:record].title). to eq("Template from: #{specification.title}")
+        expect(res).to be_success
+        expect(res.data[:record].user).to eq(user)
+        expect(res.data[:record].title).to eq(record_params[:title])
+      end
+    end
 
-        expect(res.data[:record].features.count).to eq(3)
-        res.data[:record].features.each do |feature|
-          expect(specification.features.find_by(title: feature.title)).to                             be_kind_of(Feature)
-          expect(specification.features.find_by(description: feature.description)).to                 be_kind_of(Feature)
-          expect(specification.features.find_by(acceptance_criteria: feature.acceptance_criteria)).to be_kind_of(Feature)
-        end
+    context 'with invalid params' do
+      let(:record_params) { attributes_for(:specification, user_id: nil) }
+
+      it 'returns errors' do
+        response = subject
+
+        expect(response.validation_fail?).to eq true
+        expect(response.errors.keys).to include(:user_id, :organization_id)
       end
     end
   end

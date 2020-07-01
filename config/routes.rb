@@ -57,7 +57,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :specification_templates, only: %i[create]
+  resources :specification_templates, only: %i[index show edit create update] do
+    collection do
+      post 'create_from_specification'
+    end
+
+    member do
+      put 'update_feature'
+      post 'create_feature'
+      delete 'destroy_feature'
+    end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -8,7 +8,6 @@ class Specifications::Operations::Create < BaseOperation
 
     copy_from_template if template.present?
 
-    record_valid?
     return validation_fail unless save_record
 
     success(args.merge!(record: record))
