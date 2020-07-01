@@ -40,6 +40,14 @@ class SpecificationTemplatesController < ResourcesController
 
   def edit; end
 
+  def destroy
+    if (res = SpecificationTemplates::Operations::Delete.call(record: record)).success?
+      success_nf(MessageHelper.deleted(record_class.name), url: specification_templates_path)
+    else
+      error_nf(html_humanize_errors(res.errors))
+    end
+  end
+
   private
 
   def record_class

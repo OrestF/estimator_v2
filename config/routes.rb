@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :specification_templates, only: %i[index show edit create update] do
+  resources :specification_templates, only: %i[index show edit create update destroy] do
     collection do
       post 'create_from_specification'
     end
