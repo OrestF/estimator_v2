@@ -5,13 +5,14 @@
 = render 'ui/title_state', record: @record
 = render 'ui/states_flow', record: @record
 .row
-  .col-sm-3
+  .col-sm-12
     .card
       .card-body
         .card-title = @record.project.title
         p == @record.project.description
         = render 'projects/attachments', project: @record.project
-  .col-sm-9
+.row.mt-3
+  .col-sm-12
     .mb-3
       - if @record.done?
         = render 'estimations/show_card', estimation: @record

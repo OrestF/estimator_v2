@@ -5,7 +5,7 @@ class Specifications::Operations::AssignEstimators < BaseOperation
 
     create_estimations
     update_state
-    slack_notify
+    slack_notify_if
 
     success(args)
   end
@@ -40,12 +40,10 @@ class Specifications::Operations::AssignEstimators < BaseOperation
     Specifications::Forms::AssignEstimators
   end
 
-  def slack_notify
+  def slack_notify_if
     return if record.organization.slack_access_token.blank?
 
-    SlackNotifier.new(record.organization.slack_access_token).m_send(message: "New estimation for: #{record.title}",
-                                                                     emails: estimators.pluck(:email),
-                                                                     url: Rails.application.routes.url_helpers.project_url(record.project))
+    SlackNotifierJob.perform_later(record.organization, :assign_estimators, record, estimators.pluck(:email))
   rescue StandardError => _e
   end
 end

@@ -478,6 +478,7 @@ GEM
     wicked_pdf (2.1.0)
       activesupport
     wkhtmltopdf-binary (0.12.5.4)
+    xlog (0.1.2)
     zeitwerk (2.3.0)
 
 PLATFORMS
@@ -545,6 +546,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
   wicked_pdf (~> 2.0, >= 2.0.2)
   wkhtmltopdf-binary (~> 0.12.5.4)
+  xlog
 
 RUBY VERSION
    ruby 2.6.3p62

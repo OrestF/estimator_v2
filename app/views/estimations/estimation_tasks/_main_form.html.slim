@@ -2,11 +2,9 @@
   .row
     - if policy_plus(estimation, :update)
       .col.col-sm-2.text-center
-        span Experience
-    .col.col-sm-6.text-center class="#{policy_plus(estimation, :update) ? 'col-sm-4' : 'col-sm-6'}"
+        span Level
+    .col.text-center class="#{policy_plus(estimation, :update) ? 'col-sm-4' : 'col-sm-6'}"
       span Task
-    / .col.text-center
-      span Description
     .col.col-sm-2.text-center
       span Min
     .col.col-sm-2.text-center

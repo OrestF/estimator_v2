@@ -1,5 +1,6 @@
 class EstimationTask < ApplicationRecord
   include SoftDeletable.new(dependant_relations: [])
+
   belongs_to :estimation
   belongs_to :feature
 

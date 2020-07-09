@@ -12,10 +12,10 @@ simple_row_style = [simple_cell_style, simple_cell_style, center_cell_style, cen
 totals_row_style = [simple_cell_style, simple_cell_style, center_cell_style, center_cell_style, center_cell_style, ]
 
 wb.add_worksheet(name: "Specification") do |sheet|
-  sheet.add_row(['Feature', 'Description', 'Experience', 'Min','Max'], style: header_row_style)
+  sheet.add_row(['Feature', 'Description', 'Level', 'Min','Max'], style: header_row_style)
 
   specification.estimation_tasks.includes(:feature).group_by(&:feature).each_with_index do |(feature, e_tasks), f_index|
-    sheet.add_row([feature.title, feature.description.to_s, '', '', ''], style: feature_row_style)
+    sheet.add_row([feature.title, feature.decorate.dc_description_criteria, '', '', ''], style: feature_row_style)
 
     e_tasks.group_by(&:estimation).each_with_index do |(estimation, tasks), e_index|
       tasks.each_with_index do |t, t_index|
@@ -45,5 +45,5 @@ wb.add_worksheet(name: "Specification") do |sheet|
   end
 
   sheet.add_row(['Calculated totals', '', '', "=SUM(D2:D#{current_row - 2})","=SUM(E2:E#{current_row - 2})"], style: feature_row_style)
-  sheet.add_row(['Totals', '', '', specification.total_optimistic, specification.total_pessimistic], style: feature_row_style)
+  sheet.add_row(['Totals', '', '', specification.total_optimistic, specification.total_pessimistic], style: header_row_style)
 end

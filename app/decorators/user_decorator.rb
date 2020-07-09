@@ -4,8 +4,8 @@ class UserDecorator < ApplicationDecorator
   def dc_title
     h.capture do
       dc_domain + ' - ' +
-      h.content_tag(:span, dc_full_name.presence) +
-      h.content_tag(:span, "[#{email}]")
+        h.content_tag(:span, dc_full_name.presence) +
+        h.content_tag(:span, "[#{email}]")
     end
   end
 
@@ -16,7 +16,7 @@ class UserDecorator < ApplicationDecorator
   def dc_domain
     h.capture do
       dc_domain_icon +
-      h.content_tag(:span, domain)
+        h.content_tag(:span, domain)
     end
   end
 

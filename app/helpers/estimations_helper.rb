@@ -5,7 +5,7 @@ module EstimationsHelper
     elsif current_user.organization_manager?
       current_organization.estimations.not_done.count
     elsif current_user.admin?
-      Estimation.all.not_done.count
+      current_organization.estimations.count
     end
   end
 

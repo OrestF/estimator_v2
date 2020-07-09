@@ -9,8 +9,6 @@
     = f.hidden_field :feature_id, value: (f.object.feature_id || feature.id)
     .col.title-col class="#{policy_plus(estimation_task.estimation, :update) ? 'col-sm-4' : 'col-sm-6'}"
       = f.text_field :title, class: 'form-control', autofocus: true
-    / .col.description-col
-      = f.text_field :description, class: 'form-control'
     .col-sm-2.col.optimistic-col
       = f.number_field :optimistic, class: 'form-control'
     .col-sm-2.col.pessimistic-col

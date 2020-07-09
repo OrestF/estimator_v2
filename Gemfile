@@ -38,6 +38,7 @@ gem 'slack-ruby-client'
 gem 'slim-rails'
 gem 'wicked_pdf', '~> 2.0', '>= 2.0.2'
 gem 'wkhtmltopdf-binary', '~> 0.12.5.4'
+gem 'xlog'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

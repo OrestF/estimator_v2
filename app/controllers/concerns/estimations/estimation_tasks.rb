@@ -2,8 +2,11 @@ module Estimations::EstimationTasks
   extend ActiveSupport::Concern
 
   def create_task
+    task_prams = estimation_task_params
+    task_prams[:experience_level] = current_user.experience_level.humanize if task_prams[:experience_level].blank?
+
     respond_to do |format|
-      if (res = EstimationTasks::Operations::Create.call(record_params: estimation_task_params.merge!(experience_level: current_user.experience_level.humanize))).success?
+      if (res = EstimationTasks::Operations::Create.call(record_params: task_prams)).success?
         format.json { render_task_created(res.data[:record]) }
         format.js   { render_task_created(res.data[:record]) }
       else

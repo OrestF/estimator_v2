@@ -3,8 +3,10 @@ class Estimation < ApplicationRecord
   include Filterable
 
   belongs_to :user
-  belongs_to :specification
   alias estimator user
+
+  belongs_to :specification
+  belongs_to :organization
 
   has_many :estimation_tasks
   has_one :project, through: :specification

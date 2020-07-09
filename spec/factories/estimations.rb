@@ -4,5 +4,6 @@ FactoryBot.define do
     user { nil }
     specification { nil }
     active { true }
+    organization
   end
 end

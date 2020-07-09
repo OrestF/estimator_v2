@@ -1,6 +1,7 @@
 .specification-summary
   .text-center
-    = wicked_pdf_image_tag(Rails.application.routes.url_helpers.url_for(specification.organization.logo), size: 150, class: 'img-fluid')
+    - if specification.organization.logo.present?
+      = image_tag(wicked_pdf_asset_path(Rails.application.routes.url_helpers.url_for(specification.organization.logo)), size: 150, class: 'img-fluid')
     h3 = specification.organization.name
     h1 = specification.project.title
     h2 = specification.title
@@ -10,7 +11,7 @@
         tr style="background-color: rgba(0, 0, 0, 0.12);"
           td width="30%"
             strong = feature.title
-          td width="40%" = feature.description
+          td width="40%" = feature.decorate.dc_description_criteria_html
           td.text-center Experience
           td.text-center Min
           td.text-center Max
@@ -25,7 +26,7 @@
               td.text-center = t.experience_level
               td.text-center = t.optimistic
               td.text-center = t.pessimistic
-      tr
+      tr style="background-color: rgba(0, 0, 0, 0.12);"
         td
           strong Total
         td
@@ -48,4 +49,5 @@ css:
     padding: 0.5rem;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    vertical-align: middle;
   }

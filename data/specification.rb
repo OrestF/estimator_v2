@@ -51,4 +51,10 @@ class Specification < ApplicationRecord
   def signed_off?
     [signed_off_by, signed_off_at].all?
   end
+
+  def all_estimations_done?
+    return false if estimations.none?
+
+    estimations.all?(&:done?)
+  end
 end
