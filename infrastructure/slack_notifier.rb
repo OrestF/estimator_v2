@@ -24,7 +24,7 @@ class SlackNotifier
   def estimation_done(estimation)
     spec = estimation.specification
 
-    text = "Hey, #{members_as_tags(spec.user)}. Estimation #{estimation.title} done! #{url.estimation_url(estimation)}"
+    text = "Hey, #{members_as_tags(spec.user.email)}. Estimation #{estimation.title} done! #{url.estimation_url(estimation)}"
     text += "\n Estimator: #{members_as_tags(estimation.estimator.email)}"
     text += "\n Estimations done: #{spec.estimations.done.count}/#{spec.estimations.count}"
     text += "\n All estimations for specification: #{spec.title} done!" if spec.all_estimations_done?
