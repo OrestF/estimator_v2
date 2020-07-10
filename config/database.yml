@@ -79,8 +79,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
   url: <%= RCreds.fetch(:database_url) %>
+#  <<: *default
 #  database: estimator_v2_production
 #  username: estimator_v2
 #  password: <%= RCreds.fetch(:estimator_v2, :database, :password) %>
