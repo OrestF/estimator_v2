@@ -10,7 +10,7 @@ local:
 amazon:
   service: S3
   bucket: <%= RCreds.fetch(:aws, :bucket) %>
-  region: eu-west-1 #us-east-1
+  region: us-east-2 #us-east-1
 #  access_key_id: ' ' #<%= Rails.application.credentials.dig(:aws, :access_key_id) %>
 #  secret_access_key: ' ' #<%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
 
