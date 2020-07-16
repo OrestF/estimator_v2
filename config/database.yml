@@ -79,7 +79,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  url: <%= RCreds.fetch(:database_url) %>
+  url: <%= RCreds.fetch(:database, :url) %>
 #  <<: *default
 #  database: estimator_v2_production
 #  username: estimator_v2
