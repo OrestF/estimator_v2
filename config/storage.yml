@@ -9,7 +9,8 @@ local:
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  bucket: elasticbeanstalk-us-east-2-002589723995
+  # elasticbeanstalk can't open this file if there is interpolation
+  bucket: <%= Rails.application.credentials.dig(:aws, :bucket) %> # elasticbeanstalk-us-east-2-002589723995
   region: us-east-2 #us-east-1
 #  access_key_id: ' ' #<%= Rails.application.credentials.dig(:aws, :access_key_id) %>
 #  secret_access_key: ' ' #<%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
