@@ -188,3 +188,14 @@ table {
   max-width: 35%;
   display: inline-block;
 }
+
+.estimator {
+  margin-left: 0.5rem;
+  background: black;
+  color: white;
+
+  &::selection {
+    background: white;
+    color: black;
+  }
+}
