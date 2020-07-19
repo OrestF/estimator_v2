@@ -13,6 +13,10 @@ module ApplicationHelper
     org_logo(size: '32x32').presence || image_pack_tag('estimator.png', size: '32x32')
   end
 
+  def estimator_logo
+    image_pack_tag('estimator_logo.png', class: 'img-fluid')
+  end
+
   def corner_button(url, **args)
     content_tag(:button, class: "btn btn-float btn-primary corner-button #{args[:css]}") do
       icon_link(url, **args)
@@ -22,6 +26,15 @@ module ApplicationHelper
   def icon_link(url, **args)
     link_to(url, **args[:link_params].to_h, style: 'display: block') do
       content_tag(:i, args[:icon] || 'link', class: 'material-icons', title: args[:title].presence || args[:icon].to_s.humanize)
+    end
+  end
+
+  def link_with_icon(url, **args)
+    link_to(url, **args[:link_params].to_h, style: 'display: block') do
+      capture do
+        content_tag(:i, args[:icon] || 'link', class: 'material-icons mr-1', title: args[:title].presence || args[:icon].to_s.humanize) +
+          content_tag(:span, args[:title] || args[:icon].to_s.humanize)
+      end
     end
   end
 
