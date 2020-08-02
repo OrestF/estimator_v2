@@ -64,7 +64,7 @@ class SpecificationTemplatesController < ResourcesController
 
   def render_feature_created(feature, _message: nil)
     render 'specification_templates/features/created', format: :js, status: :ok, locals: { feature: feature,
-                                                                                  specification: record }
+                                                                                           specification: record }
   end
 
   def record_params

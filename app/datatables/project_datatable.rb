@@ -6,7 +6,7 @@ class ProjectDatatable < ApplicationDatatable
       state: { source: 'Project.state' },
       user: { source: 'User.email' },
       client: { source: 'User.email' },
-      created_at: { source: 'Project.created_at' },
+      created_at: { source: 'Project.created_at' }
     }
   end
 

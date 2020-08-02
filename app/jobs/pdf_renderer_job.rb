@@ -19,7 +19,7 @@ class PdfRendererJob < ApplicationJob
   def plain_html
     ActionController::Base.new.render_to_string(
       template: 'specifications/pdf/summary',
-      locals: { :'@record' =>  @record }
+      locals: { '@record': @record }
     )
   end
 

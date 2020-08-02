@@ -3,7 +3,7 @@ class FeatureDecorator < ApplicationDecorator
 
   def dc_description_criteria_html
     h.capture do
-      h.content_tag(:div, description ) +
+      h.content_tag(:div, description) +
         h.content_tag(:div, "\n") +
         h.content_tag(:div, acceptance_criteria)
     end

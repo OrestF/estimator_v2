@@ -8,7 +8,9 @@ module OrganizationsHelper
   end
 
   def org_logo(options = {})
-    return image_tag(current_organization.logo, class: "img-fluid  #{options[:css_class]}", **options) if current_organization.logo.attached?
+    if current_organization.logo.attached?
+      return image_tag(current_organization.logo, class: "img-fluid  #{options[:css_class]}", **options)
+    end
 
     ''
   end

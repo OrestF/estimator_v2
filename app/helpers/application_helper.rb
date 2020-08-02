@@ -30,7 +30,8 @@ module ApplicationHelper
   end
 
   def link_with_icon(url, **args)
-    icn = emoji(args[:icon], css_class: 'mr-1').presence || content_tag(:i, args[:icon] || 'link', class: 'material-icons mr-1', title: args[:title].presence || args[:icon].to_s.humanize)
+    icn = emoji(args[:icon], css_class: 'mr-1').presence ||
+          content_tag(:i, args[:icon] || 'link', class: 'material-icons mr-1', title: args[:title].presence || args[:icon].to_s.humanize)
 
     link_to(url, **args[:link_params].to_h, style: 'display: block') do
       capture do

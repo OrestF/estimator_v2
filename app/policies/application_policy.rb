@@ -1,5 +1,5 @@
 class ApplicationPolicy
-  attr_reader :user, :record, :configs , :current_organization
+  attr_reader :user, :record, :configs, :current_organization
 
   def initialize(user, record, configs = {})
     @user = user

@@ -4,7 +4,6 @@ class SoftDeletable < Module
   end
 
   def included(base)
-
     base.class_eval do
       default_scope -> { not_deleted }
 
@@ -24,7 +23,7 @@ class SoftDeletable < Module
 
         soft_delete_relations
       end
-      alias delete destroy
+      alias_method :delete, :destroy
 
       def soft_delete_relations
         ApplicationRecord.transaction do
