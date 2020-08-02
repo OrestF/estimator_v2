@@ -23,7 +23,7 @@
     "jquery": "^3.5.0",
     "kind-of": "^6.0.3",
     "minimist": "^1.2.3",
-    "npm": "^6.13.4",
+    "npm": "^6.14.6",
     "popper.js": "^1.15.0",
     "select2": "^4.0.11",
     "serialize-javascript": "^2.1.1",
