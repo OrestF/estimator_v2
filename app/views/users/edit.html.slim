@@ -19,6 +19,9 @@
         .form-group
           = f.label :experience_level, class: 'form-control'
           = f.select :experience_level, User.experience_levels.keys, {}, {class: 'select2-js m-3'}
+        .form-group
+          = f.label :role, class: 'form-control'
+          = f.select :role, roles_for_select, {}, {class: 'select2-js'}
     .form-group
       = f.label :password
       = f.password_field :password, autocomplete: 'new-password', class: 'form-control'

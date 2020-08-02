@@ -4,7 +4,7 @@
   = bottom_action_btn(edit_project_path(@record), icon: 'edit', title: 'Edit')
   = bottom_action_btn(project_path(@record), icon: 'delete', link_params: { method: :delete, data: { confirm: 'Are you sure?' } })
 
-= render 'ui/title_state', record: @record
+= render 'ui/title_state', record: @record, icon: :package
 
 = render 'projects/components/client_chip', client: @record.client
 

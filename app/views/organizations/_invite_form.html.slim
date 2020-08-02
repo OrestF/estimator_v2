@@ -8,5 +8,8 @@
   .form-group
     = form.label :domain, class: 'form-control'
     = form.select :domain, User.domains.keys, {}, { class: 'select2-js m-3' }
+  .form-group
+    = form.label :experience_level, class: 'form-control'
+    = form.select :experience_level, User.experience_levels.keys, {}, {class: 'select2-js m-3'}
 
   = form.submit 'Invite', class: 'btn btn-success m-t-5', data: { confirm: 'Are you sure?' }

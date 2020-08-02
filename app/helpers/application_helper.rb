@@ -30,9 +30,11 @@ module ApplicationHelper
   end
 
   def link_with_icon(url, **args)
+    icn = emoji(args[:icon], css_class: 'mr-1').presence || content_tag(:i, args[:icon] || 'link', class: 'material-icons mr-1', title: args[:title].presence || args[:icon].to_s.humanize)
+
     link_to(url, **args[:link_params].to_h, style: 'display: block') do
       capture do
-        content_tag(:i, args[:icon] || 'link', class: 'material-icons mr-1', title: args[:title].presence || args[:icon].to_s.humanize) +
+        icn +
           content_tag(:span, args[:title] || args[:icon].to_s.humanize)
       end
     end
@@ -88,7 +90,7 @@ module ApplicationHelper
   end
 
   def roles_for_select
-    User.roles.keys - ['admin']
+    User.roles.keys[0..User.roles.keys.index(current_user.role)]
   end
 
   def policy_plus(record, action_name, configs = {})

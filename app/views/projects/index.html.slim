@@ -3,7 +3,9 @@
 - content_for :page_actions do
   = bottom_action_btn(new_project_path, icon: 'add', title: 'Create', class: 'btn-success')
 
-h1 Projects
+h1
+  = emoji(:package, css_class: 'mr-2')
+  span Projects
 / .row
 /   - @records.group_by(&:state).each do |state, projects|
 /     .col

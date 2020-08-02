@@ -1,6 +1,8 @@
 - content_for :page_actions do
   = render 'specification_templates/components/create_modal', hide_modal: true
 
-h1 Specification templates
+h1
+  = emoji(:bookmark_tabs, css_class: 'mr-2')
+  span Specification templates
 = render 'specification_templates/components/create_modal', specification_template: SpecificationTemplate.new, hide_button: true
 = render 'specification_templates/datatable'

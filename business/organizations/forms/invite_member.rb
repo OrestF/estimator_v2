@@ -1,5 +1,5 @@
 class Organizations::Forms::InviteMember < BaseForm
-  PERMITTED_ATTRIBUTES = %i[email role domain].freeze
+  PERMITTED_ATTRIBUTES = %i[email role domain experience_level].freeze
   REQUIRED_ATTRIBUTES = %i[email role domain].freeze
   attr_accessor(*PERMITTED_ATTRIBUTES, :record)
 
