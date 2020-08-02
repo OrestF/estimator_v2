@@ -8,26 +8,26 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow-1
       ul.navbar-nav.mr-auto
         li.nav-item
           = link_to(projects_path, class: 'nav-link')
-            i.material-icons work_outline
+            = emoji(:package)
             span  Projects
         li.nav-item
           = link_to(specifications_path, class: 'nav-link pr-0') do
-            i.material-icons wysiwyg
+            = emoji(:open_book)
             span.mr-1  Specifications
             = render 'specifications/components/count_badges'
         li.nav-item.dropdown
           a#navbarSpecificationDropdown.nav-link.dropdown-toggle.pl-0.pr-0 aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
           .dropdown-menu aria-labelledby="navbarSpecificationDropdown"
-            = link_with_icon(specification_templates_path, icon: 'content_copy', title: 'Specification templates', link_params: { class: 'dropdown-item' })
+            = link_with_icon(specification_templates_path, icon: 'bookmark_tabs', title: 'Specification templates', link_params: { class: 'dropdown-item' })
         li.nav-item
           = link_to(estimations_path, class: 'nav-link') do
-            i.material-icons insert_chart_outlined
+            = emoji(:bar_chart)
             spa.mr-1  Estimations
             span.badge.badge-danger = due_estimations_count
       ul.navbar-nav.ml-auto
         li.nav-item
           = link_to(organization_path, class: 'nav-link') do
-            i.material-icons domain
+            = emoji(:office)
             span  = current_organization.name
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"

@@ -16,6 +16,10 @@ class Organizations::Operations::InviteMember < BaseOperation
                      role: record_params[:role],
                      domain: record_params[:domain],
                      organization: record)
+
+    @user.experience_level = record_params[:experience_level] if record_params[:experience_level].present?
+
+    @user
   end
 
   def invite_user

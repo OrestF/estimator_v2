@@ -5,24 +5,29 @@ h1.text-center
   .col-md-4.offset-5
     .stepper-vert
       .stepper.active
-        .stepper-icon
-          i.material-icons add
+        / .stepper-icon
+          / i.material-icons add
+        = emoji(:heavy_plus_sign, css_class: 'mr-2', scale: 2)
         span.stepper-text
           = link_to('1. Create a new project', new_project_path, class: 'text-black')
       .stepper.active
-        .stepper-icon
+        / .stepper-icon
           span.material-icons wysiwyg
+        = emoji(:open_book, css_class: 'mr-2', scale: 2)
         span.stepper-text 2. Create a new specification within a Project
       .stepper.active
-        .stepper-icon
+        / .stepper-icon
           span.material-icons people
+        = emoji(:couple, css_class: 'mr-2', scale: 2)
         span.stepper-text 3. Assign estimators
       .stepper.active
-        .stepper-icon
+        / .stepper-icon
           span.material-icons insert_chart_outlined
+        = emoji(:bar_chart, css_class: 'mr-2', scale: 2)
         span.stepper-text
           = link_to('4. Review estimated Specification', specifications_path, class: 'text-black')
       .stepper.active
-        .stepper-icon
-          span.material-icons picture_as_pdf
+        / .stepper-icon
+        /   span.material-icons picture_as_pdf
+        = emoji(:page_facing_up, css_class: 'mr-2', scale: 2)
         span.stepper-text 5. Generate and download summary PDF

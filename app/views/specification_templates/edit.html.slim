@@ -4,7 +4,7 @@
 
 .row
   .col-sm-6.offset-3
-    = render 'ui/title_state', record: @record
+    = render 'ui/title_state', record: @record, icon: :bookmark_tabs
     = render 'specification_templates/form', specification_template: @record
     hr
     = render 'specification_templates/features/main_form', specification: @record, url: update_feature_specification_path(@record)

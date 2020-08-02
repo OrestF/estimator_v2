@@ -1,5 +1,5 @@
 class Specification < ApplicationRecord
-  include SoftDeletable.new(dependant_relations: [:estimations, :features])
+  include SoftDeletable.new(dependant_relations: %i[estimations features])
   include Filterable
 
   default_scope { not_deleted.where.not(project_id: nil) }

@@ -7,7 +7,7 @@
   .col-sm-3
     = render 'specifications/components/stepper', specification: @record
   .col-sm-8
-    = render 'ui/title_state', record: @record
+    = render 'ui/title_state', record: @record, icon: :open_book
     = render 'ui/states_flow', record: @record
     = render 'specifications/components/signed_off_chip', specification: @record
 

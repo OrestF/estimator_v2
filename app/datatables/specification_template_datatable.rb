@@ -3,7 +3,7 @@ class SpecificationTemplateDatatable < ApplicationDatatable
     @view_columns ||= {
       id: { source: 'SpecificationTemplate.id' },
       title: { source: 'SpecificationTemplate.title' },
-      user: { source: 'User.email' },
+      user: { source: 'User.email' }
     }
   end
 

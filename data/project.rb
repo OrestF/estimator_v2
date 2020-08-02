@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   has_rich_text :description
 
   validates :organization, :user, :title, :description, presence: true
-  validates :title, uniqueness: { scope: [:organization_id, :deleted_at], case_sensitive: false }
+  validates :title, uniqueness: { scope: %i[organization_id deleted_at], case_sensitive: false }
 
   enum state: {
     in_progress: 0,

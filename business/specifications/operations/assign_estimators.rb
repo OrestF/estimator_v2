@@ -44,6 +44,7 @@ class Specifications::Operations::AssignEstimators < BaseOperation
     return if record.organization.slack_access_token.blank?
 
     SlackNotifierJob.perform_later(record.organization, :assign_estimators, record, estimators.pluck(:email))
-  rescue StandardError => _e
+  rescue StandardError => e
+    Xlog.error(e)
   end
 end

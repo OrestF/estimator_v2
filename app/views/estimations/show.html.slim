@@ -15,7 +15,7 @@
 
 .row
   .col-6
-    = render 'ui/title_state', record: @record
+    = render 'ui/title_state', record: @record, icon: :bar_chart
     = render 'ui/states_flow', record: @record
   .col-6.text-right
     = render 'estimations/components/estimator_chip', estimator: @record.estimator
