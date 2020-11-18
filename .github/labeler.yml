@@ -1,0 +1,6 @@
+version: 1
+labels:
+  - label: "WIP"
+    title: "^WIP:.*"
+  - label: 'CHANGELOG.md unchanged!'
+    files: "!CHANGELOG.md"
