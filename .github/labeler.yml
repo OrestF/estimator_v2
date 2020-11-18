@@ -1,6 +1,6 @@
 # https://github.com/actions/labeler
-wip:
-  - title: "^WIP:.*"
+#wip:
+#  - title: "^WIP:.*"
 changelog_unchanged:
   - all: ["!CHANGELOG.md"]
 no_tests:
