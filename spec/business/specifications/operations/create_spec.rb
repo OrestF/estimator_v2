@@ -20,8 +20,8 @@ describe Specifications::Operations::Create do
         let!(:specification_template) { create(:specification_template, user: user, organization: user.organization) }
         let!(:features) do
           create_list(:feature, 3, specification: specification_template,
-                                   user_id: specification_template.user.id,
-                                   organization_id: specification_template.organization&.id)
+                           user_id: specification_template.user.id,
+                           organization_id: specification_template.organization&.id)
         end
 
         let(:record_params) do
