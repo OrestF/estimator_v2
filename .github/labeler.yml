@@ -1,5 +1,4 @@
 wip:
-  - label: "WIP"
-    title: "^WIP:.*"
+  - title: "^WIP:.*"
 changelog_unchanged:
   - all: ["!CHANGELOG.md"]
