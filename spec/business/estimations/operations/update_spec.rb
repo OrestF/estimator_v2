@@ -28,7 +28,7 @@ describe Estimations::Operations::Update do
     context 'with invalid params' do
       let(:record_params) do
         {
-          title: nil,
+          title: nil
         }
       end
 
