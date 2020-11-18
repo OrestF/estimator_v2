@@ -1,6 +1,5 @@
-version: '1'
-labels:
+wip:
   - label: "WIP"
     title: "^WIP:.*"
-  - label: 'CHANGELOG.md unchanged!'
-    files: "!CHANGELOG.md"
+changelog_unchanged:
+  - all: ["!CHANGELOG.md"]
