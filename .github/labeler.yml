@@ -4,4 +4,5 @@
 changelog_unchanged:
   - all: ["!CHANGELOG.md"]
 no_tests:
-  - any: ["!spec/*", "!spec", "!spec/**/*", "!spec/**/**/*", "!spec/**/**/**/*", "!spec/**/**/**/**/*"]
+  - any: ["!spec"]
+#  - any: ["!spec/*", "!spec", "!spec/**/*", "!spec/**/**/*", "!spec/**/**/**/*", "!spec/**/**/**/**/*"]
