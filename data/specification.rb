@@ -4,7 +4,7 @@ class Specification < ApplicationRecord
 
   default_scope { not_deleted.where.not(project_id: nil) }
 
-  attr_reader :template_id
+  attr_accessor :template_id
 
   belongs_to :user
   belongs_to :project, optional: true # optional: true for SpecificationTemplate

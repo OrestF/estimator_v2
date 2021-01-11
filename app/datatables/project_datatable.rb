@@ -3,6 +3,7 @@ class ProjectDatatable < ApplicationDatatable
     @view_columns ||= {
       id: { source: 'Project.id' },
       title: { source: 'Project.title' },
+      domain: { source: 'Project.domain' },
       state: { source: 'Project.state' },
       user: { source: 'User.email' },
       client: { source: 'User.email' },
@@ -15,6 +16,7 @@ class ProjectDatatable < ApplicationDatatable
       {
         id: record.id,
         title: record.decorate.title,
+        domain: record.decorate.dc_domain,
         state: record.decorate.dc_state_badge,
         user: record.user.decorate.dc_full_name,
         client: record.client&.decorate&.dc_full_name,
