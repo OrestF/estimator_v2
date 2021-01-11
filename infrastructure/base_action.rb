@@ -18,4 +18,8 @@ class BaseAction
   end
 
   def call; end
+
+  def response(status, *args)
+    BaseResponse.new(status, *args)
+  end
 end

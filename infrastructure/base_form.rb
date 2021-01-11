@@ -32,20 +32,49 @@ class BaseForm
     errors.messages.merge!(nested_errors)
   end
 
-  def sync_errors_to_form
-    return if record.blank?
+  def sync_errors(from: self, to: record)
+    errors = from.errors.instance_variable_get('@messages')
+    errors.merge!(to.errors.instance_variable_get('@messages'))
 
-    record.errors.each do |code, body|
-      errors.add(code, body)
-    end
+    to.errors.instance_variable_set('@messages', errors)
+    to.errors.messages.transform_values!(&:uniq)
+  end
+
+  def sync_errors_to_form
+    sync_errors(from: record, to: self)
   end
 
   def sync_errors_to_record
-    return if record.blank?
+    sync_errors
+  end
 
-    errors.each do |code, body|
-      record.errors.add(code, body) unless record.errors[code].include?(body)
+  # uses datetime_params to fix the following issue:
+  # https://stackoverflow.com/questions/5073756/where-is-the-rails-method-that-converts-data-from-datetime-select-into-a-datet
+  def parse_datetime_params
+    datetime_params.each do |param|
+      next if @params[param].present?
+
+      # set datetime to nil if year is blank
+      if @params["#{param}(1i)"].blank?
+        @params[param] = nil
+
+        next
+      end
+
+      @params[param] = DateTime.new(*(1..5).map { |i| @params["#{param}(#{i}i)"].to_i })
     end
+  rescue ArgumentError
+    nil
+  end
+
+  # list datetime_params in child form in order to parse datetime properly
+  def datetime_params
+    []
+  end
+
+  # list nested_forms in child form in order to validate them
+  def nested_forms
+    []
   end
 
   def validate_nested(*nested_forms)

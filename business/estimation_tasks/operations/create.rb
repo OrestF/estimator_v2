@@ -1,5 +1,6 @@
 class EstimationTasks::Operations::Create < BaseOperation
   def call
+    prepare_params
     build_record
     build_form
     return validation_fail unless form_valid?
@@ -12,6 +13,10 @@ class EstimationTasks::Operations::Create < BaseOperation
   end
 
   private
+
+  def prepare_params
+    @record_params = EstimationTasks::Actions::PrepareParams.call(record_params: record_params).data[:record_params]
+  end
 
   def build_record
     @record = EstimationTask.new(record_params)
