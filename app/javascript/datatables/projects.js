@@ -11,6 +11,7 @@ $( document ).on('turbolinks:load ready', function() {
             "columns": [
                 {"data": "id"},
                 {"data": "title"},
+                {"data": "domain"},
                 {"data": "state"},
                 {"data": "user"},
                 {"data": "client"},

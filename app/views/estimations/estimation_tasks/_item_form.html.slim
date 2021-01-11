@@ -8,11 +8,11 @@
     = f.hidden_field :estimation_id
     = f.hidden_field :feature_id, value: (f.object.feature_id || feature.id)
     .col.title-col class="#{policy_plus(estimation_task.estimation, :update) ? 'col-sm-4' : 'col-sm-6'}"
-      = f.text_field :title, class: 'form-control', autofocus: true
+      = f.text_field :title, required: true, class: 'form-control required', autofocus: true
     .col-sm-2.col.optimistic-col
-      = f.number_field :optimistic, class: 'form-control'
+      = f.number_field :optimistic, required: true, class: 'form-control', min: 0
     .col-sm-2.col.pessimistic-col
-      = f.number_field :pessimistic, class: 'form-control'
+      = f.number_field :pessimistic, class: 'form-control', min: 0
     .col.col-sm-2
       - if edit_form
         = link_to('Delete', destroy_task_estimation_path(estimation_task.estimation, estimation_task: {id: estimation_task.id }), class: 'btn btn-danger', remote: true, method: :delete, data: {confirm: 'Are you sure?'})

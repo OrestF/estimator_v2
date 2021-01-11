@@ -22,4 +22,27 @@ h1
 /               = link_to('Open', project_path(project), class: 'card-link')
 /               = link_to('Edit', edit_project_path(project), class: 'card-link')
 
-= render 'projects/datatable'
+ul#projectsTab.nav.nav-justified.nav-tabs role="tablist"
+  li.nav-item
+    a#projects-table-tab.nav-link.active aria-controls="projects-table" aria-selected="false" data-toggle="tab" href="#projects-table" role="tab" Table view
+  li.nav-item
+    a#projects-grid-tab.nav-link aria-controls="projects-grid" aria-selected="true" data-toggle="tab" href="#projects-grid" role="tab" Grid view
+#projectsTabContent.tab-content.mt-3
+  #projects-table.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
+    = render 'projects/datatable'
+  #projects-grid.tab-pane.fade aria-labelledby="home-tab" role="tabpanel"
+    .row
+      - @records.group_by(&:state).each do |state, projects|
+        .col
+          span.h3.mr-2   #{state.humanize}
+          span.badge class="badge-#{state_label(state)}" #{projects.count}
+          br
+          br
+          .card-columns
+            - projects.each do |project|
+              .card class="border-#{state_label(project.state)}"
+                .card-body
+                  h5.card-title = project.title
+                  p.card-text = project.description.to_plain_text.truncate(50)
+                  = link_to('Open', project_path(project), class: 'card-link')
+                  = link_to('Edit', edit_project_path(project), class: 'card-link')
