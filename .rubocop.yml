@@ -64,5 +64,3 @@ Lint/AmbiguousBlockAssociation:
 Naming/MethodParameterName:
   Enabled: false
 
-Lint/AmbiguousOperator:
-  Enabled: false
