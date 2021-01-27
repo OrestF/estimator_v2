@@ -2,7 +2,7 @@
 
 module MessageHelper
   def not_authorized
-      'You are not authorized to perform this action.'
+    'You are not authorized to perform this action.'
   end
   module_function :not_authorized
 

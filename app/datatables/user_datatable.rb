@@ -13,7 +13,7 @@ class UserDatatable < ApplicationDatatable
   end
 
   def data
-      records.map do |record|
+    records.map do |record|
       {
         id: record.id,
         email: record.email,
@@ -29,7 +29,7 @@ class UserDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-      policy_scope(
+    policy_scope(
       current_organization.users
     )
   end
