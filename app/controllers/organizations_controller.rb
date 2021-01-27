@@ -22,7 +22,7 @@ class OrganizationsController < ResourcesController
   private
 
   def record_params
-    params.require(:organization).permit!
+       params.require(:organization).permit!
   end
 
   def record_class

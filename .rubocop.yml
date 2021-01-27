@@ -66,10 +66,3 @@ Naming/MethodParameterName:
 
 Lint/AmbiguousOperator:
   Enabled: false
-
-Style/AccessModifierDeclarations:
-  Enabled: false
-
-Naming/AccessorMethodName:
-  Exclude:
-    - 'app/datatables/*'
